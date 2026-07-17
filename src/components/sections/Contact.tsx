@@ -1,8 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (err: any) {
+      setStatus("error");
+      setErrorMessage(err.message);
+    }
+  };
+
   return (
     <section id="contact" className="py-32 bg-sand text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,11 +85,27 @@ export function Contact() {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2"
           >
-            <form className="h-full flex flex-col justify-center gap-12">
+            <form onSubmit={handleSubmit} className="h-full flex flex-col justify-center gap-12 relative">
+              
+              {status === "success" && (
+                <div className="absolute -top-16 left-0 bg-green-50 text-green-800 p-4 w-full border-l-4 border-green-500 font-medium">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="absolute -top-16 left-0 bg-red-50 text-red-800 p-4 w-full border-l-4 border-red-500 font-medium">
+                  {errorMessage}
+                </div>
+              )}
+
               <div className="relative">
                 <input 
                   type="text" 
                   id="name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="peer w-full border-b border-charcoal-light/30 py-4 focus:outline-none focus:border-charcoal transition-colors bg-transparent text-charcoal text-xl placeholder-transparent" 
                   placeholder="Full Name" 
                 />
@@ -67,6 +121,9 @@ export function Contact() {
                 <input 
                   type="email" 
                   id="email" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="peer w-full border-b border-charcoal-light/30 py-4 focus:outline-none focus:border-charcoal transition-colors bg-transparent text-charcoal text-xl placeholder-transparent" 
                   placeholder="Email Address" 
                 />
@@ -82,6 +139,9 @@ export function Contact() {
                 <textarea 
                   id="message" 
                   rows={4} 
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="peer w-full border-b border-charcoal-light/30 py-4 focus:outline-none focus:border-charcoal transition-colors bg-transparent resize-none text-charcoal text-xl placeholder-transparent mt-4" 
                   placeholder="Your Message"
                 ></textarea>
@@ -93,8 +153,12 @@ export function Contact() {
                 </label>
               </div>
 
-              <button type="button" className="bg-charcoal text-white py-5 px-12 rounded-none font-bold tracking-[0.2em] uppercase hover:bg-black transition-colors self-start mt-4">
-                Send Message
+              <button 
+                type="submit" 
+                disabled={status === "loading"}
+                className="bg-charcoal text-white py-5 px-12 rounded-none font-bold tracking-[0.2em] uppercase hover:bg-black transition-colors self-start mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>
