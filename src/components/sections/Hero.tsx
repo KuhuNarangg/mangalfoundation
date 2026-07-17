@@ -13,19 +13,19 @@ export function Hero() {
   });
 
   // Fade out B&W and fade in Color
-  const bwOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const colorOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const bwOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const colorOpacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
   
   // First text fades out
   const text1Opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   const text1Y = useTransform(scrollYProgress, [0, 0.4], [0, -50]);
 
   // Second text fades in alongside the color image
-  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
-  const text2Y = useTransform(scrollYProgress, [0.2, 0.5], [50, 0]);
+  const text2Opacity = useTransform(scrollYProgress, [0.3, 0.8], [0, 1]);
+  const text2Y = useTransform(scrollYProgress, [0.3, 0.8], [50, 0]);
 
   return (
-    <div ref={containerRef} className="relative h-[400vh]">
+    <div ref={containerRef} className="relative h-[600vh] md:h-[500vh]">
       {/* Sticky container to hold the images and text while scrolling through the 400vh height */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
         
