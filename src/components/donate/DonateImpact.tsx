@@ -57,9 +57,6 @@ export function DonateImpact() {
           {impactStats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="flex flex-col items-center md:items-start text-center md:text-left"
             >

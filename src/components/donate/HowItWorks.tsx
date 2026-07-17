@@ -37,18 +37,12 @@ export function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.h2
             className="font-heading text-4xl md:text-5xl text-charcoal mb-4"
           >
             How It Works
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.p
             transition={{ delay: 0.2 }}
             className="text-gray-500 font-light"
           >
@@ -63,9 +57,6 @@ export function HowItWorks() {
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="flex flex-col items-center text-center bg-white p-6"
               >

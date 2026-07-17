@@ -32,18 +32,12 @@ export function FAQ() {
     <section className="py-24 bg-white border-b border-gray-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.h2
             className="font-heading text-4xl md:text-5xl text-charcoal mb-4"
           >
             Frequently Asked Questions
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.p
             transition={{ delay: 0.2 }}
             className="text-gray-500 font-light"
           >
@@ -52,9 +46,6 @@ export function FAQ() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
         >
           <Accordion className="w-full">
             {faqs.map((faq, i) => (

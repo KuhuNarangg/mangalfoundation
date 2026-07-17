@@ -27,18 +27,12 @@ export function DonationPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
           <div className="max-w-xl">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <motion.h2
               className="font-heading text-3xl md:text-5xl text-charcoal mb-4 leading-tight"
             >
               How Would You Like to Make a Difference?
             </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <motion.p
               transition={{ delay: 0.2 }}
               className="text-gray-500 font-light text-sm md:text-base"
             >
@@ -46,9 +40,6 @@ export function DonationPreview() {
             </motion.p>
           </div>
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
             className="hidden md:block"
           >
             <Link 
@@ -64,21 +55,18 @@ export function DonationPreview() {
           {donationTypes.map((type, index) => (
             <motion.div
               key={type.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group relative aspect-[4/5] overflow-hidden bg-gray-100"
             >
               <img 
                 src={type.image} 
                 alt={type.title} 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover  group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90 md:opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                <h3 className="text-white font-heading text-2xl md:text-3xl mb-2 transform translate-y-0 md:group-hover:-translate-y-2 transition-transform duration-500">
+                <h3 className="text-white font-heading text-2xl md:text-3xl mb-2 transform translate-y-0 md: ">
                   {type.title}
                 </h3>
                 

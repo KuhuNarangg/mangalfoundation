@@ -40,18 +40,12 @@ export function OurCauses() {
     <section id="causes" className="py-12 bg-beige text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.h2
             className="font-heading text-3xl md:text-4xl lg:text-5xl mb-4 text-charcoal"
           >
             Our Mission
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.p
             transition={{ delay: 0.2 }}
             className="text-base text-charcoal-light max-w-3xl mx-auto font-light"
           >
@@ -63,9 +57,6 @@ export function OurCauses() {
           {causes.map((cause, index) => (
             <motion.div
               key={cause.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="group bg-beige-light rounded-lg overflow-hidden shadow-sm border border-sand hover:shadow-md transition-all duration-300 flex flex-col"
             >
@@ -73,7 +64,7 @@ export function OurCauses() {
                 <img 
                   src={cause.image} 
                   alt={cause.title}
-                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105  ease-out"
                 />
               </div>
               <div className="p-5 flex-grow">

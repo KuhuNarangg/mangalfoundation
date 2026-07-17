@@ -22,18 +22,12 @@ export function SuccessStories() {
     <section className="py-24 bg-gray-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.h2
             className="font-heading text-4xl md:text-5xl text-charcoal mb-4"
           >
             Real Stories of Impact
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <motion.p
             transition={{ delay: 0.2 }}
             className="text-gray-500 font-light max-w-2xl mx-auto"
           >
@@ -45,9 +39,6 @@ export function SuccessStories() {
           {stories.map((story, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="bg-white border border-gray-200 flex flex-col sm:flex-row overflow-hidden shadow-sm"
             >

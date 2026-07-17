@@ -46,10 +46,7 @@ export function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-24">
           
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <motion.div
             transition={{ duration: 0.8 }}
             className="lg:w-1/2 flex flex-col justify-center"
           >
@@ -78,10 +75,7 @@ export function Contact() {
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <motion.div
             transition={{ duration: 0.8 }}
             className="lg:w-1/2"
           >

@@ -10,9 +10,6 @@ export function DonateCTA() {
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col items-center justify-center h-full">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-tight">

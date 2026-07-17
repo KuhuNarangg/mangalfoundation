@@ -55,8 +55,7 @@ export function Hero() {
           className="absolute inset-0 z-30 flex flex-col items-center justify-center px-4"
           style={{ opacity: text1Opacity, y: text1Y }}
         >
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="w-16 h-16 md:w-20 md:h-20 border-2 border-white rounded-full flex items-center justify-center mb-6"
@@ -64,8 +63,7 @@ export function Hero() {
             <span className="font-heading font-bold text-xl md:text-2xl text-white">MGF.</span>
           </motion.div>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.p
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
             className="text-lg md:text-2xl text-white/90 font-medium tracking-widest uppercase mb-4 text-center"
@@ -73,8 +71,7 @@ export function Hero() {
             Mangal Guruji Foundation
           </motion.p>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.h1
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
             className="font-heading text-6xl md:text-8xl lg:text-[10rem] text-white font-extrabold tracking-tighter leading-none mb-6 drop-shadow-lg text-center"
@@ -83,7 +80,6 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
             className="text-sm md:text-base text-white/80 uppercase tracking-[0.3em] mt-4"
@@ -116,7 +112,6 @@ export function Hero() {
         <motion.div 
           className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center"
           style={{ opacity: text1Opacity }}
-          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
         >

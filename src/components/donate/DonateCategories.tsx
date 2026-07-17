@@ -39,9 +39,6 @@ export function DonateCategories() {
           {categories.map((category, index) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
               className={`flex flex-col lg:flex-row gap-16 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
             >
@@ -52,7 +49,7 @@ export function DonateCategories() {
                   <img 
                     src={category.image} 
                     alt={category.title} 
-                    className="absolute inset-0 w-full h-full object-cover grayscale-0 md:grayscale transition-all duration-700 md:group-hover:grayscale-0 md:group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover grayscale-0 md:grayscale transition-all duration-700  "
                   />
                   <div className="absolute top-6 left-6 bg-white p-4 rounded-full shadow-lg">
                     <category.icon className="w-8 h-8 text-black" />

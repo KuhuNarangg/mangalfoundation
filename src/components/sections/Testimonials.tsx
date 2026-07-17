@@ -19,18 +19,12 @@ export function Testimonials() {
         {/* Right Side: Content */}
         <div className="flex flex-col justify-center p-12 md:p-24 lg:p-32 relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             className="mb-8"
           >
             <span className="text-sand text-[10rem] font-heading leading-none opacity-30 absolute top-12 left-12 md:top-24 md:left-24">"</span>
           </motion.div>
           
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="relative z-10"
           >
