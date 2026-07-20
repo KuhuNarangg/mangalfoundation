@@ -31,11 +31,11 @@ export function Hero() {
   const text2Opacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
   const text2Y = useTransform(scrollYProgress, [0, 0.6], [50, 0]);
 
-  // h-[200vh] means the user scrolls exactly 100vh to unpin the container.
+  // h-[200dvh] means the user scrolls exactly 100dvh to unpin the container.
   return (
-    <div ref={containerRef} className="relative h-[200vh]">
+    <div ref={containerRef} className="relative h-[200dvh]">
       {/* Sticky container to hold the images and text while scrolling */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center">
 
         {/* Color Background Image (Behind) */}
         <motion.div

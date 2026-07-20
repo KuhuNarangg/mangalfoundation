@@ -59,7 +59,7 @@ export default function DonationsPage() {
         </Select>
       </div>
 
-      <div className="bg-white rounded-md border">
+      <div className="bg-white rounded-md border overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>

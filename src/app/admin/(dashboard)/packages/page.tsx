@@ -133,7 +133,7 @@ export default function PackagesPage() {
                 </Select>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Title</Label>
                   <Input required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} placeholder="e.g. Sponsor a child" />
@@ -168,7 +168,7 @@ export default function PackagesPage() {
         </Dialog>
       </div>
 
-      <div className="bg-white rounded-md border">
+      <div className="bg-white rounded-md border overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>

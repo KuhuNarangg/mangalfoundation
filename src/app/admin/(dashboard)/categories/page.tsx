@@ -104,7 +104,7 @@ export default function CategoriesPage() {
               <DialogTitle>{editingId ? "Edit Category" : "Add New Category"}</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Title</Label>
                   <Input required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
@@ -139,7 +139,7 @@ export default function CategoriesPage() {
         </Dialog>
       </div>
 
-      <div className="bg-white rounded-md border">
+      <div className="bg-white rounded-md border overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
