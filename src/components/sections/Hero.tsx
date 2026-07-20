@@ -15,17 +15,19 @@ export function Hero() {
     offset: ["start start", "end end"]
   });
 
-  // Fade out B&W and fade in Color completely synchronously
-  const bwOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const colorOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  // Fade out B&W and fade in Color. 
+  // Mapping to [0, 0.8] means the animation finishes at 80% of the scroll distance,
+  // leaving the last 20% as a "pause" to admire the fully colored image before the website unpins.
+  const bwOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const colorOpacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
   
   // First text fades out synchronously with the B&W image
-  const text1Opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const text1Y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const text1Y = useTransform(scrollYProgress, [0, 0.8], [0, -50]);
 
   // Second text fades in synchronously with the Color image
-  const text2Opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const text2Y = useTransform(scrollYProgress, [0, 1], [50, 0]);
+  const text2Opacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+  const text2Y = useTransform(scrollYProgress, [0, 0.8], [50, 0]);
 
   // h-[200vh] means the user scrolls exactly 100vh to unpin the container.
   // Combined with 'end end' offset, the animation is 100% mapped to this exact distance, zero dead space.
