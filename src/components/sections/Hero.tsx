@@ -7,12 +7,15 @@ import { ChevronDown } from "lucide-react";
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   
+  // offset: ["start start", "end end"] ensures scrollYProgress reaches 1.0 EXACTLY 
+  // when the sticky container unpins (when the bottom of the container hits the bottom of the viewport).
+  // This solves the bug where the website would scroll away before the color fully changed!
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end end"]
   });
 
-  // Fade out B&W and fade in Color completely synchronously over a very short scroll
+  // Fade out B&W and fade in Color completely synchronously
   const bwOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const colorOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   
@@ -20,12 +23,14 @@ export function Hero() {
   const text1Opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const text1Y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
-  // Second text fades in synchronously with the Color image (NO extra scrolling)
+  // Second text fades in synchronously with the Color image
   const text2Opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const text2Y = useTransform(scrollYProgress, [0, 1], [50, 0]);
 
+  // h-[200vh] means the user scrolls exactly 100vh to unpin the container.
+  // Combined with 'end end' offset, the animation is 100% mapped to this exact distance, zero dead space.
   return (
-    <div ref={containerRef} className="relative h-[150vh]">
+    <div ref={containerRef} className="relative h-[200vh]">
       {/* Sticky container to hold the images and text while scrolling */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
         

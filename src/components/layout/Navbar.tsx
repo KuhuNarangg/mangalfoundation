@@ -35,11 +35,12 @@ export function Navbar() {
   );
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Our Causes", href: "#causes" },
-    { name: "Impact", href: "#impact" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/#about" },
+    { name: "Our Causes", href: "/#causes" },
+    { name: "Impact", href: "/#impact" },
+    { name: "Gallery", href: "/#gallery" },
+    { name: "Contact", href: "/#contact" },
+    { name: "Admin", href: "/admin/login" },
   ];
 
   return (
@@ -73,7 +74,7 @@ export function Navbar() {
             ))}
             <motion.div style={{ color: textColor }}>
               <Link
-                href="#donate"
+                href="/donate"
                 className="inline-flex items-center justify-center px-6 py-2 border border-current rounded-full text-sm font-medium hover:bg-foreground hover:text-background transition-colors duration-300"
               >
                 Donate
@@ -108,7 +109,7 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="#donate"
+              href="/donate"
               className="block w-full text-center mt-4 px-3 py-3 text-base font-medium text-white bg-black hover:bg-gray-800 rounded-md"
               onClick={() => setIsOpen(false)}
             >
