@@ -35,11 +35,11 @@ export function Navbar() {
   );
 
   const navLinks = [
-    { name: "About", href: "/#about" },
-    { name: "Our Causes", href: "/#causes" },
-    { name: "Impact", href: "/#impact" },
-    { name: "Gallery", href: "/#gallery" },
-    { name: "Contact", href: "/#contact" },
+    { name: "About", href: "/about" },
+    { name: "Our Causes", href: "/causes" },
+    { name: "Impact", href: "/impact" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Contact", href: "/contact" },
     { name: "Admin", href: "/admin/login" },
   ];
 

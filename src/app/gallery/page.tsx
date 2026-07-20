@@ -1,14 +1,14 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/components/sections/Hero";
-import { DonationPreview } from "@/components/sections/DonationPreview";
+import { Gallery } from "@/components/sections/Gallery";
 
-export default function Home() {
+export default function GalleryPage() {
   return (
     <main className="flex min-h-screen flex-col bg-background selection:bg-primary/20 selection:text-foreground">
       <Navbar />
-      <Hero />
-      <DonationPreview />
+      <div className="pt-20">
+        <Gallery />
+      </div>
       <Footer />
     </main>
   );
