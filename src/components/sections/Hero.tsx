@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -109,12 +110,12 @@ export function Hero() {
           <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl text-white font-bold mb-8 text-center drop-shadow-md leading-tight">
             Bring hope to those <br className="hidden md:block" /> who need it most.
           </h2>
-          <a
-            href="#donate"
+          <Link
+            href="/donate"
             className="bg-charcoal text-white px-8 py-4 rounded-md font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-lg"
           >
             Donate Now
-          </a>
+          </Link>
         </motion.div>
 
         {/* Scroll Indicator */}
