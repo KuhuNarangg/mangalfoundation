@@ -1,6 +1,13 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { OurCauses } from "@/components/sections/OurCauses";
+import { Impact } from "@/components/sections/Impact";
+import { Gallery } from "@/components/sections/Gallery";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { DonateCTA } from "@/components/sections/DonateCTA";
+import { Contact } from "@/components/sections/Contact";
 import { DonationPreview } from "@/components/sections/DonationPreview";
 
 export default function Home() {
@@ -9,6 +16,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <DonationPreview />
+      <About />
+      <OurCauses />
+      <Impact />
+      <Testimonials />
+      <Gallery />
+      <DonateCTA />
+      <Contact />
       <Footer />
     </main>
   );
