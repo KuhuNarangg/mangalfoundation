@@ -12,20 +12,20 @@ export function Hero() {
     offset: ["start start", "end start"]
   });
 
-  // Fade out B&W and fade in Color much earlier in the scroll
-  const bwOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const colorOpacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+  // Fade out B&W and fade in Color completely synchronously over a very short scroll
+  const bwOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const colorOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   
-  // First text fades out as color changes
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const text1Y = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
+  // First text fades out synchronously with the B&W image
+  const text1Opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const text1Y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
-  // Second text fades in and stays while the user finishes scrolling the container
-  const text2Opacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
-  const text2Y = useTransform(scrollYProgress, [0.3, 0.5], [50, 0]);
+  // Second text fades in synchronously with the Color image (NO extra scrolling)
+  const text2Opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const text2Y = useTransform(scrollYProgress, [0, 1], [50, 0]);
 
   return (
-    <div ref={containerRef} className="relative h-[300vh] md:h-[500vh]">
+    <div ref={containerRef} className="relative h-[150vh]">
       {/* Sticky container to hold the images and text while scrolling */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
         
