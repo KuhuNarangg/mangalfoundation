@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // offset: ["start start", "end end"] ensures scrollYProgress reaches 1.0 EXACTLY 
   // when the sticky container unpins (when the bottom of the container hits the bottom of the viewport).
   // This solves the bug where the website would scroll away before the color fully changed!
@@ -15,31 +15,31 @@ export function Hero() {
     offset: ["start start", "end end"]
   });
 
-  // Fade out B&W and fade in Color. 
-  // Mapping to [0, 0.8] means the animation finishes at 80% of the scroll distance,
-  // leaving the last 20% as a "pause" to admire the fully colored image before the website unpins.
-  const bwOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const colorOpacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
-  
+  // Mapping to [0, 0.6] inside a 200vh container.
+  // This means the animation finishes in the first ~60vh (your first scroll).
+  // The remaining ~40vh requires your second scroll to escape the container.
+  // This eliminates the 2-3 extra scrolls while still giving you the 2-step process!
+  const bwOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const colorOpacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+
   // First text fades out synchronously with the B&W image
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const text1Y = useTransform(scrollYProgress, [0, 0.8], [0, -50]);
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const text1Y = useTransform(scrollYProgress, [0, 0.6], [0, -50]);
 
   // Second text fades in synchronously with the Color image
-  const text2Opacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
-  const text2Y = useTransform(scrollYProgress, [0, 0.8], [50, 0]);
+  const text2Opacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+  const text2Y = useTransform(scrollYProgress, [0, 0.6], [50, 0]);
 
   // h-[200vh] means the user scrolls exactly 100vh to unpin the container.
-  // Combined with 'end end' offset, the animation is 100% mapped to this exact distance, zero dead space.
   return (
     <div ref={containerRef} className="relative h-[200vh]">
       {/* Sticky container to hold the images and text while scrolling */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-        
+
         {/* Color Background Image (Behind) */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ 
+          style={{
             backgroundImage: "url('/images/col1.jpg')",
             opacity: colorOpacity,
             willChange: "opacity"
@@ -47,9 +47,9 @@ export function Hero() {
         />
 
         {/* Black and White version of the same image (Front) */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-10 grayscale"
-          style={{ 
+          style={{
             backgroundImage: "url('/images/col1.jpg')",
             opacity: bwOpacity,
             willChange: "opacity"
@@ -60,7 +60,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/30 z-20" />
 
         {/* Initial Hero Content */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 z-30 flex flex-col items-center justify-center px-4"
           style={{ opacity: text1Opacity, y: text1Y }}
         >
@@ -71,7 +71,7 @@ export function Hero() {
           >
             <span className="font-heading font-bold text-xl md:text-2xl text-white">MGF.</span>
           </motion.div>
-          
+
           <motion.p
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
@@ -98,10 +98,10 @@ export function Hero() {
         </motion.div>
 
         {/* Secondary Content that appears after scrolling */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 z-30 flex flex-col items-center justify-center px-4 pt-32 md:pt-48"
-          style={{ 
-            opacity: text2Opacity, 
+          style={{
+            opacity: text2Opacity,
             y: text2Y,
             pointerEvents: useTransform(text2Opacity, v => v > 0 ? "auto" : "none") as any
           }}
@@ -109,7 +109,7 @@ export function Hero() {
           <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl text-white font-bold mb-8 text-center drop-shadow-md leading-tight">
             Bring hope to those <br className="hidden md:block" /> who need it most.
           </h2>
-          <a 
+          <a
             href="#donate"
             className="bg-charcoal text-white px-8 py-4 rounded-md font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-lg"
           >
@@ -118,7 +118,7 @@ export function Hero() {
         </motion.div>
 
         {/* Scroll Indicator */}
-        <motion.div 
+        <motion.div
           className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center"
           style={{ opacity: text1Opacity }}
           animate={{ opacity: 1 }}

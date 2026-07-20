@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export function DonateCTA() {
@@ -20,12 +21,12 @@ export function DonateCTA() {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="bg-white text-charcoal px-12 py-5 rounded-none font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors">
+            <Link href="/donate" className="bg-white text-charcoal px-12 py-5 rounded-none font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors">
               Donate Now
-            </button>
-            <button className="bg-transparent border border-white text-white px-12 py-5 rounded-none font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-charcoal transition-colors">
+            </Link>
+            <Link href="/contact" className="bg-transparent border border-white text-white px-12 py-5 rounded-none font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-charcoal transition-colors">
               Volunteer
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>

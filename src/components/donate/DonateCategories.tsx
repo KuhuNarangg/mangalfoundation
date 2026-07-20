@@ -182,7 +182,7 @@ export function DonateCategories() {
     <section className="py-24 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="space-y-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {categories.map((category, index) => {
             const IconComponent = getIconForCategory(category.title);
             
@@ -191,50 +191,59 @@ export function DonateCategories() {
                 key={category._id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className={`flex flex-col lg:flex-row gap-16 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex flex-col bg-white border border-gray-100 shadow-2xl hover:shadow-3xl transition-shadow duration-500 rounded-2xl overflow-hidden group"
               >
                 
-                {/* Image Side */}
-                <div className="w-full lg:w-1/2">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-none border border-gray-100 shadow-xl group">
-                    <img 
-                      src={category.image} 
-                      alt={category.title} 
-                      className="absolute inset-0 w-full h-full object-cover grayscale-0 md:grayscale transition-all duration-700 md:group-hover:grayscale-0"
-                    />
-                    <div className="absolute top-6 left-6 bg-white p-4 rounded-full shadow-lg">
-                      <IconComponent className="w-8 h-8 text-black" />
-                    </div>
+                {/* Image Side - Shorter Aspect Ratio */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.title} 
+                    className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg text-rose-500">
+                    <IconComponent className="w-6 h-6" />
                   </div>
+                  {/* Subtle colorful gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
+                  <h2 className="absolute bottom-4 left-4 font-heading text-2xl md:text-3xl text-white drop-shadow-md">
+                    {category.title}
+                  </h2>
                 </div>
 
-                {/* Content Side */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                  <h2 className="font-heading text-4xl md:text-5xl text-charcoal mb-6">{category.title}</h2>
-                  <p className="text-gray-600 font-light text-lg mb-8 leading-relaxed">
+                {/* Content Side - Reduced Padding */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <p className="text-gray-600 font-light text-sm mb-6 leading-relaxed flex-grow line-clamp-3">
                     {category.description}
                   </p>
 
-                  
-                  <h3 className="font-bold uppercase tracking-[0.2em] text-xs text-gray-500 mb-4">Select Contribution</h3>
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    {category.packages?.map((pkg: any) => (
-                      <button 
-                        key={pkg._id}
-                        onClick={() => openDonateDialog(category, pkg)}
-                        className="border border-gray-300 py-4 px-2 text-sm font-medium text-gray-700 hover:border-black hover:bg-black hover:text-white transition-colors flex flex-col items-center justify-center gap-1"
-                      >
-                        <span>{pkg.title}</span>
-                        <span className="font-bold">₹{pkg.amount}</span>
-                      </button>
-                    ))}
+                  <div className="bg-gray-50 -mx-6 -mb-6 p-6 border-t border-gray-100">
+                    <h3 className="font-bold uppercase tracking-[0.15em] text-xs text-gray-500 mb-4 flex items-center gap-2">
+                      <Heart className="w-3 h-3 text-rose-500" /> Choose Amount
+                    </h3>
+                    
+                    <div className="grid grid-cols-2 gap-3 mb-3">
+                      {category.packages?.map((pkg: any) => (
+                        <button 
+                          key={pkg._id}
+                          onClick={() => openDonateDialog(category, pkg)}
+                          className="relative overflow-hidden border-2 border-rose-100 bg-white py-3 px-2 rounded-xl text-charcoal font-bold hover:border-rose-500 hover:text-white hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 group/btn"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-br from-rose-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 -z-10" />
+                          <span className="text-[10px] uppercase tracking-wider opacity-80 group-hover/btn:opacity-100 line-clamp-1">{pkg.title}</span>
+                          <span className="text-lg group-hover/btn:scale-110 transition-transform duration-300">₹{pkg.amount}</span>
+                        </button>
+                      ))}
+                    </div>
+                    
                     <button 
                       onClick={() => openDonateDialog(category, null, true)}
-                      className="border border-gray-300 py-4 px-2 text-sm font-medium text-gray-700 hover:border-black hover:bg-black hover:text-white transition-colors"
+                      className="w-full relative overflow-hidden border border-gray-200 bg-white py-3 px-2 rounded-xl text-gray-600 font-bold hover:border-gray-800 hover:text-white transition-all duration-300 group/btn2 text-sm"
                     >
-                      Custom Amount
+                      <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover/btn2:opacity-100 transition-opacity duration-300 -z-10" />
+                      Enter Custom Amount
                     </button>
                   </div>
                   
