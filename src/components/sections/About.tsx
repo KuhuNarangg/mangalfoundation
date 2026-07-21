@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useContent } from "@/components/ContentProvider";
 
 export function About() {
+  const content = useContent();
   return (
     <section id="about" className="py-24 md:py-32 bg-beige-light text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,24 +16,24 @@ export function About() {
             className="space-y-8"
           >
             <div>
-              <h2 className="text-sm font-bold tracking-widest text-charcoal-light uppercase mb-4">About The Founder</h2>
+              <h2 className="text-sm font-bold tracking-widest text-charcoal-light uppercase mb-4">{content.about.heading}</h2>
               <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-tight text-charcoal">
-                Aditya Vikram Singh
+                {content.about.name}
               </h3>
             </div>
             
             <div className="prose prose-lg text-charcoal-light">
               <p className="font-light leading-relaxed">
-                At the age of 28, Aditya Vikram Singh reflects on his life as a journey filled with struggles, perseverance, and valuable life lessons. Growing up in an ordinary middle-class family, he experienced both hardships and opportunities that shaped his perspective on life.
+                {content.about.para1}
               </p>
               <p className="font-light leading-relaxed mt-4">
-                Through personal challenges, he developed a strong belief that success should not only benefit oneself but should also be used to uplift others. His greatest aspiration is to ensure that future generations receive quality education, strong values, and proper mentorship.
+                {content.about.para2}
               </p>
             </div>
 
             <blockquote className="pl-6 border-l-2 border-charcoal mt-8">
               <p className="font-heading text-xl md:text-2xl font-medium italic text-charcoal">
-                "A person’s greatest identity is not their achievements, but the positive impact they create in society."
+                &ldquo;{content.about.quote}&rdquo;
               </p>
             </blockquote>
           </motion.div>

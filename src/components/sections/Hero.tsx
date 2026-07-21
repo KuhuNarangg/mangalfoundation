@@ -5,9 +5,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Paintbrush } from "lucide-react";
 import { DonateButton } from "@/components/DonateButton";
+import { useContent } from "@/components/ContentProvider";
 
 export function Hero() {
   const [isColored, setIsColored] = useState(false);
+  const content = useContent();
 
   return (
     <div className="relative h-[100dvh] w-full overflow-hidden flex items-center justify-center">
@@ -54,11 +56,11 @@ export function Hero() {
               </motion.div>
 
               <p className="text-lg md:text-2xl text-white/90 font-medium tracking-widest uppercase mb-4 drop-shadow-md">
-                Mangal Guruji Foundation
+                {content.hero.badge}
               </p>
 
               <h1 className="font-heading text-6xl md:text-8xl lg:text-[10rem] text-white font-extrabold tracking-tighter leading-none mb-10 drop-shadow-2xl">
-                Color the lives
+                {content.hero.title}
               </h1>
 
               <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -82,7 +84,7 @@ export function Hero() {
               className="flex flex-col items-center justify-center text-center pt-10"
             >
               <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl text-white font-bold mb-10 drop-shadow-2xl leading-tight">
-                Bring hope to those <br className="hidden md:block" /> who need it most.
+                {content.hero.coloredTitle}
               </h2>
               
               <Link

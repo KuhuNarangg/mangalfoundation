@@ -103,6 +103,35 @@ export const manualDonationSchema = z.object({
   date: z.string().optional(), // yyyy-mm-dd; defaults to now
 });
 
+/** Public volunteer application. */
+export const volunteerApplicationSchema = z.object({
+  fullName: z.string().trim().min(2, "Full name is required").max(120),
+  email: z.string().trim().toLowerCase().email("A valid email is required").max(200),
+  phone: z
+    .string()
+    .trim()
+    .min(7, "A valid contact number is required")
+    .max(20)
+    .regex(/^[0-9+\-\s()]+$/, "A valid contact number is required"),
+  city: z.string().trim().max(100).optional().or(z.literal("")),
+  age: z.number().int().min(10).max(120).optional().nullable(),
+  occupation: z.string().trim().max(120).optional().or(z.literal("")),
+  organization: z.string().trim().max(160).optional().or(z.literal("")),
+  interestedAreas: z.array(z.string().max(60)).max(20).default([]),
+  availability: z.string().trim().max(40).optional().or(z.literal("")),
+  motivation: z.string().trim().max(2000).optional().or(z.literal("")),
+  previousExperience: z.string().trim().max(2000).optional().or(z.literal("")),
+  consent: z.boolean().refine((v) => v === true, "Consent is required"),
+});
+
+/** Admin: update a volunteer application. */
+export const volunteerUpdateSchema = z.object({
+  status: z
+    .enum(["Pending", "In Review", "Contacted", "Accepted", "Rejected"])
+    .optional(),
+  adminNotes: z.string().max(4000).optional(),
+});
+
 /** Flatten a ZodError into a compact, client-friendly array. */
 export function formatZodError(error: z.ZodError) {
   return error.issues.map((issue) => ({

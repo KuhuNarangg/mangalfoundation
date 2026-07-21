@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large design master asset (not needed for deploy; regenerate web assets via scripts/optimize-assets.mjs)
+/assets/

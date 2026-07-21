@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 import { FloatingDonate } from "@/components/FloatingDonate";
+import { ContentProvider } from "@/components/ContentProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -73,7 +74,9 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased smooth-scroll`}
     >
       <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
-        <Providers>{children}</Providers>
+        <Providers>
+          <ContentProvider>{children}</ContentProvider>
+        </Providers>
         <FloatingDonate />
         <Toaster richColors position="top-center" />
       </body>

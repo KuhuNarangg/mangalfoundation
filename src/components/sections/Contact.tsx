@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { siteConfig } from "@/lib/site";
+import { useContent } from "@/components/ContentProvider";
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const content = useContent();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.id]: e.target.value }));
@@ -51,30 +53,30 @@ export function Contact() {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2 flex flex-col justify-center"
           >
-            <h2 className="font-heading text-6xl md:text-8xl text-charcoal mb-8 leading-none">Let's Talk.</h2>
+            <h2 className="font-heading text-6xl md:text-8xl text-charcoal mb-8 leading-none">{content.contact.heading}</h2>
             <p className="text-charcoal-light text-xl md:text-2xl font-light mb-16 max-w-lg">
-              Have questions or want to collaborate? We would love to hear from you. Send us a message and become part of our journey.
+              {content.contact.description}
             </p>
-            
+
             <div className="space-y-12">
-              {siteConfig.address && (
+              {content.contact.address && (
                 <div>
                   <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Visit Us</h4>
-                  <p className="text-charcoal-light font-light text-lg">{siteConfig.address}</p>
+                  <p className="text-charcoal-light font-light text-lg">{content.contact.address}</p>
                 </div>
               )}
 
               <div>
                 <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Email Us</h4>
-                <a href={`mailto:${siteConfig.email}`} className="text-charcoal-light font-light text-lg hover:text-charcoal transition-colors border-b border-charcoal-light pb-1">
-                  {siteConfig.email}
+                <a href={`mailto:${content.contact.email || siteConfig.email}`} className="text-charcoal-light font-light text-lg hover:text-charcoal transition-colors border-b border-charcoal-light pb-1">
+                  {content.contact.email || siteConfig.email}
                 </a>
               </div>
 
-              {siteConfig.phone && (
+              {content.contact.phone && (
                 <div>
                   <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Call Us</h4>
-                  <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-charcoal-light font-light text-lg hover:text-charcoal transition-colors">{siteConfig.phone}</a>
+                  <a href={`tel:${content.contact.phone.replace(/\s/g, "")}`} className="text-charcoal-light font-light text-lg hover:text-charcoal transition-colors">{content.contact.phone}</a>
                 </div>
               )}
             </div>

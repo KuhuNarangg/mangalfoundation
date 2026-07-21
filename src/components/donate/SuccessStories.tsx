@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const stories = [
   {
@@ -43,10 +44,12 @@ export function SuccessStories() {
               className="bg-white border border-gray-200 flex flex-col sm:flex-row overflow-hidden shadow-sm"
             >
               <div className="w-full sm:w-2/5 aspect-square sm:aspect-auto relative">
-                <img 
-                  src={story.image} 
-                  alt={story.author} 
-                  className="absolute inset-0 w-full h-full object-cover grayscale-0 md:grayscale"
+                <Image
+                  src={story.image}
+                  alt={story.author}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 40vw"
+                  className="object-cover grayscale-0 md:grayscale"
                 />
               </div>
               <div className="w-full sm:w-3/5 p-8 flex flex-col justify-center relative">

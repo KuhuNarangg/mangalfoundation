@@ -3,14 +3,19 @@
 import Image from "next/image";
 import {
   Home,
-  LayoutGrid,
-  Package,
+  BarChart3,
   ReceiptIndianRupee,
   HandCoins,
+  FileText,
+  LayoutGrid,
+  Package,
+  LayoutTemplate,
   Images,
   Mail,
+  HeartHandshake,
   ScrollText,
   Settings,
+  User,
   LogOut,
   ExternalLink,
 } from "lucide-react";
@@ -21,6 +26,7 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -28,16 +34,46 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 
-const items = [
-  { title: "Dashboard", url: "/admin", icon: Home },
-  { title: "Donations", url: "/admin/donations", icon: ReceiptIndianRupee },
-  { title: "Manual Donations", url: "/admin/manual-donations", icon: HandCoins },
-  { title: "Categories", url: "/admin/categories", icon: LayoutGrid },
-  { title: "Packages", url: "/admin/packages", icon: Package },
-  { title: "Gallery", url: "/admin/gallery", icon: Images },
-  { title: "Messages", url: "/admin/messages", icon: Mail },
-  { title: "Audit Logs", url: "/admin/logs", icon: ScrollText },
-  { title: "Settings", url: "/admin/settings", icon: Settings },
+const groups = [
+  {
+    label: "Overview",
+    items: [
+      { title: "Dashboard", url: "/admin", icon: Home },
+      { title: "Reports", url: "/admin/reports", icon: BarChart3 },
+    ],
+  },
+  {
+    label: "Donations",
+    items: [
+      { title: "Donations", url: "/admin/donations", icon: ReceiptIndianRupee },
+      { title: "Manual Donations", url: "/admin/manual-donations", icon: HandCoins },
+      { title: "Receipts", url: "/admin/receipts", icon: FileText },
+      { title: "Donation Categories", url: "/admin/categories", icon: LayoutGrid },
+      { title: "Donation Packages", url: "/admin/packages", icon: Package },
+    ],
+  },
+  {
+    label: "Content",
+    items: [
+      { title: "Website Content", url: "/admin/content", icon: LayoutTemplate },
+      { title: "Gallery", url: "/admin/gallery", icon: Images },
+    ],
+  },
+  {
+    label: "Engagement",
+    items: [
+      { title: "Volunteer Applications", url: "/admin/volunteers", icon: HeartHandshake },
+      { title: "Contact Enquiries", url: "/admin/messages", icon: Mail },
+    ],
+  },
+  {
+    label: "System",
+    items: [
+      { title: "Audit Logs", url: "/admin/logs", icon: ScrollText },
+      { title: "Settings", url: "/admin/settings", icon: Settings },
+      { title: "Profile", url: "/admin/profile", icon: User },
+    ],
+  },
 ];
 
 export function AppSidebar() {
@@ -70,23 +106,26 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    isActive={pathname === item.url}
-                    onClick={() => router.push(item.url)}
-                  >
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {groups.map((g) => (
+          <SidebarGroup key={g.label}>
+            <SidebarGroupLabel>{g.label}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {g.items.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      isActive={pathname === item.url}
+                      onClick={() => router.push(item.url)}
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

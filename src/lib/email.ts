@@ -82,13 +82,12 @@ export const sendDonationReceipt = async (donation: any): Promise<boolean> => {
       </div>
     `;
 
-    const info = await transporter.sendMail({
+    await transporter.sendMail({
       from: fromAddress(),
       to: donation.email,
       subject: "Receipt for your Donation - Mangal Guruji Foundation",
       html: htmlTemplate,
     });
-    console.log("Receipt email sent:", info.messageId);
     return true;
   } catch (error) {
     console.error("Error sending receipt email:", error);

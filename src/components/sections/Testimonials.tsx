@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useContent } from "@/components/ContentProvider";
 
 export function Testimonials() {
+  const content = useContent();
   return (
     <section className="bg-white text-charcoal relative">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -32,11 +34,11 @@ export function Testimonials() {
             className="relative z-10"
           >
             <p className="font-heading text-4xl md:text-5xl lg:text-6xl font-medium leading-tight mb-16 text-charcoal">
-              Education is the best investment. If you have knowledge, you can achieve anything.
+              {content.testimonial.quote}
             </p>
             <div className="inline-block border-l-4 border-charcoal pl-6">
-              <p className="font-bold uppercase tracking-[0.2em] text-sm md:text-base text-charcoal">Aditya Vikram Singh</p>
-              <p className="text-gray-500 text-sm mt-2 font-light tracking-widest uppercase">Founder & Social Worker</p>
+              <p className="font-bold uppercase tracking-[0.2em] text-sm md:text-base text-charcoal">{content.testimonial.author}</p>
+              <p className="text-gray-500 text-sm mt-2 font-light tracking-widest uppercase">{content.testimonial.role}</p>
             </div>
           </motion.div>
         </div>

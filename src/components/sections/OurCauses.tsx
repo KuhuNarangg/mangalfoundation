@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useContent } from "@/components/ContentProvider";
 
 const causes = [
   {
@@ -37,6 +38,7 @@ const causes = [
 ];
 
 export function OurCauses() {
+  const content = useContent();
   return (
     <section id="causes" className="py-12 bg-beige text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,13 +46,13 @@ export function OurCauses() {
           <motion.h2
             className="font-heading text-3xl md:text-4xl lg:text-5xl mb-4 text-charcoal"
           >
-            Our Mission
+            {content.mission.heading}
           </motion.h2>
           <motion.p
             transition={{ delay: 0.2 }}
             className="text-base text-charcoal-light max-w-3xl mx-auto font-light"
           >
-            The foundation dreams of creating a society where no one is left behind because of poverty, illiteracy, or lack of resources. We are committed to six core pillars of social change.
+            {content.mission.description}
           </motion.p>
         </div>
 
