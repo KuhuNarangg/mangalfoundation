@@ -42,8 +42,8 @@ export function About() {
           >
             <div className="relative w-full aspect-[4/5] bg-beige-dark rounded-xl overflow-hidden shadow-sm">
               <Image
-                src="/images/nico-smit-NFoerQuvzrs-unsplash.jpg"
-                alt="Children supported by Mangal Guruji Foundation"
+                src="/images/founder.jpg"
+                alt="Aditya Vikram Singh, Founder of Mangal Guruji Foundation"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-top"
