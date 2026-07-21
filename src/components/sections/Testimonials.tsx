@@ -15,7 +15,7 @@ export function Testimonials() {
             alt="Children supported by Mangal Guruji Foundation"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-top grayscale-0 md:grayscale"
+            className="object-cover object-top"
           />
         </div>
 
