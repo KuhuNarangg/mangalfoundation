@@ -7,6 +7,7 @@ import { requireAdmin } from "@/lib/auth";
 import { logAudit } from "@/lib/audit";
 import { getClientIp, getUserAgent } from "@/lib/request-meta";
 import { manualDonationSchema, formatZodError } from "@/lib/validations";
+import { generateReceiptNumber } from "@/lib/receipt";
 
 function escapeRegex(input: string): string {
   return input.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -103,6 +104,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid date" }, { status: 400 });
     }
 
+    const receiptNumber = await generateReceiptNumber(date);
     const donation = new Donation({
       donorName: data.isAnonymous ? "Anonymous" : data.donorName,
       email: data.email || "",
@@ -115,6 +117,7 @@ export async function POST(req: Request) {
       paymentStatus: "success",
       source: "manual",
       paymentMethod: data.paymentMethod,
+      receiptNumber,
       createdAt: date,
       updatedAt: date,
     });

@@ -74,6 +74,11 @@ const donationSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    // Unique receipt number (e.g. MGF/2026/00001), issued when a donation succeeds.
+    receiptNumber: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
@@ -84,5 +89,6 @@ donationSchema.index({ paymentStatus: 1, createdAt: -1 });
 donationSchema.index({ categoryId: 1 });
 donationSchema.index({ createdAt: -1 });
 donationSchema.index({ email: 1 });
+donationSchema.index({ receiptNumber: 1 });
 
 export default mongoose.models.Donation || mongoose.model("Donation", donationSchema);

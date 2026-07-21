@@ -11,7 +11,7 @@ export function Testimonials() {
         {/* Left Side: Massive Image */}
         <div className="relative h-[50vh] lg:h-auto overflow-hidden">
           <Image
-            src="/images/nico-smit-NFoerQuvzrs-unsplash.jpg"
+            src="/images/joel-muniz-qvzjG2pF4bE-unsplash.jpg"
             alt="Children supported by Mangal Guruji Foundation"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"

@@ -3,6 +3,7 @@ import crypto from "crypto";
 import connectToDatabase from "@/lib/mongodb";
 import Donation from "@/models/Donation";
 import { sendDonationReceipt } from "@/lib/email";
+import { generateReceiptNumber } from "@/lib/receipt";
 
 export async function POST(req: Request) {
   try {
@@ -60,6 +61,9 @@ export async function POST(req: Request) {
     donation.paymentStatus = "success";
     donation.razorpayPaymentId = razorpay_payment_id;
     donation.razorpaySignature = razorpay_signature;
+    if (!donation.receiptNumber) {
+      donation.receiptNumber = await generateReceiptNumber();
+    }
     await donation.save();
 
     if (donation.email) {
