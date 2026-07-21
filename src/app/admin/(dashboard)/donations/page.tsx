@@ -54,6 +54,8 @@ export default function DonationsPage() {
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("all");
+  const [dateFilter, setDateFilter] = useState("all");
+  const [amountFilter, setAmountFilter] = useState("all");
   const [categories, setCategories] = useState<any[]>([]);
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
@@ -80,7 +82,7 @@ export default function DonationsPage() {
   // Reset to page 1 whenever filters change.
   useEffect(() => {
     setPage(1);
-  }, [statusFilter, search, categoryFilter]);
+  }, [statusFilter, search, categoryFilter, dateFilter, amountFilter]);
 
   const fetchDonations = useCallback(async () => {
     setLoading(true);
@@ -89,6 +91,26 @@ export default function DonationsPage() {
       if (statusFilter !== "all") params.set("status", statusFilter);
       if (categoryFilter !== "all") params.set("categoryId", categoryFilter);
       if (search.trim()) params.set("search", search.trim());
+      
+      if (dateFilter !== "all") {
+        const now = new Date();
+        if (dateFilter === "this_month") {
+          params.set("from", new Date(now.getFullYear(), now.getMonth(), 1).toISOString());
+        } else if (dateFilter === "last_month") {
+          params.set("from", new Date(now.getFullYear(), now.getMonth() - 1, 1).toISOString());
+          params.set("to", new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999).toISOString());
+        } else if (dateFilter === "this_year") {
+          params.set("from", new Date(now.getFullYear(), 0, 1).toISOString());
+        }
+      }
+
+      if (amountFilter !== "all") {
+        if (amountFilter === "under_1k") params.set("maxAmount", "999");
+        if (amountFilter === "1k_5k") { params.set("minAmount", "1000"); params.set("maxAmount", "5000"); }
+        if (amountFilter === "5k_10k") { params.set("minAmount", "5001"); params.set("maxAmount", "10000"); }
+        if (amountFilter === "over_10k") params.set("minAmount", "10001");
+      }
+
       const res = await fetch(`/api/admin/donations?${params}`);
       const json = await res.json();
       if (json.success) {
@@ -100,7 +122,7 @@ export default function DonationsPage() {
     } finally {
       setLoading(false);
     }
-  }, [page, statusFilter, search, categoryFilter]);
+  }, [page, statusFilter, search, categoryFilter, dateFilter, amountFilter]);
 
   useEffect(() => {
     fetchDonations();
@@ -226,15 +248,15 @@ export default function DonationsPage() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-3">
+      <div className="flex flex-col md:flex-row gap-3 flex-wrap">
         <Input
           placeholder="Search name, email, phone..."
-          className="max-w-sm"
+          className="w-full md:w-[220px]"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v || "all")}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full md:w-[150px]">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -246,7 +268,7 @@ export default function DonationsPage() {
           </SelectContent>
         </Select>
         <Select value={categoryFilter} onValueChange={(v) => setCategoryFilter(v || "all")}>
-          <SelectTrigger className="w-[200px]">
+          <SelectTrigger className="w-full md:w-[160px]">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
@@ -256,6 +278,29 @@ export default function DonationsPage() {
                 {c.title}
               </SelectItem>
             ))}
+          </SelectContent>
+        </Select>
+        <Select value={dateFilter} onValueChange={(v) => setDateFilter(v || "all")}>
+          <SelectTrigger className="w-full md:w-[150px]">
+            <SelectValue placeholder="Date" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Time</SelectItem>
+            <SelectItem value="this_month">This Month</SelectItem>
+            <SelectItem value="last_month">Last Month</SelectItem>
+            <SelectItem value="this_year">This Year</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select value={amountFilter} onValueChange={(v) => setAmountFilter(v || "all")}>
+          <SelectTrigger className="w-full md:w-[160px]">
+            <SelectValue placeholder="Amount" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Amounts</SelectItem>
+            <SelectItem value="under_1k">Under ₹1,000</SelectItem>
+            <SelectItem value="1k_5k">₹1,000 - ₹5,000</SelectItem>
+            <SelectItem value="5k_10k">₹5,000 - ₹10,000</SelectItem>
+            <SelectItem value="over_10k">Above ₹10,000</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -368,7 +413,7 @@ export default function DonationsPage() {
                 {!selected.isAnonymous && <Detail label="Phone" value={selected.phone} />}
                 <Detail label="Cause" value={selected.categoryId?.title || "Custom"} />
                 <Detail label="Package" value={selected.packageId?.title || "—"} />
-                <Detail label="PAN" value={selected.pan || "—"} />
+
                 <Detail label="Date" value={formatDateTime(selected.createdAt)} />
                 <Detail label="Order ID" value={selected.razorpayOrderId || "—"} />
                 <Detail label="Payment ID" value={selected.razorpayPaymentId || "—"} />

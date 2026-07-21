@@ -29,6 +29,8 @@ export async function GET(req: Request) {
     const search = searchParams.get("search");
     const from = searchParams.get("from");
     const to = searchParams.get("to");
+    const minAmount = searchParams.get("minAmount");
+    const maxAmount = searchParams.get("maxAmount");
 
     await connectToDatabase();
 
@@ -47,6 +49,11 @@ export async function GET(req: Request) {
       query.createdAt = {};
       if (from) query.createdAt.$gte = new Date(from);
       if (to) query.createdAt.$lte = new Date(to);
+    }
+    if (minAmount || maxAmount) {
+      query.amount = {};
+      if (minAmount) query.amount.$gte = parseInt(minAmount, 10);
+      if (maxAmount) query.amount.$lte = parseInt(maxAmount, 10);
     }
 
     const [data, total] = await Promise.all([
@@ -109,7 +116,6 @@ export async function POST(req: Request) {
       donorName: data.isAnonymous ? "Anonymous" : data.donorName,
       email: data.email || "",
       phone: data.phone || "",
-      pan: data.pan || "",
       isAnonymous: data.isAnonymous ?? false,
       notes: data.notes || "",
       categoryId: data.categoryId,

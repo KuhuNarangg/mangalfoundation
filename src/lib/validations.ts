@@ -16,14 +16,6 @@ export const donationInputSchema = z.object({
     .min(7, "A valid phone number is required")
     .max(20)
     .regex(/^[0-9+\-\s()]+$/, "A valid phone number is required"),
-  // Empty string or a valid Indian PAN.
-  pan: z
-    .string()
-    .trim()
-    .toUpperCase()
-    .max(10)
-    .regex(/^([A-Z]{5}[0-9]{4}[A-Z])?$/, "Invalid PAN format")
-    .optional(),
   isAnonymous: z.boolean().default(false),
   message: z.string().trim().max(1000).optional(),
   categoryId: objectId,
@@ -103,13 +95,6 @@ export const manualDonationSchema = z.object({
   donorName: z.string().trim().min(1, "Donor name is required").max(100),
   email: z.string().trim().toLowerCase().email().max(200).optional().or(z.literal("")),
   phone: z.string().trim().max(20).optional().or(z.literal("")),
-  pan: z
-    .string()
-    .trim()
-    .toUpperCase()
-    .max(10)
-    .regex(/^([A-Z]{5}[0-9]{4}[A-Z])?$/, "Invalid PAN format")
-    .optional(),
   isAnonymous: z.boolean().default(false),
   categoryId: objectId,
   amount: z.number().int("Amount must be a whole number").min(1).max(10_000_000),

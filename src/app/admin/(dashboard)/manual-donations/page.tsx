@@ -30,7 +30,7 @@ const BLANK = {
   donorName: "",
   email: "",
   phone: "",
-  pan: "",
+  phone: "",
   categoryId: "",
   amount: "",
   paymentMethod: "cash",
@@ -75,7 +75,6 @@ export default function ManualDonationsPage() {
           donorName: form.isAnonymous ? "Anonymous" : form.donorName,
           email: form.email,
           phone: form.phone,
-          pan: form.pan,
           isAnonymous: form.isAnonymous,
           categoryId: form.categoryId,
           amount,
@@ -208,15 +207,6 @@ export default function ManualDonationsPage() {
                 <Label>Donation Date</Label>
                 <Input type="date" value={form.date} onChange={(e) => set("date", e.target.value)} />
               </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label>PAN (optional, for 80G)</Label>
-              <Input
-                value={form.pan}
-                onChange={(e) => set("pan", e.target.value)}
-                className="uppercase"
-              />
             </div>
 
             <div className="space-y-2">

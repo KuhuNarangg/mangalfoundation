@@ -68,7 +68,7 @@ export const sendDonationReceipt = async (donation: any): Promise<boolean> => {
               ${row("Amount", `₹${donation.amount}`)}
               ${donation.razorpayPaymentId ? row("Transaction ID", `${donation.razorpayPaymentId}`) : ""}
               ${row("Date", new Date(donation.createdAt).toLocaleDateString("en-IN"))}
-              ${donation.pan ? row("PAN", String(donation.pan).toUpperCase()) : ""}
+
             </tbody>
           </table>
         </div>
