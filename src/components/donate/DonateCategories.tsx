@@ -47,6 +47,7 @@ export function DonateCategories() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [donationId, setDonationId] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchCats() {
@@ -69,6 +70,7 @@ export function DonateCategories() {
     setIsCustom(isCust);
     setCustomAmount("");
     setSuccess(false);
+    setDonationId(null);
     setIsDialogOpen(true);
   };
 
@@ -114,6 +116,8 @@ export function DonateCategories() {
         setSubmitting(false);
         return;
       }
+
+      setDonationId(json.donationId);
 
       // Initialize Razorpay
       const options = {
@@ -295,7 +299,14 @@ export function DonateCategories() {
                 Your donation has been verified successfully. <br/>
                 An email receipt will be sent to you shortly.
               </p>
-              <Button className="mt-8 rounded-none px-8 tracking-widest uppercase" onClick={() => setIsDialogOpen(false)}>
+              {donationId && (
+                <a href={`/receipt/${donationId}`} target="_blank" rel="noreferrer" className="w-full mt-6">
+                  <Button variant="outline" className="w-full rounded-none tracking-widest uppercase">
+                    Download Receipt
+                  </Button>
+                </a>
+              )}
+              <Button className="mt-2 w-full rounded-none px-8 tracking-widest uppercase" onClick={() => setIsDialogOpen(false)}>
                 Close
               </Button>
             </div>

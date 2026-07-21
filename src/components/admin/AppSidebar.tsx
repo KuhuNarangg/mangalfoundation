@@ -6,6 +6,7 @@ import {
   LayoutGrid,
   Package,
   ReceiptIndianRupee,
+  HandCoins,
   Images,
   Mail,
   ScrollText,
@@ -30,6 +31,7 @@ import {
 const items = [
   { title: "Dashboard", url: "/admin", icon: Home },
   { title: "Donations", url: "/admin/donations", icon: ReceiptIndianRupee },
+  { title: "Manual Donations", url: "/admin/manual-donations", icon: HandCoins },
   { title: "Categories", url: "/admin/categories", icon: LayoutGrid },
   { title: "Packages", url: "/admin/packages", icon: Package },
   { title: "Gallery", url: "/admin/gallery", icon: Images },

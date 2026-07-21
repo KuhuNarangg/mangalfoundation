@@ -34,9 +34,19 @@ import {
   Eye,
   RefreshCw,
   Trash2,
+  FileText,
+  Send,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+
+const METHOD_LABELS: Record<string, string> = {
+  cash: "Cash",
+  cheque: "Cheque",
+  bank_transfer: "Bank Transfer",
+  upi: "UPI",
+  other: "Other",
+};
 
 export default function DonationsPage() {
   const [donations, setDonations] = useState<any[]>([]);
@@ -146,6 +156,18 @@ export default function DonationsPage() {
       } else {
         toast.error("Delete failed");
       }
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const resendReceipt = async (id: string) => {
+    setBusy(true);
+    try {
+      const res = await fetch(`/api/admin/donations/${id}/receipt/resend`, { method: "POST" });
+      const json = await res.json();
+      if (res.ok && json.success) toast.success(json.message || "Receipt emailed");
+      else toast.error(json.message || json.error || "Failed to send receipt");
     } finally {
       setBusy(false);
     }
@@ -270,10 +292,15 @@ export default function DonationsPage() {
                     {formatDateTime(d.createdAt)}
                   </TableCell>
                   <TableCell>
-                    <div className="font-medium">
+                    <div className="font-medium flex items-center gap-1.5">
                       {d.isAnonymous ? "Anonymous" : d.donorName}
+                      {d.source === "manual" && (
+                        <span className="text-[10px] uppercase bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300 px-1.5 py-0.5 rounded">
+                          Manual
+                        </span>
+                      )}
                     </div>
-                    {!d.isAnonymous && (
+                    {!d.isAnonymous && d.email && (
                       <div className="text-xs text-muted-foreground">{d.email}</div>
                     )}
                   </TableCell>
@@ -345,8 +372,18 @@ export default function DonationsPage() {
                 <Detail label="Date" value={formatDateTime(selected.createdAt)} />
                 <Detail label="Order ID" value={selected.razorpayOrderId || "—"} />
                 <Detail label="Payment ID" value={selected.razorpayPaymentId || "—"} />
+                <Detail label="Receipt No." value={selected.receiptNumber || "—"} />
+                <Detail
+                  label="Method"
+                  value={
+                    selected.source === "manual"
+                      ? METHOD_LABELS[selected.paymentMethod] || "Offline"
+                      : "Online (Razorpay)"
+                  }
+                />
               </div>
               {selected.message && <Detail label="Message" value={selected.message} />}
+              {selected.notes && <Detail label="Notes" value={selected.notes} />}
               <div className="flex items-center gap-2 pt-3 border-t border-border">
                 <span className="text-muted-foreground">Status:</span>
                 <Select
@@ -364,12 +401,31 @@ export default function DonationsPage() {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="flex justify-end gap-2 pt-2">
+              <div className="flex flex-wrap justify-end gap-2 pt-2">
                 {selected.paymentStatus === "success" && (
-                  <Button variant="outline" size="sm" disabled={busy} onClick={() => refund(selected._id)}>
-                    <RefreshCw className="h-4 w-4 mr-1" />
-                    Refund
-                  </Button>
+                  <>
+                    <a href={`/receipt/${selected._id}`} target="_blank" rel="noreferrer">
+                      <Button variant="outline" size="sm">
+                        <FileText className="h-4 w-4 mr-1" />
+                        Receipt
+                      </Button>
+                    </a>
+                    {selected.email && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        disabled={busy}
+                        onClick={() => resendReceipt(selected._id)}
+                      >
+                        <Send className="h-4 w-4 mr-1" />
+                        Resend
+                      </Button>
+                    )}
+                    <Button variant="outline" size="sm" disabled={busy} onClick={() => refund(selected._id)}>
+                      <RefreshCw className="h-4 w-4 mr-1" />
+                      Refund
+                    </Button>
+                  </>
                 )}
                 <Button variant="destructive" size="sm" disabled={busy} onClick={() => remove(selected._id)}>
                   <Trash2 className="h-4 w-4 mr-1" />

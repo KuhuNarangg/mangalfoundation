@@ -64,16 +64,20 @@ export const sendDonationReceipt = async (donation: any): Promise<boolean> => {
           </h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tbody>
+              ${donation.receiptNumber ? row("Receipt No.", donation.receiptNumber) : ""}
               ${row("Amount", `₹${donation.amount}`)}
-              ${row("Transaction ID", `${donation.razorpayPaymentId}`)}
+              ${donation.razorpayPaymentId ? row("Transaction ID", `${donation.razorpayPaymentId}`) : ""}
               ${row("Date", new Date(donation.createdAt).toLocaleDateString("en-IN"))}
               ${donation.pan ? row("PAN", String(donation.pan).toUpperCase()) : ""}
             </tbody>
           </table>
         </div>
-        <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; text-align: center; margin-bottom: 0;">
+        <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; text-align: center; margin-bottom: 16px;">
           With gratitude,<br/>
           <strong>Mangal Guruji Foundation</strong>
+        </p>
+        <p style="text-align:center;margin:0;">
+          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/receipt/${donation._id}" style="display:inline-block;background:#f43f5e;color:#ffffff;text-decoration:none;padding:10px 20px;border-radius:9999px;font-weight:bold;font-size:14px;">View / Download Receipt</a>
         </p>
       </div>
     `;
