@@ -30,7 +30,6 @@ const BLANK = {
   donorName: "",
   email: "",
   phone: "",
-  phone: "",
   categoryId: "",
   amount: "",
   paymentMethod: "cash",

@@ -85,7 +85,6 @@ export async function POST(req: Request) {
       donorName: data.donorName,
       email: data.email,
       phone: data.phone,
-      pan: data.pan ?? "",
       isAnonymous: data.isAnonymous ?? false,
       message: data.message ?? "",
       categoryId: data.categoryId,
