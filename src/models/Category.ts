@@ -27,6 +27,17 @@ const categorySchema = new mongoose.Schema(
       required: true,
       min: 0,
     },
+    // Extra budget layered on top of the monthly target.
+    emergencyBudget: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    carryForward: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
     isActive: {
       type: Boolean,
       default: true,

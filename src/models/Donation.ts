@@ -8,11 +8,11 @@ const donationSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
+      default: "",
     },
     phone: {
       type: String,
-      required: true,
+      default: "",
     },
     pan: {
       type: String,
@@ -23,6 +23,22 @@ const donationSchema = new mongoose.Schema(
       default: false,
     },
     message: {
+      type: String,
+      default: "",
+    },
+    // Online (Razorpay) vs manually recorded offline donation.
+    source: {
+      type: String,
+      enum: ["online", "manual"],
+      default: "online",
+    },
+    // For manual donations: cash | cheque | bank_transfer | upi | other.
+    paymentMethod: {
+      type: String,
+      default: "",
+    },
+    // Admin notes for manual/offline donations.
+    notes: {
       type: String,
       default: "",
     },
@@ -43,7 +59,7 @@ const donationSchema = new mongoose.Schema(
     },
     paymentStatus: {
       type: String,
-      enum: ["pending", "success", "failed"],
+      enum: ["pending", "success", "failed", "refunded"],
       default: "pending",
     },
     razorpayOrderId: {
@@ -61,5 +77,12 @@ const donationSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// Indexes for the hot query paths (verify lookup, dashboard filters, listings).
+donationSchema.index({ razorpayOrderId: 1 });
+donationSchema.index({ paymentStatus: 1, createdAt: -1 });
+donationSchema.index({ categoryId: 1 });
+donationSchema.index({ createdAt: -1 });
+donationSchema.index({ email: 1 });
 
 export default mongoose.models.Donation || mongoose.model("Donation", donationSchema);

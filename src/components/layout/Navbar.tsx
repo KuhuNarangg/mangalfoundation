@@ -1,32 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { DonateButton } from "@/components/DonateButton";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { scrollY } = useScroll();
-  
+
   // Change background and text color based on scroll position
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
     ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.9)"]
   );
-  
+
   const textColor = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(255, 255, 255, 1)", "rgba(0, 0, 0, 1)"]
+    ["rgba(255, 255, 255, 1)", "rgba(17, 24, 39, 1)"]
   );
 
-  const backdropFilter = useTransform(
-    scrollY,
-    [0, 100],
-    ["blur(0px)", "blur(10px)"]
-  );
+  const backdropFilter = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(10px)"]);
 
   const boxShadow = useTransform(
     scrollY,
@@ -40,7 +38,6 @@ export function Navbar() {
     { name: "Impact", href: "/impact" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
-    { name: "Admin", href: "/admin/login" },
   ];
 
   return (
@@ -55,12 +52,26 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <motion.div style={{ color: textColor }} className="flex-shrink-0 flex items-center">
-            <Link href="/" className="font-heading font-bold text-2xl tracking-wider">
-              MGF.
-            </Link>
-          </motion.div>
-          
+          <Link href="/" className="flex-shrink-0 flex items-center gap-3">
+            <Image
+              src="/images/logo.png"
+              alt="Mangal Guruji Foundation"
+              width={44}
+              height={44}
+              priority
+              className="h-11 w-11 rounded-lg object-contain bg-white ring-1 ring-black/5 shadow-sm"
+            />
+            <motion.span
+              style={{ color: textColor }}
+              className="hidden sm:block font-heading font-bold text-lg tracking-wide leading-tight"
+            >
+              Mangal Guruji
+              <span className="block text-[0.6rem] font-sans font-semibold tracking-[0.25em] uppercase opacity-80">
+                Foundation
+              </span>
+            </motion.span>
+          </Link>
+
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <motion.div key={link.name} style={{ color: textColor }}>
@@ -72,21 +83,18 @@ export function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <motion.div style={{ color: textColor }}>
-              <Link
-                href="/donate"
-                className="inline-flex items-center justify-center px-6 py-2 border border-current rounded-full text-sm font-medium hover:bg-foreground hover:text-background transition-colors duration-300"
-              >
-                Donate
-              </Link>
-            </motion.div>
+            <DonateButton size="sm">Donate</DonateButton>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-3">
+            <DonateButton size="sm" showIcon={false} className="px-4 py-2 text-xs">
+              Donate
+            </DonateButton>
             <motion.button
               style={{ color: textColor }}
               onClick={() => setIsOpen(!isOpen)}
               className="focus:outline-none"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -108,13 +116,9 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/donate"
-              className="block w-full text-center mt-4 px-3 py-3 text-base font-medium text-white bg-black hover:bg-gray-800 rounded-md"
-              onClick={() => setIsOpen(false)}
-            >
-              Donate
-            </Link>
+            <div className="pt-3" onClick={() => setIsOpen(false)}>
+              <DonateButton className="w-full">Donate Now</DonateButton>
+            </div>
           </div>
         </div>
       )}

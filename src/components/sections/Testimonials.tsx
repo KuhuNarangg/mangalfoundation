@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Testimonials() {
   return (
@@ -9,10 +10,12 @@ export function Testimonials() {
         
         {/* Left Side: Massive Image */}
         <div className="relative h-[50vh] lg:h-auto overflow-hidden">
-          <img 
-            src="/images/adrien-taylor-o4m8M9ri6wc-unsplash.jpg" 
-            alt="Impact" 
-            className="absolute inset-0 w-full h-full object-cover grayscale-0 md:grayscale"
+          <Image
+            src="/images/founder.jpg"
+            alt="Aditya Vikram Singh, Founder & Social Worker"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-top grayscale-0 md:grayscale"
           />
         </div>
 
@@ -21,7 +24,7 @@ export function Testimonials() {
           <motion.div
             className="mb-8"
           >
-            <span className="text-sand text-[10rem] font-heading leading-none opacity-30 absolute top-12 left-12 md:top-24 md:left-24">"</span>
+            <span className="text-sand text-[5rem] md:text-[10rem] font-heading leading-none opacity-30 absolute top-6 left-6 md:top-24 md:left-24">"</span>
           </motion.div>
           
           <motion.div

@@ -21,9 +21,15 @@ const ContactSchema = new mongoose.Schema(
       required: [true, "Please provide a message."],
       maxlength: [2000, "Message cannot be more than 2000 characters"],
     },
+    isRead: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
+
+ContactSchema.index({ createdAt: -1 });
 
 // Prevent mongoose from compiling the model multiple times in development
 export default mongoose.models.Contact || mongoose.model("Contact", ContactSchema);

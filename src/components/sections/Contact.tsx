@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { siteConfig } from "@/lib/site";
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -44,7 +45,7 @@ export function Contact() {
   return (
     <section id="contact" className="py-32 bg-sand text-charcoal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-24">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
           
           <motion.div
             transition={{ duration: 0.8 }}
@@ -56,22 +57,26 @@ export function Contact() {
             </p>
             
             <div className="space-y-12">
-              <div>
-                <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Visit Us</h4>
-                <p className="text-charcoal-light font-light text-lg">123 Compassion Street<br/>Humanity City, HC 10001</p>
-              </div>
-              
+              {siteConfig.address && (
+                <div>
+                  <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Visit Us</h4>
+                  <p className="text-charcoal-light font-light text-lg">{siteConfig.address}</p>
+                </div>
+              )}
+
               <div>
                 <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Email Us</h4>
-                <a href="mailto:hello@mangalgurujifoundation.org" className="text-charcoal-light font-light text-lg hover:text-charcoal transition-colors border-b border-charcoal-light pb-1">
-                  hello@mangalgurujifoundation.org
+                <a href={`mailto:${siteConfig.email}`} className="text-charcoal-light font-light text-lg hover:text-charcoal transition-colors border-b border-charcoal-light pb-1">
+                  {siteConfig.email}
                 </a>
               </div>
-              
-              <div>
-                <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Call Us</h4>
-                <p className="text-charcoal-light font-light text-lg">+1 (555) 123-4567</p>
-              </div>
+
+              {siteConfig.phone && (
+                <div>
+                  <h4 className="font-bold uppercase tracking-[0.2em] text-sm text-charcoal mb-2">Call Us</h4>
+                  <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-charcoal-light font-light text-lg hover:text-charcoal transition-colors">{siteConfig.phone}</a>
+                </div>
+              )}
             </div>
           </motion.div>
 

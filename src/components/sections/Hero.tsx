@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Paintbrush } from "lucide-react";
+import { DonateButton } from "@/components/DonateButton";
 
 export function Hero() {
   const [isColored, setIsColored] = useState(false);
@@ -60,13 +61,16 @@ export function Hero() {
                 Color the lives
               </h1>
 
-              <button
-                onClick={() => setIsColored(true)}
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-transparent border-2 border-white rounded-full hover:bg-white hover:text-black overflow-hidden"
-              >
-                <span className="mr-2 tracking-widest uppercase">Color The Lives</span>
-                <Paintbrush className="w-5 h-5 transition-transform group-hover:rotate-12" />
-              </button>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <button
+                  onClick={() => setIsColored(true)}
+                  className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-transparent border-2 border-white rounded-full hover:bg-white hover:text-black overflow-hidden"
+                >
+                  <span className="mr-2 tracking-widest uppercase">Color The Lives</span>
+                  <Paintbrush className="w-5 h-5 transition-transform group-hover:rotate-12" />
+                </button>
+                <DonateButton size="lg">Donate Now</DonateButton>
+              </div>
             </motion.div>
           ) : (
             /* Secondary Content (Colored State) */
@@ -113,3 +117,4 @@ export function Hero() {
     </div>
   );
 }
+

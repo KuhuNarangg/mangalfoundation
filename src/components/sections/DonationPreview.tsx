@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const donationTypes = [
   {
@@ -58,15 +59,17 @@ export function DonationPreview() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group relative aspect-[4/5] overflow-hidden bg-gray-100"
             >
-              <img 
-                src={type.image} 
-                alt={type.title} 
-                className="absolute inset-0 w-full h-full object-cover  group-hover:scale-105"
+              <Image
+                src={type.image}
+                alt={type.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90 md:opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                <h3 className="text-white font-heading text-2xl md:text-3xl mb-2 transform translate-y-0 md: ">
+                <h3 className="text-white font-heading text-2xl md:text-3xl mb-2">
                   {type.title}
                 </h3>
                 

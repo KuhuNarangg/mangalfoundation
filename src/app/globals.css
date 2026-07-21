@@ -139,4 +139,26 @@
   .smooth-scroll {
     scroll-behavior: smooth;
   }
+
+  .animate-donate-glow {
+    animation: donate-glow 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes donate-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.45),
+      0 10px 25px -8px rgba(244, 63, 94, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(244, 63, 94, 0),
+      0 12px 32px -8px rgba(244, 63, 94, 0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-donate-glow {
+    animation: none;
+  }
 }

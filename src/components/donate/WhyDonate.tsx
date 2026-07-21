@@ -6,7 +6,7 @@ import { ShieldCheck, HeartHandshake, Eye, LineChart } from "lucide-react";
 const reasons = [
   {
     title: "100% Transparent",
-    description: "Every dollar you donate is tracked and documented. We believe in absolute financial transparency.",
+    description: "Every rupee you donate is tracked and documented. We believe in absolute financial transparency.",
     icon: Eye,
   },
   {
@@ -16,12 +16,12 @@ const reasons = [
   },
   {
     title: "Trusted NGO",
-    description: "Registered and audited annually. We have built a legacy of trust with thousands of donors worldwide.",
+    description: "Registered and audited annually. We have built a legacy of trust with thousands of donors across the country.",
     icon: ShieldCheck,
   },
   {
     title: "Every Contribution Matters",
-    description: "Whether it&apos;s $5 or $500, every single contribution is treated with the same respect and urgency.",
+    description: "Whether it's ₹500 or ₹50,000, every single contribution is treated with the same respect and urgency.",
     icon: HeartHandshake,
   }
 ];

@@ -16,7 +16,7 @@ const steps = [
   },
   {
     title: "Complete Donation",
-    description: "Secure payment gateway (Coming Soon).",
+    description: "Secure payment via Razorpay.",
     icon: CheckCircle,
   },
   {

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Utensils, Shirt, GraduationCap, Heart } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Utensils, Shirt, GraduationCap, Heart, Landmark } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,7 @@ const getIconForCategory = (title: string) => {
   if (lower.includes("food")) return Utensils;
   if (lower.includes("cloth")) return Shirt;
   if (lower.includes("women") || lower.includes("edu")) return GraduationCap;
+  if (lower.includes("temple") || lower.includes("mandir")) return Landmark;
   return Heart;
 };
 
@@ -198,9 +199,11 @@ export function DonateCategories() {
                 
                 {/* Image Side - Shorter Aspect Ratio */}
                 <div className="relative h-48 w-full overflow-hidden">
-                  <img 
-                    src={category.image} 
-                    alt={category.title} 
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg text-rose-500">
@@ -218,6 +221,29 @@ export function DonateCategories() {
                   <p className="text-gray-600 font-light text-sm mb-6 leading-relaxed flex-grow line-clamp-3">
                     {category.description}
                   </p>
+
+                  {category.budget && category.budget.effectiveTarget > 0 && (
+                    <div className="mb-5">
+                      <div className="flex justify-between text-xs font-semibold text-gray-700 mb-1.5">
+                        <span>
+                          Raised ₹{category.budget.raised.toLocaleString("en-IN")}
+                        </span>
+                        <span className="text-gray-500">
+                          Goal ₹{category.budget.effectiveTarget.toLocaleString("en-IN")}
+                        </span>
+                      </div>
+                      <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-rose-500 to-orange-500 rounded-full transition-all duration-700"
+                          style={{ width: `${category.budget.progress}%` }}
+                        />
+                      </div>
+                      <p className="text-[11px] text-gray-500 mt-1.5">
+                        ₹{category.budget.remaining.toLocaleString("en-IN")} still
+                        needed this month
+                      </p>
+                    </div>
+                  )}
 
                   <div className="bg-gray-50 -mx-6 -mb-6 p-6 border-t border-gray-100">
                     <h3 className="font-bold uppercase tracking-[0.15em] text-xs text-gray-500 mb-4 flex items-center gap-2">

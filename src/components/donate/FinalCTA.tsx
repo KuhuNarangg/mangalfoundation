@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { DonateButton } from "@/components/DonateButton";
 
 export function FinalCTA() {
   return (
@@ -21,13 +22,7 @@ export function FinalCTA() {
           A single act of kindness can send ripples across a community. Be the reason someone smiles today.
         </motion.p>
         
-        <motion.button
-          transition={{ delay: 0.3 }}
-          className="bg-white text-black py-5 px-12 font-bold uppercase tracking-[0.2em] text-sm hover:bg-gray-200 transition-colors shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled
-        >
-          Donate Now (Coming Soon)
-        </motion.button>
+        <DonateButton size="lg">Donate Now</DonateButton>
       </div>
     </section>
   );

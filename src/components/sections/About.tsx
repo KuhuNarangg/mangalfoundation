@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function About() {
   return (
@@ -39,12 +40,13 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            {/* Image Placeholder */}
             <div className="relative w-full aspect-[4/5] bg-beige-dark rounded-xl overflow-hidden shadow-sm">
-              <img 
-                src="/images/larm-rmah-AEaTUnvneik-unsplash.jpg" 
-                alt="Aditya Vikram Singh" 
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+              <Image
+                src="/images/nico-smit-NFoerQuvzrs-unsplash.jpg"
+                alt="Children supported by Mangal Guruji Foundation"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
               />
             </div>
             

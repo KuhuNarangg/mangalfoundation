@@ -1,13 +1,27 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { siteConfig } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="bg-foreground text-background py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-1">
-          <Link href="/" className="font-heading font-bold text-2xl tracking-wider mb-4 inline-block">
-            MGF.
+          <Link href="/" className="inline-flex items-center gap-3 mb-4">
+            <Image
+              src="/images/logo.png"
+              alt="Mangal Guruji Foundation"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-lg object-contain bg-white p-1"
+            />
+            <span className="font-heading font-bold text-xl tracking-wide leading-tight text-background">
+              Mangal Guruji
+              <span className="block text-[0.6rem] font-sans font-semibold tracking-[0.2em] uppercase opacity-70">
+                Foundation
+              </span>
+            </span>
           </Link>
           <p className="text-sm text-gray-400 mt-4 max-w-xs leading-relaxed">
             Serving humanity with compassion. We believe in bringing hope and color to the lives of those who need it most.
@@ -28,37 +42,41 @@ export function Footer() {
         <div>
           <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
           <ul className="space-y-3">
-            <li><Link href="#about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
-            <li><Link href="#causes" className="text-gray-400 hover:text-white transition-colors text-sm">Our Causes</Link></li>
-            <li><Link href="#impact" className="text-gray-400 hover:text-white transition-colors text-sm">Our Impact</Link></li>
-            <li><Link href="#gallery" className="text-gray-400 hover:text-white transition-colors text-sm">Gallery</Link></li>
+            <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
+            <li><Link href="/causes" className="text-gray-400 hover:text-white transition-colors text-sm">Our Causes</Link></li>
+            <li><Link href="/impact" className="text-gray-400 hover:text-white transition-colors text-sm">Our Impact</Link></li>
+            <li><Link href="/gallery" className="text-gray-400 hover:text-white transition-colors text-sm">Gallery</Link></li>
           </ul>
         </div>
 
         <div>
           <h3 className="font-semibold text-lg mb-4">Support</h3>
           <ul className="space-y-3">
-            <li><Link href="#donate" className="text-gray-400 hover:text-white transition-colors text-sm">Donate Now</Link></li>
-            <li><Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Volunteer</Link></li>
-            <li><Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Partner With Us</Link></li>
-            <li><Link href="#contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</Link></li>
+            <li><Link href="/donate" className="text-gray-400 hover:text-white transition-colors text-sm">Donate Now</Link></li>
+            <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Volunteer</Link></li>
+            <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Partner With Us</Link></li>
+            <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</Link></li>
           </ul>
         </div>
 
         <div>
           <h3 className="font-semibold text-lg mb-4">Contact Info</h3>
           <ul className="space-y-4">
-            <li className="flex items-start">
-              <MapPin size={18} className="text-gray-400 mr-3 mt-0.5 flex-shrink-0" />
-              <span className="text-gray-400 text-sm">123 Compassion Street, Humanity City, HC 10001</span>
-            </li>
-            <li className="flex items-center">
-              <Phone size={18} className="text-gray-400 mr-3 flex-shrink-0" />
-              <span className="text-gray-400 text-sm">+1 (555) 123-4567</span>
-            </li>
+            {siteConfig.address && (
+              <li className="flex items-start">
+                <MapPin size={18} className="text-gray-400 mr-3 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-400 text-sm">{siteConfig.address}</span>
+              </li>
+            )}
+            {siteConfig.phone && (
+              <li className="flex items-center">
+                <Phone size={18} className="text-gray-400 mr-3 flex-shrink-0" />
+                <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-gray-400 text-sm hover:text-white transition-colors">{siteConfig.phone}</a>
+              </li>
+            )}
             <li className="flex items-center">
               <Mail size={18} className="text-gray-400 mr-3 flex-shrink-0" />
-              <span className="text-gray-400 text-sm">hello@mangalgurujifoundation.org</span>
+              <a href={`mailto:${siteConfig.email}`} className="text-gray-400 text-sm hover:text-white transition-colors">{siteConfig.email}</a>
             </li>
           </ul>
         </div>
