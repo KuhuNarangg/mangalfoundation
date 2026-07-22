@@ -257,7 +257,13 @@ export default function DonationsPage() {
         />
         <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[150px]">
-            <SelectValue placeholder="Status" />
+            <SelectValue placeholder="Status">
+              {(v: any) => {
+                if (!v || v === "all") return "All Statuses";
+                const m: Record<string, string> = { success: "Success", pending: "Pending", failed: "Failed", refunded: "Refunded" };
+                return m[v] || v;
+              }}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Statuses</SelectItem>
@@ -269,7 +275,13 @@ export default function DonationsPage() {
         </Select>
         <Select value={categoryFilter} onValueChange={(v) => setCategoryFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[160px]">
-            <SelectValue placeholder="Category" />
+            <SelectValue placeholder="Category">
+              {(v: any) => {
+                if (!v || v === "all") return "All Categories";
+                const c = categories.find((cat) => cat._id === v);
+                return c ? c.title : v;
+              }}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Categories</SelectItem>
@@ -282,7 +294,13 @@ export default function DonationsPage() {
         </Select>
         <Select value={dateFilter} onValueChange={(v) => setDateFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[150px]">
-            <SelectValue placeholder="Date" />
+            <SelectValue placeholder="Date">
+              {(v: any) => {
+                if (!v || v === "all") return "All Time";
+                const m: Record<string, string> = { this_month: "This Month", last_month: "Last Month", this_year: "This Year" };
+                return m[v] || v;
+              }}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Time</SelectItem>
@@ -293,7 +311,13 @@ export default function DonationsPage() {
         </Select>
         <Select value={amountFilter} onValueChange={(v) => setAmountFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[160px]">
-            <SelectValue placeholder="Amount" />
+            <SelectValue placeholder="Amount">
+              {(v: any) => {
+                if (!v || v === "all") return "All Amounts";
+                const m: Record<string, string> = { under_1k: "Under ₹1,000", "1k_5k": "₹1,000 - ₹5,000", "5k_10k": "₹5,000 - ₹10,000", over_10k: "Above ₹10,000" };
+                return m[v] || v;
+              }}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Amounts</SelectItem>
@@ -436,7 +460,12 @@ export default function DonationsPage() {
                   onValueChange={(v) => updateStatus(selected._id, v)}
                 >
                   <SelectTrigger className="w-[140px] h-8">
-                    <SelectValue />
+                    <SelectValue>
+                      {(v: any) => {
+                        const m: Record<string, string> = { success: "Success", pending: "Pending", failed: "Failed", refunded: "Refunded" };
+                        return m[v] || v;
+                      }}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="success">Success</SelectItem>

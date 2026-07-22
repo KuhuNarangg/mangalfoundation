@@ -255,7 +255,14 @@ export default function VolunteersPage() {
           </SelectContent>
         </Select>
         <Select value={sort} onValueChange={(v) => setSort(v || "newest")}>
-          <SelectTrigger className="w-[150px]"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="w-[150px]">
+            <SelectValue>
+              {(v: any) => {
+                const m: Record<string, string> = { newest: "Newest First", oldest: "Oldest First", name: "Name (A-Z)", status: "Status" };
+                return m[v] || v;
+              }}
+            </SelectValue>
+          </SelectTrigger>
           <SelectContent>
             <SelectItem value="newest">Newest First</SelectItem>
             <SelectItem value="oldest">Oldest First</SelectItem>

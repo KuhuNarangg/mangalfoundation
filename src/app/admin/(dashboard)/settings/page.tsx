@@ -166,7 +166,12 @@ export default function SettingsPage() {
               <Input placeholder="Email (optional)" type="email" value={newAdmin.email} onChange={(e) => setNewAdmin({ ...newAdmin, email: e.target.value })} />
               <Select value={newAdmin.role} onValueChange={(v) => setNewAdmin({ ...newAdmin, role: v || "admin" })}>
                 <SelectTrigger>
-                  <SelectValue />
+                  <SelectValue>
+                    {(v: any) => {
+                      const m: Record<string, string> = { editor: "Editor", admin: "Admin", super_admin: "Super Admin" };
+                      return m[v] || v;
+                    }}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="editor">Editor</SelectItem>
@@ -197,7 +202,12 @@ export default function SettingsPage() {
                       <TableCell>
                         <Select value={a.role} onValueChange={(v) => updateRole(a._id, v)} disabled={a._id === me?.id}>
                           <SelectTrigger className="w-[140px] h-8">
-                            <SelectValue />
+                            <SelectValue>
+                              {(v: any) => {
+                                const m: Record<string, string> = { editor: "Editor", admin: "Admin", super_admin: "Super Admin" };
+                                return m[v] || v;
+                              }}
+                            </SelectValue>
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="editor">Editor</SelectItem>

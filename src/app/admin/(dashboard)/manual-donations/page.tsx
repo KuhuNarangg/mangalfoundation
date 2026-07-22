@@ -164,7 +164,13 @@ export default function ManualDonationsPage() {
                 <Label>Category</Label>
                 <Select value={form.categoryId} onValueChange={(v) => set("categoryId", v || "")}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select category" />
+                    <SelectValue placeholder="Select category">
+                      {(v: any) => {
+                        if (!v) return "Select category";
+                        const c = categories.find((cat) => cat._id === v);
+                        return c ? c.title : v;
+                      }}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {categories.map((c) => (
@@ -191,7 +197,12 @@ export default function ManualDonationsPage() {
                 <Label>Payment Mode</Label>
                 <Select value={form.paymentMethod} onValueChange={(v) => set("paymentMethod", v || "cash")}>
                   <SelectTrigger>
-                    <SelectValue />
+                    <SelectValue>
+                      {(v: any) => {
+                        const m = METHODS.find((meth) => meth.value === v);
+                        return m ? m.label : v;
+                      }}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {METHODS.map((m) => (

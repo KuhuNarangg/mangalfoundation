@@ -123,7 +123,13 @@ export default function PackagesPage() {
                 <Label>Category</Label>
                 <Select value={formData.categoryId} onValueChange={(val) => setFormData({...formData, categoryId: val || ""})}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select Category" />
+                    <SelectValue placeholder="Select Category">
+                      {(v: any) => {
+                        if (!v) return "Select Category";
+                        const c = categories.find((cat) => cat._id === v);
+                        return c ? c.title : v;
+                      }}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {categories.map(c => (
