@@ -118,16 +118,20 @@ export async function POST(req: Request) {
           ip,
           userAgent,
         });
-        sendFailedLoginAlert({
-          username,
-          ip,
-          userAgent,
-          attempts: MAX_ATTEMPTS,
-          time: new Date(),
-          location: geo.locationString,
-          isVpn: geo.isVpn,
-          locked: true,
-        }).catch((e) => console.error("Alert email failed:", e));
+        try {
+          await sendFailedLoginAlert({
+            username,
+            ip,
+            userAgent,
+            attempts: MAX_ATTEMPTS,
+            time: new Date(),
+            location: geo.locationString,
+            isVpn: geo.isVpn,
+            locked: true,
+          });
+        } catch (e) {
+          console.error("Alert email failed:", e);
+        }
 
         return NextResponse.json(
           { error: `Too many failed attempts. Account locked for ${LOCK_MINUTES} minutes.` },
@@ -182,16 +186,19 @@ export async function POST(req: Request) {
       userAgent,
     });
 
-    // A successful login from a VPN/proxy means the location may be masked — alert.
     if (geo.isVpn) {
-      sendVpnLoginAlert({
-        username: admin.username,
-        ip,
-        userAgent,
-        location: geo.locationString,
-        isp: geo.isp,
-        time: new Date(),
-      }).catch((e) => console.error("VPN alert email failed:", e));
+      try {
+        await sendVpnLoginAlert({
+          username: admin.username,
+          ip,
+          userAgent,
+          location: geo.locationString,
+          isp: geo.isp,
+          time: new Date(),
+        });
+      } catch (e) {
+        console.error("VPN alert email failed:", e);
+      }
     }
 
     return NextResponse.json({ success: true, message: "Logged in successfully" });
