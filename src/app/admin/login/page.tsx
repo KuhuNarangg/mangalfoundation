@@ -61,6 +61,17 @@ export default function AdminLogin() {
           </a>
         </div>
         
+        <div className="relative z-10 px-10 pt-10 flex-1 flex flex-col justify-center">
+          <div className="max-w-md">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/images/quote.jpg" 
+              alt="Mangal Guruji" 
+              className="w-full h-auto rounded-xl shadow-2xl border border-white/10"
+            />
+          </div>
+        </div>
+        
         <div className="relative z-10 p-10 mt-auto">
           <blockquote className="space-y-4 text-white">
             <p className="text-3xl font-medium leading-tight">
