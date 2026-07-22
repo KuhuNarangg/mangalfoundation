@@ -20,7 +20,7 @@ export function VolunteerCTA() {
                 fundraising — your time creates real impact.
               </p>
               <Link
-                href="/volunteer"
+                href="/volunteer#apply"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-orange-500 px-8 py-4 font-bold text-white hover:scale-105 transition-transform"
               >
                 <HeartHandshake className="w-5 h-5" /> Become a Volunteer

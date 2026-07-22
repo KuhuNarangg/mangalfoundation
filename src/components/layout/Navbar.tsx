@@ -83,10 +83,26 @@ export function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <DonateButton size="sm">Donate</DonateButton>
+            <div className="flex items-center gap-3">
+              <motion.div style={{ color: textColor }}>
+                <Link
+                  href="/volunteer#apply"
+                  className="text-sm font-bold border-2 border-current px-4 py-1.5 rounded-full hover:opacity-70 transition-opacity"
+                >
+                  Volunteer
+                </Link>
+              </motion.div>
+              <DonateButton size="sm">Donate</DonateButton>
+            </div>
           </div>
 
           <div className="md:hidden flex items-center gap-3">
+            <Link
+              href="/volunteer#apply"
+              className="px-4 py-1.5 text-xs font-bold border-2 border-current rounded-full"
+            >
+              Volunteer
+            </Link>
             <DonateButton size="sm" showIcon={false} className="px-4 py-2 text-xs">
               Donate
             </DonateButton>
@@ -116,7 +132,13 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-3" onClick={() => setIsOpen(false)}>
+            <div className="pt-3 space-y-2" onClick={() => setIsOpen(false)}>
+              <Link
+                href="/volunteer#apply"
+                className="flex items-center justify-center w-full rounded-full border-2 border-gray-900 px-4 py-2.5 text-sm font-bold text-gray-900"
+              >
+                Become a Volunteer
+              </Link>
               <DonateButton className="w-full">Donate Now</DonateButton>
             </div>
           </div>
