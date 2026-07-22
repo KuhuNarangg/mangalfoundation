@@ -23,6 +23,19 @@ export async function GET() {
       budget: computeBudget(cat, raisedMap[cat._id.toString()] || 0),
     }));
 
+    // Custom sorting as requested: Food -> Clothes -> Women -> Temple (last)
+    result.sort((a, b) => {
+      const getPriority = (title: string) => {
+        const lower = title.toLowerCase();
+        if (lower.includes("food") || lower.includes("annadan")) return 1;
+        if (lower.includes("cloth") || lower.includes("vastra")) return 2;
+        if (lower.includes("women") || lower.includes("girl")) return 3;
+        if (lower.includes("temple") || lower.includes("mandir")) return 99;
+        return 50; // default for others
+      };
+      return getPriority(a.title) - getPriority(b.title);
+    });
+
     return NextResponse.json({ success: true, data: result });
   } catch {
     return NextResponse.json(
