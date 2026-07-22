@@ -11,7 +11,7 @@ import { logAudit } from "@/lib/audit";
 import { sendFailedLoginAlert, sendVpnLoginAlert } from "@/lib/email";
 import { loginSchema, formatZodError } from "@/lib/validations";
 
-const MAX_ATTEMPTS = 5;
+const MAX_ATTEMPTS = 3;
 const LOCK_MINUTES = 2;
 // A valid bcrypt hash used only to equalize timing when the user is unknown.
 const DUMMY_HASH =
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    const { username, password } = parsed.data;
+    const { username, password, adminCode } = parsed.data;
 
     await connectToDatabase();
     const admin = await Admin.findOne({ username });
@@ -91,12 +91,15 @@ export async function POST(req: Request) {
     }
 
     const isMatch = await bcrypt.compare(password, admin.password);
-    if (!isMatch) {
+    const expectedCode = process.env.ADMIN_SECURITY_CODE;
+    const isCodeMatch = expectedCode ? adminCode === expectedCode : true;
+
+    if (!isMatch || !isCodeMatch) {
       admin.failedLoginAttempts = (admin.failedLoginAttempts || 0) + 1;
       let locked = false;
       if (admin.failedLoginAttempts >= MAX_ATTEMPTS) {
         admin.lockUntil = new Date(Date.now() + LOCK_MINUTES * 60 * 1000);
-        // Reset so the NEXT 5 wrong attempts re-lock AND re-send the alert.
+        // Reset so the NEXT 3 wrong attempts re-lock AND re-send the alert.
         admin.failedLoginAttempts = 0;
         locked = true;
       }

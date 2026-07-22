@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [adminCode, setAdminCode] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -22,7 +23,7 @@ export default function AdminLogin() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, adminCode }),
       });
 
       const data = await res.json();
@@ -69,6 +70,17 @@ export default function AdminLogin() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required 
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="adminCode">Admin Security Code</Label>
+              <Input 
+                id="adminCode" 
+                type="password"
+                placeholder="Enter security code"
+                value={adminCode}
+                onChange={(e) => setAdminCode(e.target.value)}
                 required 
               />
             </div>
