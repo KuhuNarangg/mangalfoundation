@@ -97,12 +97,14 @@ export function Navbar() {
           </div>
 
           <div className="md:hidden flex items-center gap-3">
-            <Link
-              href="/volunteer#apply"
-              className="px-4 py-1.5 text-xs font-bold border-2 border-current rounded-full"
-            >
-              Volunteer
-            </Link>
+            <motion.div style={{ color: textColor }}>
+              <Link
+                href="/volunteer#apply"
+                className="px-4 py-1.5 text-xs font-bold border-2 border-current rounded-full"
+              >
+                Volunteer
+              </Link>
+            </motion.div>
             <DonateButton size="sm" showIcon={false} className="px-4 py-2 text-xs">
               Donate
             </DonateButton>

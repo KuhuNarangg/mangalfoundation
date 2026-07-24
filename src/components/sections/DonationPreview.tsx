@@ -54,11 +54,11 @@ export function DonationPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {donationTypes.map((type, index) => (
-            <motion.div
-              key={type.title}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative aspect-[4/5] overflow-hidden bg-gray-100"
-            >
+            <Link href="/donate" key={type.title} className="block">
+              <motion.div
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="group relative aspect-[4/5] overflow-hidden bg-gray-100 h-full w-full"
+              >
               <Image
                 src={type.image}
                 alt={type.title}
@@ -80,15 +80,15 @@ export function DonationPreview() {
                 </div>
 
                 <div className="transform translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                  <Link 
-                    href="/donate"
-                    className="inline-block bg-white text-black py-3 px-8 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors"
+                  <span 
+                    className="inline-block bg-white text-black py-3 px-8 text-xs font-bold uppercase tracking-[0.2em] group-hover:bg-gray-200 transition-colors"
                   >
                     Donate Now
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
 

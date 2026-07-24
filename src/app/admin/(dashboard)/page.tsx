@@ -5,23 +5,27 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { StatusBadge } from "@/components/admin/StatusBadge";
+import { DonationDetailDialog } from "@/components/admin/DonationDetailDialog";
 import { formatINR } from "@/lib/format";
 import { ReceiptIndianRupee, ChevronRight } from "lucide-react";
 
 export default function AdminDashboard() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [selectedDonation, setSelectedDonation] = useState<any>(null);
+
+  const loadData = async () => {
+    try {
+      const res = await fetch("/api/admin/dashboard");
+      const json = await res.json();
+      if (json.success) setData(json.data);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch("/api/admin/dashboard");
-        const json = await res.json();
-        if (json.success) setData(json.data);
-      } finally {
-        setLoading(false);
-      }
-    })();
+    loadData();
   }, []);
 
   if (loading || !data) {
@@ -106,7 +110,11 @@ export default function AdminDashboard() {
             ) : (
               <div className="divide-y divide-border">
                 {data.recentDonations.map((d: any, i: number) => (
-                  <div key={i} className="flex items-center justify-between p-4">
+                  <div 
+                    key={i} 
+                    className="flex items-center justify-between p-4 hover:bg-muted/50 cursor-pointer transition-colors"
+                    onClick={() => setSelectedDonation(d)}
+                  >
                     <div>
                       <p className="font-medium">
                         {d.isAnonymous ? "Anonymous Donor" : d.donorName}
@@ -126,6 +134,12 @@ export default function AdminDashboard() {
           </CardContent>
         </Card>
       </div>
+
+      <DonationDetailDialog
+        donation={selectedDonation}
+        onClose={() => setSelectedDonation(null)}
+        onUpdate={loadData}
+      />
     </div>
   );
 }

@@ -42,3 +42,6 @@ next-env.d.ts
 
 # large design master asset (not needed for deploy; regenerate web assets via scripts/optimize-assets.mjs)
 /assets/
+
+# editor/debug backups
+*.bak

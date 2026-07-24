@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 export default function AdminLogin() {
+  const [loginType, setLoginType] = useState<"admin" | "member">("admin");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [adminCode, setAdminCode] = useState("");
@@ -23,14 +23,14 @@ export default function AdminLogin() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password, adminCode }),
+        body: JSON.stringify({ loginType, username, password, adminCode: loginType === "admin" ? adminCode : undefined }),
       });
 
       const data = await res.json();
 
       if (res.ok) {
         toast.success("Logged in successfully");
-        router.push("/admin");
+        router.push(data.redirectUrl || "/admin");
       } else {
         toast.error(data.error || "Login failed");
       }
@@ -77,7 +77,7 @@ export default function AdminLogin() {
             <p className="text-3xl font-medium leading-tight">
               &ldquo;Empowering communities through self-reliance, education, and compassion.&rdquo;
             </p>
-            <footer className="text-sm text-zinc-400 font-medium tracking-wide uppercase">Admin Portal</footer>
+            <footer className="text-sm text-zinc-400 font-medium tracking-wide uppercase">Foundation Portal</footer>
           </blockquote>
         </div>
       </div>
@@ -93,20 +93,37 @@ export default function AdminLogin() {
         </div>
 
         <div className="mx-auto w-full max-w-sm lg:w-[400px] mt-12 lg:mt-0">
-          <div className="mb-10 text-center lg:text-left">
+          <div className="mb-8 text-center lg:text-left">
             <h1 className="text-3xl font-bold tracking-tight text-foreground">Welcome back</h1>
             <p className="text-sm text-muted-foreground mt-2">
-              Enter your secure credentials to access the dashboard.
+              Sign in to your account to continue.
             </p>
+          </div>
+          
+          <div className="flex bg-muted p-1 rounded-lg mb-8">
+            <button
+              onClick={() => setLoginType("admin")}
+              className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${loginType === "admin" ? "bg-background shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              Admin
+            </button>
+            <button
+              onClick={() => setLoginType("member")}
+              className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${loginType === "member" ? "bg-background shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              Member
+            </button>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="username" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Username</Label>
+              <Label htmlFor="username" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                {loginType === "admin" ? "Username" : "Member ID or Email"}
+              </Label>
               <Input 
                 id="username" 
                 type="text" 
-                placeholder="admin"
+                placeholder={loginType === "admin" ? "admin" : "MGF-1001"}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -125,18 +142,20 @@ export default function AdminLogin() {
                 className="h-12 bg-muted/50 border-transparent focus-visible:bg-transparent"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="adminCode" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Admin Security Code</Label>
-              <Input 
-                id="adminCode" 
-                type="password"
-                placeholder="Required for access"
-                value={adminCode}
-                onChange={(e) => setAdminCode(e.target.value)}
-                required
-                className="h-12 bg-muted/50 border-transparent focus-visible:bg-transparent"
-              />
-            </div>
+            {loginType === "admin" && (
+              <div className="space-y-2">
+                <Label htmlFor="adminCode" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Admin Security Code</Label>
+                <Input 
+                  id="adminCode" 
+                  type="password"
+                  placeholder="Required for access"
+                  value={adminCode}
+                  onChange={(e) => setAdminCode(e.target.value)}
+                  required
+                  className="h-12 bg-muted/50 border-transparent focus-visible:bg-transparent"
+                />
+              </div>
+            )}
             <Button className="w-full h-12 text-base font-medium mt-6 shadow-md transition-all hover:shadow-lg active:scale-[0.98]" type="submit" disabled={loading}>
               {loading ? "Verifying..." : "Sign in to Dashboard"}
             </Button>

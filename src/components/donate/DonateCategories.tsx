@@ -43,7 +43,7 @@ export function DonateCategories() {
   const [isCustom, setIsCustom] = useState(false);
   
   const [formData, setFormData] = useState({
-    donorName: "", email: "", phone: "", isAnonymous: false, message: ""
+    donorName: "", email: "", phone: "", pan: "", gst: "", isAnonymous: false, message: ""
   });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -142,7 +142,7 @@ export function DonateCategories() {
             const verifyJson = await verifyRes.json();
             if (verifyRes.ok) {
               setSuccess(true);
-              setFormData({ donorName: "", email: "", phone: "", isAnonymous: false, message: "" });
+              setFormData({ donorName: "", email: "", phone: "", pan: "", gst: "", isAnonymous: false, message: "" });
             } else {
               toast.error(verifyJson.error || "Payment verification failed");
             }
@@ -355,6 +355,17 @@ export function DonateCategories() {
                   <div className="space-y-2">
                     <Label>Phone Number</Label>
                     <Input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="rounded-none border-gray-300" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>PAN (Optional)</Label>
+                    <Input value={formData.pan} onChange={e => setFormData({...formData, pan: e.target.value.toUpperCase()})} className="rounded-none border-gray-300" placeholder="ABCDE1234F" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>GST (Optional)</Label>
+                    <Input value={formData.gst} onChange={e => setFormData({...formData, gst: e.target.value.toUpperCase()})} className="rounded-none border-gray-300" placeholder="22AAAAA0000A1Z5" />
                   </div>
                 </div>
 

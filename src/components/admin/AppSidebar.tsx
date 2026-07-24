@@ -16,6 +16,7 @@ import {
   ScrollText,
   Settings,
   User,
+  Users,
   LogOut,
   ExternalLink,
 } from "lucide-react";
@@ -63,6 +64,7 @@ const groups = [
     label: "Engagement",
     items: [
       { title: "Volunteer Applications", url: "/admin/volunteers", icon: HeartHandshake },
+      { title: "Members", url: "/admin/members", icon: Users },
       { title: "Contact Enquiries", url: "/admin/messages", icon: Mail },
     ],
   },

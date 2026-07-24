@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Paintbrush } from "lucide-react";
@@ -50,9 +51,15 @@ export function Hero() {
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
-                className="w-16 h-16 md:w-20 md:h-20 border-2 border-white rounded-full flex items-center justify-center mb-6 shadow-lg"
+                className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/80 rounded-full flex items-center justify-center mb-6 shadow-lg overflow-hidden bg-white"
               >
-                <span className="font-heading font-bold text-xl md:text-2xl text-white">MGF.</span>
+                <Image 
+                  src="/images/logo.png" 
+                  alt="MGF Logo" 
+                  width={80} 
+                  height={80} 
+                  className="object-contain p-2" 
+                />
               </motion.div>
 
               <p className="text-lg md:text-2xl text-white/90 font-medium tracking-widest uppercase mb-4 drop-shadow-md">

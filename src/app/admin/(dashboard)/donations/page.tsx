@@ -19,13 +19,8 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { StatusBadge } from "@/components/admin/StatusBadge";
+import { DonationDetailDialog } from "@/components/admin/DonationDetailDialog";
 import { formatINR, formatDateTime } from "@/lib/format";
 import { downloadCSV, printHTML } from "@/lib/export";
 import {
@@ -33,9 +28,6 @@ import {
   Printer,
   Eye,
   RefreshCw,
-  Trash2,
-  FileText,
-  Send,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -128,72 +120,6 @@ export default function DonationsPage() {
     fetchDonations();
   }, [fetchDonations]);
 
-  const updateStatus = async (id: string, paymentStatus: string) => {
-    setBusy(true);
-    try {
-      const res = await fetch(`/api/admin/donations/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paymentStatus }),
-      });
-      if (res.ok) {
-        toast.success("Status updated");
-        setSelected((s: any) => (s ? { ...s, paymentStatus } : s));
-        fetchDonations();
-      } else {
-        toast.error((await res.json()).error || "Failed to update");
-      }
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const refund = async (id: string) => {
-    if (!confirm("Refund this donation via Razorpay? This cannot be undone.")) return;
-    setBusy(true);
-    try {
-      const res = await fetch(`/api/admin/donations/${id}/refund`, { method: "POST" });
-      const json = await res.json();
-      if (res.ok) {
-        toast.success("Donation refunded");
-        setSelected(null);
-        fetchDonations();
-      } else {
-        toast.error(json.error || "Refund failed");
-      }
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const remove = async (id: string) => {
-    if (!confirm("Delete this donation permanently?")) return;
-    setBusy(true);
-    try {
-      const res = await fetch(`/api/admin/donations/${id}`, { method: "DELETE" });
-      if (res.ok) {
-        toast.success("Donation deleted");
-        setSelected(null);
-        fetchDonations();
-      } else {
-        toast.error("Delete failed");
-      }
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const resendReceipt = async (id: string) => {
-    setBusy(true);
-    try {
-      const res = await fetch(`/api/admin/donations/${id}/receipt/resend`, { method: "POST" });
-      const json = await res.json();
-      if (res.ok && json.success) toast.success(json.message || "Receipt emailed");
-      else toast.error(json.message || json.error || "Failed to send receipt");
-    } finally {
-      setBusy(false);
-    }
-  };
 
   const exportCSV = () => {
     if (!donations.length) return toast.error("Nothing to export");
@@ -423,102 +349,11 @@ export default function DonationsPage() {
         </div>
       </div>
 
-      <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle>Donation Details</DialogTitle>
-          </DialogHeader>
-          {selected && (
-            <div className="space-y-4 text-sm">
-              <div className="grid grid-cols-2 gap-3">
-                <Detail label="Donor" value={selected.isAnonymous ? "Anonymous" : selected.donorName} />
-                <Detail label="Amount" value={formatINR(selected.amount)} />
-                {!selected.isAnonymous && <Detail label="Email" value={selected.email} />}
-                {!selected.isAnonymous && <Detail label="Phone" value={selected.phone} />}
-                <Detail label="Cause" value={selected.categoryId?.title || "Custom"} />
-                <Detail label="Package" value={selected.packageId?.title || "—"} />
-
-                <Detail label="Date" value={formatDateTime(selected.createdAt)} />
-                <Detail label="Order ID" value={selected.razorpayOrderId || "—"} />
-                <Detail label="Payment ID" value={selected.razorpayPaymentId || "—"} />
-                <Detail label="Receipt No." value={selected.receiptNumber || "—"} />
-                <Detail
-                  label="Method"
-                  value={
-                    selected.source === "manual"
-                      ? METHOD_LABELS[selected.paymentMethod] || "Offline"
-                      : "Online (Razorpay)"
-                  }
-                />
-              </div>
-              {selected.message && <Detail label="Message" value={selected.message} />}
-              {selected.notes && <Detail label="Notes" value={selected.notes} />}
-              <div className="flex items-center gap-2 pt-3 border-t border-border">
-                <span className="text-muted-foreground">Status:</span>
-                <Select
-                  value={selected.paymentStatus}
-                  onValueChange={(v) => updateStatus(selected._id, v)}
-                >
-                  <SelectTrigger className="w-[140px] h-8">
-                    <SelectValue>
-                      {(v: any) => {
-                        const m: Record<string, string> = { success: "Success", pending: "Pending", failed: "Failed", refunded: "Refunded" };
-                        return m[v] || v;
-                      }}
-                    </SelectValue>
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="success">Success</SelectItem>
-                    <SelectItem value="pending">Pending</SelectItem>
-                    <SelectItem value="failed">Failed</SelectItem>
-                    <SelectItem value="refunded">Refunded</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="flex flex-wrap justify-end gap-2 pt-2">
-                {selected.paymentStatus === "success" && (
-                  <>
-                    <a href={`/receipt/${selected._id}`} target="_blank" rel="noreferrer">
-                      <Button variant="outline" size="sm">
-                        <FileText className="h-4 w-4 mr-1" />
-                        Receipt
-                      </Button>
-                    </a>
-                    {selected.email && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        disabled={busy}
-                        onClick={() => resendReceipt(selected._id)}
-                      >
-                        <Send className="h-4 w-4 mr-1" />
-                        Resend
-                      </Button>
-                    )}
-                    <Button variant="outline" size="sm" disabled={busy} onClick={() => refund(selected._id)}>
-                      <RefreshCw className="h-4 w-4 mr-1" />
-                      Refund
-                    </Button>
-                  </>
-                )}
-                <Button variant="destructive" size="sm" disabled={busy} onClick={() => remove(selected._id)}>
-                  <Trash2 className="h-4 w-4 mr-1" />
-                  Delete
-                </Button>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
-    </div>
-  );
-}
-
-function Detail({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div className="font-medium break-words">{value}</div>
+      <DonationDetailDialog 
+        donation={selected} 
+        onClose={() => setSelected(null)} 
+        onUpdate={fetchDonations} 
+      />
     </div>
   );
 }

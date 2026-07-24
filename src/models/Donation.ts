@@ -18,6 +18,10 @@ const donationSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    gst: {
+      type: String,
+      default: "",
+    },
     isAnonymous: {
       type: Boolean,
       default: false,

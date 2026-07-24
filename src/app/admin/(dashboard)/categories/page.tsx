@@ -240,7 +240,7 @@ export default function CategoriesPage() {
 
       {/* Create / edit dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="w-[95vw] sm:max-w-xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
           <DialogHeader>
             <DialogTitle>{editingId ? "Edit Category" : "Add New Category"}</DialogTitle>
           </DialogHeader>
@@ -294,7 +294,7 @@ export default function CategoriesPage() {
 
       {/* Budget dialog */}
       <Dialog open={!!budgetCat} onOpenChange={(o) => !o && setBudgetCat(null)}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="w-[95vw] sm:max-w-md p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Budget — {budgetCat?.title}</DialogTitle>
           </DialogHeader>

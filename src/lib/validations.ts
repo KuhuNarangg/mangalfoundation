@@ -16,6 +16,8 @@ export const donationInputSchema = z.object({
     .min(7, "A valid phone number is required")
     .max(20)
     .regex(/^[0-9+\-\s()]+$/, "A valid phone number is required"),
+  pan: z.string().trim().toUpperCase().max(20).optional().or(z.literal("")),
+  gst: z.string().trim().toUpperCase().max(20).optional().or(z.literal("")),
   isAnonymous: z.boolean().default(false),
   message: z.string().trim().max(1000).optional(),
   categoryId: objectId,
@@ -58,9 +60,10 @@ export const packageUpdateSchema = packageInputSchema.partial();
 
 /** Admin login credentials. */
 export const loginSchema = z.object({
-  username: z.string().trim().min(1, "Username is required").max(100),
+  loginType: z.enum(["admin", "member"]).default("admin"),
+  username: z.string().trim().min(1, "Username/ID is required").max(100),
   password: z.string().min(1, "Password is required").max(200),
-  adminCode: z.string().trim().min(1, "Admin code is required").max(100),
+  adminCode: z.string().max(100).optional(),
 });
 
 /** First-time admin setup (bootstrap). */

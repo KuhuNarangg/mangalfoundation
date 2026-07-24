@@ -104,8 +104,8 @@ export default function ContentPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-4xl">
-      <div className="flex items-center justify-between gap-4 sticky top-14 lg:top-[60px] bg-muted/30 py-2 z-10">
+    <div className="space-y-6 max-w-4xl px-4 sm:px-0">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sticky top-14 lg:top-[60px] bg-background/95 backdrop-blur py-4 z-10 border-b sm:border-none">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Website Content</h1>
           <p className="text-sm text-muted-foreground">

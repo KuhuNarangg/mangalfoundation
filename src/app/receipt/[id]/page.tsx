@@ -38,6 +38,7 @@ export default async function ReceiptPage({
       ? ([["Transaction ID", d.razorpayPaymentId]] as [string, string][])
       : []),
     ...(d.pan ? ([["PAN", String(d.pan).toUpperCase()]] as [string, string][]) : []),
+    ...(d.gst ? ([["GST", String(d.gst).toUpperCase()]] as [string, string][]) : []),
   ];
 
   return (

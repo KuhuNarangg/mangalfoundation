@@ -1,0 +1,750 @@
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/bin/next
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/bin/next
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/require-hook.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/require-hook.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/commander/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/commander/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/output/log.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/output/log.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/picocolors.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/picocolors.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/lru-cache.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/lru-cache.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/semver/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/semver/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/format-cli-help-output.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/format-cli-help-output.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/constants.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/constants.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/cli/next-test.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/cli/next-test.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/get-project-dir.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/get-project-dir.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/detect-typo.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/detect-typo.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/realpath.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/realpath.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/find-up/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/find-up/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/p-limit/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/p-limit/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/ci-info.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/ci-info.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/ci-info/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/ci-info/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/constants.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/constants.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/@swc/helpers/cjs/_interop_require_default.cjs
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/@swc/helpers/cjs/_interop_require_default.cjs
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/modern-browserslist-target.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/modern-browserslist-target.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/entry-constants.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/entry-constants.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config-shared.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config-shared.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/image-config.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/image-config.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/canary-only-config-error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/canary-only-config-error.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/size-limit.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/size-limit.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/@next/env/dist/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/@next/env/dist/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/flush-telemetry.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/flush-telemetry.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/shared.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/shared.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/find-root.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/find-root.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/setup-http-agent-env.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/setup-http-agent-env.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/path-has-prefix.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/path-has-prefix.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-path.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-path.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/match-remote-pattern.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/match-remote-pattern.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/picomatch/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/picomatch/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/next-config-ts/transpile-config.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/next-config-ts/transpile-config.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/comment-json/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/comment-json/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/next-config-ts/require-hook.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/next-config-ts/require-hook.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/dset.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/dset.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/zod.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/zod.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/zod/index.cjs
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/zod/index.cjs
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/zod-validation-error/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/zod-validation-error/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/is-bot.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/is-bot.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/html-bots.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/html-bots.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/find-pages-dir.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/find-pages-dir.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/interop-default.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/interop-default.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/hash.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/hash.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/hard-deprecated-config-error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/hard-deprecated-config-error.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/mcp/tools/next-instance-error-state.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/mcp/tools/next-instance-error-state.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/bundler.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/bundler.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/has-necessary-dependencies.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/has-necessary-dependencies.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/resolve-from.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/resolve-from.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-error.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/is-plain-object.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/is-plain-object.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/install-dependencies.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/install-dependencies.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/helpers/get-pkg-manager.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/helpers/get-pkg-manager.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/helpers/install.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/helpers/install.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/cross-spawn/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/cross-spawn/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/helpers/get-online.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/helpers/get-online.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/verify-typescript-setup.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/verify-typescript-setup.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/compile-error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/compile-error.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/getTypeScriptIntent.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/getTypeScriptIntent.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/recursive-readdir.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/recursive-readdir.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/writeAppTypeDeclarations.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/writeAppTypeDeclarations.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/writeConfigurationDefaults.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/writeConfigurationDefaults.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/type-paths.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/type-paths.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/missingDependencyError.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/typescript/missingDependencyError.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/oxford-comma-list.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/oxford-comma-list.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/fatal-error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/fatal-error.js
+readFileSync called with path: file:///Users/kuhunarang/Desktop/mangal/node_modules/next/dist/cli/next-build.js
+readSync called with fd: 14
+readSync FINISHED for fd: 14
+readFileSync FINISHED for: file:///Users/kuhunarang/Desktop/mangal/node_modules/next/dist/cli/next-build.js
+readFileSync called with path: file:///Users/kuhunarang/Desktop/mangal/node_modules/next/dist/cli/next-build.js
+readFileSync FINISHED for: file:///Users/kuhunarang/Desktop/mangal/node_modules/next/dist/cli/next-build.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/cpu-profile.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/cpu-profile.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/setup-exception-listeners.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/setup-exception-listeners.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/worker.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/worker.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/jest-worker/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/jest-worker/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/devalue/devalue.umd.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/devalue/devalue.umd.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/nanoid/index.cjs
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/nanoid/index.cjs
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/file-exists.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/file-exists.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/load-custom-routes.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/load-custom-routes.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/escape-regexp.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/escape-regexp.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/try-to-parse-path.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/try-to-parse-path.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/path-to-regexp/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/path-to-regexp/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/route-pattern-normalizer.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/route-pattern-normalizer.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/redirect-status.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/redirect-status.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/redirect-status-code.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/redirect-status-code.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/url.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/url.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/app-router-headers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/app-router-headers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/non-nullable.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/non-nullable.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/recursive-delete.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/recursive-delete.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/wait.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/wait.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/verify-partytown-setup.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/verify-partytown-setup.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/sorted-routes.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/sorted-routes.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/is-dynamic.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/is-dynamic.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/interception-routes.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/interception-routes.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/app-paths.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/app-paths.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/ensure-leading-slash.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/ensure-leading-slash.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/segment.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/segment.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/normalize-page-path.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/normalize-page-path.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/require.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/require.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/i18n/normalize-locale-path.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/i18n/normalize-locale-path.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/denormalize-page-path.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/denormalize-page-path.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/normalize-path-sep.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/normalize-path-sep.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/load-manifest.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/load-manifest.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/deep-freeze.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/deep-freeze.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/helpers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/helpers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/env.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/env.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/tcp.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/tcp.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/result.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turborepo-access-trace/result.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/version.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/version.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/build.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/build.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/error-telemetry-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/error-telemetry-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/plugins.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/plugins.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/storage.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/storage.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/conf/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/conf/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/is-docker/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/is-docker/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/anonymous-meta.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/anonymous-meta.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/is-wsl/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/is-wsl/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/post-telemetry-payload.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/post-telemetry-payload.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/async-retry/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/async-retry/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/project-id.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/project-id.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/ponyfill/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/ponyfill/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/load.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/load.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/console.js.text.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/console.js.text.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/timers.js.text.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/timers.js.text.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/events.js.text.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/events.js.text.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/stream.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/stream.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/abort-controller.js.text.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/abort-controller.js.text.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/url.js.text.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/primitives/url.js.text.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/route-discovery.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/route-discovery.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/find-page-file.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/find-page-file.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/get-page-paths.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/page-path/get-page-paths.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/isomorphic/path.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/isomorphic/path.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/metadata/is-metadata-route.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/metadata/is-metadata-route.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-app-route-route.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-app-route-route.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/page-types.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/page-types.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/file-classifier.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/file-classifier.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/metadata/get-metadata-route.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/metadata/get-metadata-route.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/server-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/server-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/path-match.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/path-match.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/route-regex.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/route-regex.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/remove-trailing-slash.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/remove-trailing-slash.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/get-dynamic-param.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/get-dynamic-param.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/invariant-error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/invariant-error.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-loader-tree.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-loader-tree.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/routes/app.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/routes/app.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/get-segment-param.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/get-segment-param.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/resolve-param-value.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/resolve-param-value.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/interception-prefix-from-param-type.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/interception-prefix-from-param-type.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/route-matcher.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/route-matcher.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/route-match-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/route-match-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/prepare-destination.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/prepare-destination.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-url.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-url.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/querystring.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/querystring.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-relative-url.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/parse-relative-url.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/api-utils/get-cookie-parser.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/api-utils/get-cookie-parser.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/decode-query-path-parameter.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/decode-query-path-parameter.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/format-url.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/format-url.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/analysis/get-page-static-info.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/analysis/get-page-static-info.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/analysis/extract-const-value.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/analysis/extract-const-value.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/analysis/parse-module.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/analysis/parse-module.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/with-promise-cache.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/with-promise-cache.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/swc/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/swc/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@napi-rs/triples/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@napi-rs/triples/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/define-env.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/define-env.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/needs-experimental-react.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/needs-experimental-react.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/experimental/ppr.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/experimental/ppr.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/static-env.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/static-env.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/swc/loaderWorkerPool.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/swc/loaderWorkerPool.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-api-route.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-api-route.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-edge-runtime.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-edge-runtime.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/app/app-segment-config.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/app/app-segment-config.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/pages/pages-segment-config.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/pages/pages-segment-config.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/middleware/middleware-config.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/middleware/middleware-config.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-polyfill-crypto.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-polyfill-crypto.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-baseline.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-baseline.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/error-inspect.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/error-inspect.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/patch-error-inspect.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/patch-error-inspect.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/source-map/source-map.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/source-map/source-map.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/source-maps.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/source-maps.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/parse-stack.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/parse-stack.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/stacktrace-parser/stack-trace-parser.cjs.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/stacktrace-parser/stack-trace-parser.cjs.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-unit-async-storage.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-unit-async-storage.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-unit-async-storage-instance.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-unit-async-storage-instance.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/async-local-storage.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/async-local-storage.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/staged-rendering.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/staged-rendering.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/promise-with-resolvers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/promise-with-resolvers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/console-file.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/console-file.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/console-async-storage.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/console-async-storage.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/console-async-storage-instance.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/console-async-storage-instance.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/dev/browser-logs/file-logger.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/dev/browser-logs/file-logger.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/lib/console.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/lib/console.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/console-exit.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/console-exit.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/console-dim.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/console-dim.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/runtime-reacts.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/runtime-reacts.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/unhandled-rejection.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/unhandled-rejection.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/random.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/random.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/io-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/io-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-async-storage.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-async-storage.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-async-storage-instance.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/work-async-storage-instance.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/dynamic-rendering.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/dynamic-rendering.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/react/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/react/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/react/cjs/react.production.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/react/cjs/react.production.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/hooks-server-context.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/hooks-server-context.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/static-generation-bailout.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/client/components/static-generation-bailout.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/dynamic-rendering-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/dynamic-rendering-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/framework/boundary-constants.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/framework/boundary-constants.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/scheduler.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/scheduler.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/lazy-dynamic/bailout-to-csr.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/lazy-dynamic/bailout-to-csr.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/instant-validation/boundary-constants.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/instant-validation/boundary-constants.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/date.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/date.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/web-crypto.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/web-crypto.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/node-crypto.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/node-crypto.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/fast-set-immediate.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/node-environment-extensions/fast-set-immediate.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/text-table/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/text-table/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/react-is/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/react-is/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/react-is/cjs/react-is.production.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/react-is/cjs/react-is.production.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/strip-ansi/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/strip-ansi/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/load-components.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/load-components.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/trace/tracer.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/trace/tracer.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/trace/constants.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/trace/constants.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/is-thenable.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/is-thenable.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@opentelemetry/api/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@opentelemetry/api/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/manifests-singleton.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/manifests-singleton.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/remove-path-prefix.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/remove-path-prefix.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/trace.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/trace.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/to-telemetry.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/to-telemetry.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/to-json.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/to-json.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/to-json-build.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/report/to-json-build.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/async-sema/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/async-sema/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/sandbox.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/sandbox.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/context.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/context.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/edge-runtime/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/edge-runtime/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/pick.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/pick.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/fetch-inline-assets.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/fetch-inline-assets.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/body-streams.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/body-streams.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/bytes/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/bytes/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/resource-managers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/sandbox/resource-managers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/builtin-request-context.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/builtin-request-context.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/router-utils/router-server-context.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/router-utils/router-server-context.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/route-kind.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/route-kind.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/app/app-segments.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/app/app-segments.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/route-modules/checks.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/route-modules/checks.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/client-and-server-references.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/client-and-server-references.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/server-reference-info.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/server-reference-info.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/app-dir-module.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/app-dir-module.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/export/helpers/create-incremental-cache.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/export/helpers/create-incremental-cache.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/response-cache/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/response-cache/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/batcher.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/batcher.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/detached-promise.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/detached-promise.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/response-cache/utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/response-cache/utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/response-cache/types.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/response-cache/types.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/render-result.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/render-result.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/stream-utils/node-web-streams-helper.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/stream-utils/node-web-streams-helper.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/stream-utils/encoded-tags.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/stream-utils/encoded-tags.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/stream-utils/uint8array-helpers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/stream-utils/uint8array-helpers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/constants.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/constants.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/cache-busting-search-param.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/cache-busting-search-param.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/pipe-readable.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/pipe-readable.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/spec-extension/adapters/next-request.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/spec-extension/adapters/next-request.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/request-meta.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/request-meta.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/spec-extension/request.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/spec-extension/request.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/next-url.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/next-url.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/i18n/detect-domain-locale.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/i18n/detect-domain-locale.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/format-next-pathname-info.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/format-next-pathname-info.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/add-path-prefix.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/add-path-prefix.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/add-path-suffix.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/add-path-suffix.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/add-locale.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/add-locale.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/get-hostname.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/get-hostname.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/get-next-pathname-info.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/get-next-pathname-info.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/error.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/spec-extension/cookies.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/spec-extension/cookies.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/cookies/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/@edge-runtime/cookies/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/base-http/helpers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/base-http/helpers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/client-component-renderer-logger.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/client-component-renderer-logger.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/file-system-cache.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/file-system-cache.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/tags-manifest.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/tags-manifest.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/multi-file-writer.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/multi-file-writer.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/memory-cache.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/memory-cache.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/to-route.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/to-route.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/shared-cache-controls.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/incremental-cache/shared-cache-controls.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/node-fs-methods.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/node-fs-methods.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/format-dynamic-import-path.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/format-dynamic-import-path.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/use-cache/handlers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/use-cache/handlers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/cache-handlers/default.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/cache-handlers/default.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/app/collect-root-param-keys.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/segment-config/app/collect-root-param-keys.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/app.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/app.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/run-with-after.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/run-with-after.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/web-on-close.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/web/web-on-close.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/awaiter.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/awaiter.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/async-storage/work-store.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/async-storage/work-store.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/after-context.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/after/after-context.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/p-queue/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/p-queue/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/revalidation-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/revalidation-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/after-task-async-storage.external.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/after-task-async-storage.external.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/after-task-async-storage-instance.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/after-task-async-storage-instance.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/lazy-result.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/lazy-result.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/fallback.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/fallback.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/app/extract-pathname-route-param-segments-from-loader-tree.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/app/extract-pathname-route-param-segments-from-loader-tree.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/escape-path-delimiters.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/router/utils/escape-path-delimiters.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/empty-generate-static-params-error.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/errors/empty-generate-static-params-error.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/implicit-tags.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/implicit-tags.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/encode-cache-tag.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/encode-cache-tag.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/pages.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/static-paths/pages.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/output/format.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/output/format.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/get-supported-browsers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/get-supported-browsers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/browserslist/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/browserslist/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/baseline-browser-mapping/dist/index.cjs
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/baseline-browser-mapping/dist/index.cjs
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/agents.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/agents.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/browsers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/browsers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/browsers.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/browsers.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/browserVersions.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/browserVersions.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/browserVersions.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/browserVersions.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/agents.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/agents.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/feature.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/feature.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/lib/statuses.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/lib/statuses.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/lib/supported.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/lib/supported.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/versionGroups.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/versionGroups.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/versionGroups.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/data/versionGroups.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/region.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/caniuse-lite/dist/unpacker/region.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/sort-by-page-exts.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/sort-by-page-exts.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/get-static-info-including-layouts.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/get-static-info-including-layouts.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-app-page-route.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/is-app-page-route.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/generate-build-id.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/generate-build-id.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/is-writeable.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/is-writeable.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/spinner.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/spinner.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/ora/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/ora/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/route-bundle-stats.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/route-bundle-stats.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/write-build-id.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/write-build-id.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/recursive-copy.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/recursive-copy.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/swc/install-bindings.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/swc/install-bindings.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/get-files-in-dir.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/get-files-in-dir.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/swc-plugins.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/telemetry/events/swc-plugins.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/webpack-build/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/webpack-build/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/build-context.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/build-context.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/debug/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/debug/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/webpack/plugins/telemetry-plugin/use-cache-tracker-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/webpack/plugins/telemetry-plugin/use-cache-tracker-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/duration-to-string.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/duration-to-string.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/create-client-router-filter.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/create-client-router-filter.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/bloom-filter.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/shared/lib/bloom-filter.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/type-check.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/type-check.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/generate-interception-routes-rewrites.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/generate-interception-routes-rewrites.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/router-utils/build-data-route.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/router-utils/build-data-route.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/manifests/formatter/format-manifest.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/manifests/formatter/format-manifest.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/diagnostics/build-diagnostics.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/diagnostics/build-diagnostics.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/app-info-log.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/lib/app-info-log.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config-schema.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/config-schema.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/export/utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/export/utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/memory/trace.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/memory/trace.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/encryption-utils-server.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/encryption-utils-server.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/cache-dir.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/cache-dir.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/encryption-utils.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/server/app-render/encryption-utils.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/upload-trace.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/trace/upload-trace.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/rendering-mode.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/rendering-mode.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turbopack-build/index.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/turbopack-build/index.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/inline-static-env.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/lib/inline-static-env.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/glob/glob.js
+readFileSync FINISHED for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/compiled/glob/glob.js
+readFileSync called with path: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/after-production-compile.js
+readFileSync ERROR for: /Users/kuhunarang/Desktop/mangal/node_modules/next/dist/build/after-production-compile.js - Unknown system error -70: Unknown system error -70, read
