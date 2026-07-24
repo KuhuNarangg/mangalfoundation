@@ -149,7 +149,7 @@ export default function MembersPage() {
                 <Label htmlFor="name">Full Name *</Label>
                 <Input id="name" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone *</Label>
                   <Input id="phone" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
@@ -159,7 +159,7 @@ export default function MembersPage() {
                   <Input id="email" type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="designation">Designation</Label>
                   <Input id="designation" required value={formData.designation} onChange={e => setFormData({...formData, designation: e.target.value})} />

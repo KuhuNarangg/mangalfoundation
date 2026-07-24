@@ -347,7 +347,7 @@ export function DonateCategories() {
                   </div>
                 )}
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Email</Label>
                     <Input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="rounded-none border-gray-300" />
@@ -358,7 +358,7 @@ export function DonateCategories() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>PAN (Optional)</Label>
                     <Input value={formData.pan} onChange={e => setFormData({...formData, pan: e.target.value.toUpperCase()})} className="rounded-none border-gray-300" placeholder="ABCDE1234F" />

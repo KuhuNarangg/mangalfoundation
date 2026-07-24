@@ -231,31 +231,31 @@ export default function VolunteersPage() {
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-3">
-        <Input placeholder="Search name, email, phone, city..." className="max-w-xs" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+        <Input placeholder="Search name, email, phone, city..." className="w-full sm:max-w-xs" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
         <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v || "all")}>
-          <SelectTrigger className="w-[150px]"><SelectValue placeholder="Status" /></SelectTrigger>
+          <SelectTrigger className="w-full sm:w-[150px]"><SelectValue placeholder="Status" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Statuses</SelectItem>
             {VOLUNTEER_STATUSES.map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
           </SelectContent>
         </Select>
         <Select value={areaFilter} onValueChange={(v) => setAreaFilter(v || "all")}>
-          <SelectTrigger className="w-[180px]"><SelectValue placeholder="Area" /></SelectTrigger>
+          <SelectTrigger className="w-full sm:w-[180px]"><SelectValue placeholder="Area" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Areas</SelectItem>
             {VOLUNTEER_AREAS.map((a) => <SelectItem key={a} value={a}>{a}</SelectItem>)}
           </SelectContent>
         </Select>
         <Select value={availFilter} onValueChange={(v) => setAvailFilter(v || "all")}>
-          <SelectTrigger className="w-[150px]"><SelectValue placeholder="Availability" /></SelectTrigger>
+          <SelectTrigger className="w-full sm:w-[150px]"><SelectValue placeholder="Availability" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Availability</SelectItem>
             {AVAILABILITY_OPTIONS.map((a) => <SelectItem key={a} value={a}>{a}</SelectItem>)}
           </SelectContent>
         </Select>
         <Select value={sort} onValueChange={(v) => setSort(v || "newest")}>
-          <SelectTrigger className="w-[150px]">
+          <SelectTrigger className="w-full sm:w-[150px]">
             <SelectValue>
               {(v: any) => {
                 const m: Record<string, string> = { newest: "Newest First", oldest: "Oldest First", name: "Name (A-Z)", status: "Status" };
