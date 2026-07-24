@@ -56,9 +56,9 @@ export const DEFAULT_CONTENT: SiteContentData = {
     heading: "Let's Talk.",
     description:
       "Have questions or want to collaborate? We would love to hear from you. Send us a message and become part of our journey.",
-    email: "hello@mangalgurujifoundation.org",
-    phone: "",
-    address: "",
+    email: "mangaljifoundation@gmail.com",
+    phone: "+91 8340110200, +91 9303362919",
+    address: "Mangal Guruji Foundation",
   },
   socials: { facebook: "", instagram: "", twitter: "" },
   footer: {

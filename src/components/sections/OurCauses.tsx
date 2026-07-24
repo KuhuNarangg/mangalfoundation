@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useContent } from "@/components/ContentProvider";
 
 const causes = [
@@ -63,23 +64,25 @@ export function OurCauses() {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="group bg-beige-light rounded-lg overflow-hidden shadow-sm border border-sand hover:shadow-md transition-all duration-300 flex flex-col"
             >
-              <div className="relative w-full aspect-video overflow-hidden bg-sand">
-                <Image
-                  src={cause.image}
-                  alt={cause.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="p-5 flex-grow">
-                <h3 className="font-heading text-xl mb-2 text-charcoal">
-                  {cause.title}
-                </h3>
-                <p className="text-charcoal-light font-light leading-snug text-xs md:text-sm">
-                  {cause.description}
-                </p>
-              </div>
+              <Link href="/donate" className="flex flex-col h-full cursor-pointer">
+                <div className="relative w-full aspect-video overflow-hidden bg-sand">
+                  <Image
+                    src={cause.image}
+                    alt={cause.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${cause.title === "Women & Elderly" ? "object-top" : ""}`}
+                  />
+                </div>
+                <div className="p-5 flex-grow">
+                  <h3 className="font-heading text-xl mb-2 text-charcoal">
+                    {cause.title}
+                  </h3>
+                  <p className="text-charcoal-light font-light leading-snug text-xs md:text-sm">
+                    {cause.description}
+                  </p>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

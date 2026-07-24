@@ -20,7 +20,15 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    const { currentPassword, newPassword } = parsed.data;
+    const { currentPassword, newPassword, adminCode } = parsed.data;
+
+    const expectedCode = process.env.ADMIN_SECRET_CODE;
+    if (!expectedCode || adminCode !== expectedCode) {
+      return NextResponse.json(
+        { error: "Invalid admin code" },
+        { status: 403 }
+      );
+    }
 
     await connectToDatabase();
     const admin = await Admin.findById(session.id);

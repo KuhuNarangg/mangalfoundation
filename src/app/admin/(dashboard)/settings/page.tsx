@@ -28,7 +28,7 @@ const EMPTY_ADMIN = { username: "", password: "", name: "", email: "", role: "ad
 export default function SettingsPage() {
   const [me, setMe] = useState<any>(null);
   const [admins, setAdmins] = useState<any[]>([]);
-  const [pw, setPw] = useState({ currentPassword: "", newPassword: "" });
+  const [pw, setPw] = useState({ currentPassword: "", newPassword: "", adminCode: "" });
   const [newAdmin, setNewAdmin] = useState({ ...EMPTY_ADMIN });
   const [busy, setBusy] = useState(false);
 
@@ -59,7 +59,7 @@ export default function SettingsPage() {
       const json = await res.json();
       if (res.ok) {
         toast.success("Password updated");
-        setPw({ currentPassword: "", newPassword: "" });
+        setPw({ currentPassword: "", newPassword: "", adminCode: "" });
       } else {
         toast.error(json.error || "Failed to update password");
       }
@@ -146,6 +146,16 @@ export default function SettingsPage() {
                 minLength={8}
                 value={pw.newPassword}
                 onChange={(e) => setPw({ ...pw, newPassword: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Admin Secret Code</Label>
+              <Input
+                type="password"
+                required
+                value={pw.adminCode}
+                onChange={(e) => setPw({ ...pw, adminCode: e.target.value })}
+                placeholder="Required for sensitive actions"
               />
             </div>
             <Button type="submit" disabled={busy}>Change Password</Button>

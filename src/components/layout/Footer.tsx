@@ -82,9 +82,15 @@ export function Footer() {
               </li>
             )}
             {content.contact.phone && (
-              <li className="flex items-center">
-                <Phone size={18} className="text-gray-400 mr-3 flex-shrink-0" />
-                <a href={`tel:${content.contact.phone.replace(/\s/g, "")}`} className="text-gray-400 text-sm hover:text-white transition-colors">{content.contact.phone}</a>
+              <li className="flex items-start">
+                <Phone size={18} className="text-gray-400 mr-3 mt-0.5 flex-shrink-0" />
+                <div className="flex flex-col space-y-1">
+                  {content.contact.phone.split(',').map((p, i) => (
+                    <a key={i} href={`tel:${p.replace(/\s/g, "")}`} className="text-gray-400 text-sm hover:text-white transition-colors">
+                      {p.trim()}
+                    </a>
+                  ))}
+                </div>
               </li>
             )}
             <li className="flex items-center">
@@ -100,8 +106,8 @@ export function Footer() {
           © {new Date().getFullYear()} Mangal Guruji Foundation. All rights reserved.
         </p>
         <div className="flex space-x-6 text-sm text-gray-500">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
         </div>
       </div>
     </footer>

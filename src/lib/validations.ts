@@ -92,6 +92,7 @@ export const adminUpdateSchema = z.object({
 export const passwordChangeSchema = z.object({
   currentPassword: z.string().min(1, "Current password is required"),
   newPassword: z.string().min(8, "Password must be at least 8 characters").max(200),
+  adminCode: z.string().min(1, "Admin code is required"),
 });
 
 /** Admin: manually record an offline donation. */

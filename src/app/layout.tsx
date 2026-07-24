@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 import { FloatingDonate } from "@/components/FloatingDonate";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { ContentProvider } from "@/components/ContentProvider";
 
 const inter = Inter({
@@ -78,6 +79,7 @@ export default function RootLayout({
           <ContentProvider>{children}</ContentProvider>
         </Providers>
         <FloatingDonate />
+        <FloatingWhatsApp />
         <Toaster richColors position="top-center" />
       </body>
     </html>
