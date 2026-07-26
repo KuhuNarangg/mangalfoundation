@@ -4,8 +4,9 @@ import User from "@/models/User";
 import Attendance from "@/models/Attendance";
 import Task from "@/models/Task";
 import Event from "@/models/Event";
+import Notification from "@/models/Notification";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, Calendar, CheckSquare, Award } from "lucide-react";
+import { Clock, Calendar, CheckSquare, Award, User as UserIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -33,7 +34,6 @@ export default async function MemberDashboard() {
   const upcomingEvents = await Event.countDocuments({ date: { $gte: new Date() } });
 
   // Fetch announcements
-  const Notification = (await import("@/models/Notification")).default;
   const announcements = await Notification.find({
     $or: [
       { isGlobal: true },
@@ -149,7 +149,7 @@ export default async function MemberDashboard() {
           <CardContent className="space-y-4">
             <Link href="/member/profile" className="flex items-center p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
               <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                <User className="h-4 w-4 text-blue-600" />
+                <UserIcon className="h-4 w-4 text-blue-600" />
               </div>
               <div>
                 <div className="font-medium">Complete Your Profile</div>
