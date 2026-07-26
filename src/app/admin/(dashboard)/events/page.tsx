@@ -107,8 +107,8 @@ export default function EventsPage() {
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button><Plus className="mr-2 h-4 w-4" /> Create Event</Button>
+          <DialogTrigger render={<Button />}>
+            <Plus className="mr-2 h-4 w-4" /> Create Event
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
