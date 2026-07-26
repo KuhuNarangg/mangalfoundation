@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { uploadFiles } from "@/lib/upload-client";
@@ -122,7 +122,8 @@ export default function GalleryAdminPage() {
               {it.resourceType === "video" ? (
                 <video src={it.url} className="w-full h-full object-cover" muted />
               ) : (
-                <Image src={it.url} alt={it.title || "Gallery"} fill sizes="300px" className="object-cover" />
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={it.url} alt={it.title || "Gallery"} className="w-full h-full object-cover" />
               )}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                 <Button variant="destructive" size="icon" onClick={() => remove(it._id)}>
