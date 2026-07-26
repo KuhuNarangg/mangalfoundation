@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { DonateButton } from "@/components/DonateButton";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const { scrollY } = useScroll();
+
+  useEffect(() => {
+    fetch("/api/public/auth/me")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.user) setUser(data.user);
+      })
+      .catch(() => {});
+  }, []);
 
   // Change background and text color based on scroll position
   const backgroundColor = useTransform(
@@ -83,6 +93,15 @@ export function Navbar() {
                 </Link>
               </motion.div>
             ))}
+            <motion.div style={{ color: textColor }}>
+              <Link
+                href="/login"
+                className="text-sm font-medium hover:opacity-70 transition-opacity flex items-center gap-1 border border-current px-4 py-1.5 rounded-full"
+              >
+                <User size={16} />
+                Login
+              </Link>
+            </motion.div>
             <div className="flex items-center gap-3">
               <motion.div style={{ color: textColor }}>
                 <Link
@@ -134,6 +153,14 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <Link
+              href="/login"
+              className="block px-3 py-3 text-base font-bold text-gray-900 hover:bg-gray-50 rounded-md flex items-center gap-2"
+              onClick={() => setIsOpen(false)}
+            >
+              <User size={18} />
+              Login
+            </Link>
             <div className="pt-3 space-y-2" onClick={() => setIsOpen(false)}>
               <Link
                 href="/volunteer#apply"

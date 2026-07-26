@@ -3,7 +3,6 @@ import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import connectToDatabase from "@/lib/mongodb";
 import Admin from "@/models/Admin";
-import Member from "@/models/Member";
 import { signJwtToken } from "@/lib/jwt";
 import { rateLimit } from "@/lib/rate-limit";
 import { getClientIp, getUserAgent } from "@/lib/request-meta";
@@ -38,14 +37,7 @@ export async function POST(req: Request) {
 
     await connectToDatabase();
     
-    let user;
-    if (loginType === "member") {
-      user = await Member.findOne({
-        $or: [{ memberId: username }, { email: username.toLowerCase() }]
-      });
-    } else {
-      user = await Admin.findOne({ username });
-    }
+    let user = await Admin.findOne({ username });
 
     if (!user) {
       await bcrypt.compare(password, DUMMY_HASH);
@@ -59,18 +51,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: `Account locked. Try again in ${secondsLeft}s.` }, { status: 423 });
     }
 
-    if (loginType === "member" && user.status === "Inactive") {
-      return NextResponse.json({ error: "Your account is inactive. Please contact admin." }, { status: 403 });
-    }
-
     const isMatch = await bcrypt.compare(password, user.password);
     
     // Admin code is only required and checked for admins
-    let isCodeMatch = true;
-    if (loginType === "admin") {
-      const expectedCode = process.env.ADMIN_SECURITY_CODE;
-      isCodeMatch = expectedCode ? adminCode === expectedCode : true;
-    }
+    const expectedCode = process.env.ADMIN_SECURITY_CODE;
+    const isCodeMatch = expectedCode ? adminCode === expectedCode : true;
 
     if (!isMatch || !isCodeMatch) {
       user.failedLoginAttempts = (user.failedLoginAttempts || 0) + 1;
@@ -105,8 +90,8 @@ export async function POST(req: Request) {
     await user.save();
 
     // Standardize role to ensure members have 'member'
-    const tokenRole = loginType === "member" ? "member" : (user.role || "admin");
-    const token = await signJwtToken({ id: user._id, username: loginType === "member" ? user.memberId : user.username, role: tokenRole }, { exp: "24h" });
+    const tokenRole = user.role || "admin";
+    const token = await signJwtToken({ id: user._id, username: user.username, role: tokenRole }, { exp: "24h" });
 
     const cookieStore = await cookies();
     cookieStore.set("admin_token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 60 * 60 * 24, path: "/" });
@@ -119,7 +104,7 @@ export async function POST(req: Request) {
       } catch (e) { console.error("VPN alert email failed:", e); }
     }
 
-    const redirectUrl = loginType === "member" ? "/member" : "/admin";
+    const redirectUrl = "/admin";
     return NextResponse.json({ success: true, message: "Logged in successfully", redirectUrl });
   } catch (error) {
     console.error("Login error:", error);

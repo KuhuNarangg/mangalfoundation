@@ -14,6 +14,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import {
   Utensils,
   GraduationCap,
@@ -209,20 +211,9 @@ export default function VolunteerPage() {
 
       {/* Application form */}
       <section id="apply" className="py-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {done ? (
-          <div className="bg-white border border-emerald-200 rounded-2xl p-10 text-center shadow-sm">
-            <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto mb-5" />
-            <h2 className="font-heading text-3xl text-charcoal mb-3">Thank You!</h2>
-            <p className="text-charcoal-light font-light max-w-md mx-auto">
-              Your application has been received. Our team will review it and contact you soon.
-              We're grateful you want to be part of our journey. 🙏
-            </p>
-          </div>
-        ) : (
-          <>
-            <h2 className="font-heading text-3xl md:text-4xl text-charcoal text-center mb-3">Volunteer Application</h2>
-            <p className="text-charcoal-light font-light text-center mb-10">Fill in your details and we'll be in touch.</p>
-            <form onSubmit={submit} className="bg-white border border-sand rounded-2xl p-6 md:p-10 space-y-6 shadow-sm">
+        <h2 className="font-heading text-3xl md:text-4xl text-charcoal text-center mb-3">Volunteer Application</h2>
+        <p className="text-charcoal-light font-light text-center mb-10">Fill in your details and we'll be in touch.</p>
+        <form onSubmit={submit} className="bg-white border border-sand rounded-2xl p-6 md:p-10 space-y-6 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <Req label="Full Name">
                   <Input required value={form.fullName} onChange={(e) => set("fullName", e.target.value)} />
@@ -297,9 +288,42 @@ export default function VolunteerPage() {
                 {submitting ? "Submitting..." : "Submit Application"}
               </button>
             </form>
-          </>
-        )}
       </section>
+
+      {/* Success Dialog */}
+      <Dialog open={done} onOpenChange={(open) => {
+        if (!open) {
+          setDone(false);
+          setForm({ ...EMPTY });
+          setAreas([]);
+          setConsent(false);
+        }
+      }}>
+        <DialogContent className="sm:max-w-md text-center p-8 bg-white border-none shadow-2xl rounded-2xl">
+          <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
+          <DialogHeader>
+            <DialogTitle className="font-heading text-2xl md:text-3xl text-charcoal text-center mb-2">
+              Thank you for applying!
+            </DialogTitle>
+            <DialogDescription className="text-charcoal-light font-light text-base leading-relaxed text-center">
+              Your application has been submitted successfully and is currently under review. If you have any questions, feel free to contact us at <span className="font-medium text-charcoal">mangaljifoundation@gmail.com</span> or <span className="font-medium text-charcoal">+91 8340110200</span>. We will get back to you shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-6 flex justify-center">
+            <Button 
+              onClick={() => {
+                setDone(false);
+                setForm({ ...EMPTY });
+                setAreas([]);
+                setConsent(false);
+              }}
+              className="bg-charcoal text-white rounded-full px-8 hover:bg-black"
+            >
+              Close
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>

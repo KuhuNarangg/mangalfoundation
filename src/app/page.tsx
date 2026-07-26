@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { OurCauses } from "@/components/sections/OurCauses";
+import { EducationSupport } from "@/components/sections/EducationSupport";
 import { Impact } from "@/components/sections/Impact";
 import { Gallery } from "@/components/sections/Gallery";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -19,6 +20,7 @@ export default function Home() {
       <DonationPreview />
       <About />
       <OurCauses />
+      <EducationSupport />
       <Impact />
       <Testimonials />
       <Gallery />

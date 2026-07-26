@@ -8,15 +8,23 @@ import { StatusBadge } from "@/components/admin/StatusBadge";
 import { DonationDetailDialog } from "@/components/admin/DonationDetailDialog";
 import { formatINR } from "@/lib/format";
 import { ReceiptIndianRupee, ChevronRight } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function AdminDashboard() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [selectedDonation, setSelectedDonation] = useState<any>(null);
+  const [recentStatus, setRecentStatus] = useState("all");
 
   const loadData = async () => {
     try {
-      const res = await fetch("/api/admin/dashboard");
+      const res = await fetch(`/api/admin/dashboard?recentStatus=${recentStatus}`);
       const json = await res.json();
       if (json.success) setData(json.data);
     } finally {
@@ -26,7 +34,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [recentStatus]);
 
   if (loading || !data) {
     return (
@@ -102,7 +110,20 @@ export default function AdminDashboard() {
 
       {/* Recent activity */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">Recent Donations</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold">Recent Donations</h2>
+          <Select value={recentStatus} onValueChange={setRecentStatus}>
+            <SelectTrigger className="w-[140px] h-8 text-sm">
+              <SelectValue placeholder="Filter Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Statuses</SelectItem>
+              <SelectItem value="success">Success</SelectItem>
+              <SelectItem value="pending">Pending</SelectItem>
+              <SelectItem value="failed">Failed</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         <Card>
           <CardContent className="p-0">
             {!data.recentDonations || data.recentDonations.length === 0 ? (

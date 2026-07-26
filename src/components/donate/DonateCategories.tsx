@@ -49,18 +49,19 @@ export function DonateCategories() {
   const [success, setSuccess] = useState(false);
   const [donationId, setDonationId] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchCats() {
-      try {
-        const res = await fetch("/api/public/categories");
-        const json = await res.json();
-        if (json.success) setCategories(json.data);
-      } catch (e) {
-        toast.error("Failed to load donation categories");
-      } finally {
-        setLoading(false);
-      }
+  const fetchCats = async () => {
+    try {
+      const res = await fetch("/api/public/categories");
+      const json = await res.json();
+      if (json.success) setCategories(json.data);
+    } catch (e) {
+      toast.error("Failed to load donation categories");
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
     fetchCats();
   }, []);
 
@@ -143,6 +144,7 @@ export function DonateCategories() {
             if (verifyRes.ok) {
               setSuccess(true);
               setFormData({ donorName: "", email: "", phone: "", pan: "", gst: "", isAnonymous: false, message: "" });
+              await fetchCats(); // Instantly update category progress/raised amounts
             } else {
               toast.error(verifyJson.error || "Payment verification failed");
             }

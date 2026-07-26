@@ -12,6 +12,8 @@ import {
   LayoutTemplate,
   Images,
   Mail,
+  Mailbox,
+  Megaphone,
   HeartHandshake,
   ScrollText,
   Settings,
@@ -63,8 +65,10 @@ const groups = [
   {
     label: "Engagement",
     items: [
+      { title: "Campaigns", url: "/admin/campaigns", icon: Megaphone },
+      { title: "Donors", url: "/admin/donors", icon: User },
+      { title: "Members & Volunteers", url: "/admin/team", icon: Users },
       { title: "Volunteer Applications", url: "/admin/volunteers", icon: HeartHandshake },
-      { title: "Members", url: "/admin/members", icon: Users },
       { title: "Contact Enquiries", url: "/admin/messages", icon: Mail },
     ],
   },
@@ -72,6 +76,7 @@ const groups = [
     label: "System",
     items: [
       { title: "Audit Logs", url: "/admin/logs", icon: ScrollText },
+      { title: "Email Logs", url: "/admin/email-logs", icon: Mailbox },
       { title: "Settings", url: "/admin/settings", icon: Settings },
       { title: "Profile", url: "/admin/profile", icon: User },
     ],

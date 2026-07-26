@@ -35,6 +35,7 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const range = searchParams.get("range") || "all";
+    const recentStatus = searchParams.get("recentStatus") || "all";
     const start = rangeStart(range);
     const successMatch: Record<string, unknown> = { paymentStatus: "success" };
     const rangeMatch = start
@@ -86,9 +87,9 @@ export async function GET(req: Request) {
       ]),
       Donation.countDocuments({ paymentStatus: "success", isAnonymous: true }),
       Category.find({ isActive: true }).lean(),
-      Donation.find()
+      Donation.find(recentStatus !== "all" ? { paymentStatus: recentStatus } : {})
         .sort({ createdAt: -1 })
-        .limit(8)
+        .limit(10)
         .populate("categoryId", "title")
         .lean(),
       Donation.aggregate([

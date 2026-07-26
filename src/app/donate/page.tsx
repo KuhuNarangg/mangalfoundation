@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DonateHero } from "@/components/donate/DonateHero";
 import { DonateCategories } from "@/components/donate/DonateCategories";
+import { EducationSupport } from "@/components/sections/EducationSupport";
 import { WhyDonate } from "@/components/donate/WhyDonate";
 import { DonateImpact } from "@/components/donate/DonateImpact";
 import { HowItWorks } from "@/components/donate/HowItWorks";
@@ -20,6 +21,7 @@ export default function DonatePage() {
       <Navbar />
       <DonateHero />
       <DonateCategories />
+      <EducationSupport />
       <WhyDonate />
       <DonateImpact />
       <HowItWorks />

@@ -220,3 +220,235 @@ export const sendVpnLoginAlert = async (
     return false;
   }
 };
+
+export const sendVolunteerAcceptanceEmail = async (volunteer: any): Promise<boolean> => {
+  const transporter = getTransporter();
+  if (!transporter) return false;
+
+  try {
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 32px; border: 1px solid #e5e7eb; border-radius: 8px;">
+        <h1 style="color: #10b981; font-size: 24px; font-weight: bold; margin-bottom: 24px; text-align: center;">
+          Welcome to the Mangal Guruji Foundation!
+        </h1>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          Dear ${volunteer.fullName},
+        </p>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          We are thrilled to inform you that your volunteer application has been <strong>approved</strong>! 
+          Thank you for stepping up to make a difference in our community. Your dedication and willingness to help mean the world to us.
+        </p>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          Our team will be in touch with you shortly regarding your next steps, upcoming orientation, and how you can get started.
+        </p>
+        <div style="background-color: #f9fafb; padding: 24px; border-radius: 8px; margin-bottom: 32px;">
+          <h2 style="color: #1a1a1a; font-size: 18px; font-weight: bold; margin-bottom: 16px; margin-top: 0;">
+            Your Login Credentials
+          </h2>
+          <p style="color: #4a4a4a; font-size: 15px; margin-bottom: 8px;"><strong>Username (Email):</strong> ${volunteer.email}</p>
+          <p style="color: #4a4a4a; font-size: 15px; margin-bottom: 0;"><strong>Password:</strong> ${volunteer.password}</p>
+        </div>
+        <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; text-align: center; margin-bottom: 16px;">
+          Welcome to the family,<br/>
+          <strong>Mangal Guruji Foundation</strong>
+        </p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: fromAddress(),
+      to: volunteer.email,
+      subject: "Welcome! Your Volunteer Application is Approved - Mangal Guruji Foundation",
+      html,
+    });
+    return true;
+  } catch (error) {
+    console.error("Error sending volunteer acceptance email:", error);
+    return false;
+  }
+};
+
+export const sendVolunteerRejectionEmail = async (volunteer: any, customMessage: string = ""): Promise<boolean> => {
+  const transporter = getTransporter();
+  if (!transporter) return false;
+
+  try {
+    const customSection = customMessage ? `<p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px; padding: 16px; background: #f3f4f6; border-left: 4px solid #6b7280;">${customMessage}</p>` : "";
+
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 32px; border: 1px solid #e5e7eb; border-radius: 8px;">
+        <h1 style="color: #4a4a4a; font-size: 24px; font-weight: bold; margin-bottom: 24px; text-align: center;">
+          Update on your Volunteer Application
+        </h1>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          Dear ${volunteer.fullName},
+        </p>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          Thank you so much for your interest in volunteering with the Mangal Guruji Foundation. We truly appreciate the time you took to apply and your willingness to support our cause.
+        </p>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          At this time, we are unable to move forward with your application. Please know that this decision is often based on our current capacity and specific requirements for the roles we have available.
+        </p>
+        ${customSection}
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">
+          We are incredibly grateful for supporters like you, and we encourage you to stay connected with our foundation's future initiatives.
+        </p>
+        <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; text-align: center; margin-bottom: 16px;">
+          With gratitude,<br/>
+          <strong>Mangal Guruji Foundation</strong>
+        </p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: fromAddress(),
+      to: volunteer.email,
+      subject: "Update on your Volunteer Application - Mangal Guruji Foundation",
+      html,
+    });
+    return true;
+  } catch (error) {
+    console.error("Error sending volunteer rejection email:", error);
+    return false;
+  }
+};
+
+export const sendOTPEmail = async (email: string, code: string): Promise<boolean> => {
+  const transporter = getTransporter();
+  if (!transporter) return false;
+
+  try {
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 32px; border: 1px solid #e5e7eb; border-radius: 8px;">
+        <h1 style="color: #4a4a4a; font-size: 24px; font-weight: bold; margin-bottom: 24px; text-align: center;">
+          Login to Mangal Guruji Foundation
+        </h1>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          You requested to sign in. Please use the following One-Time Password (OTP) to complete your login.
+        </p>
+        <div style="text-align: center; margin-bottom: 32px;">
+          <span style="font-size: 32px; font-weight: bold; letter-spacing: 4px; color: #1a1a1a; background: #f3f4f6; padding: 16px 32px; border-radius: 8px; display: inline-block;">
+            ${code}
+          </span>
+        </div>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">
+          This code will expire in 10 minutes. If you did not request this, please ignore this email.
+        </p>
+        <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; text-align: center; margin-bottom: 16px;">
+          <strong>Mangal Guruji Foundation</strong>
+        </p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: fromAddress(),
+      to: email,
+      subject: `${code} is your Mangal Guruji Foundation login code`,
+      html,
+    });
+    return true;
+  } catch (error) {
+    console.error("Error sending OTP email:", error);
+    return false;
+  }
+};
+
+export const sendCampaignEmail = async (
+  email: string,
+  subject: string,
+  message: string,
+  linkUrl?: string,
+  linkText?: string
+): Promise<boolean> => {
+  const transporter = getTransporter();
+  if (!transporter) return false;
+
+  try {
+    const buttonHtml = linkUrl && linkText 
+      ? `
+        <div style="text-align: center; margin: 32px 0;">
+          <a href="${linkUrl}" style="background-color: #f43f5e; color: #ffffff; padding: 14px 28px; border-radius: 9999px; text-decoration: none; font-weight: bold; display: inline-block;">
+            ${linkText}
+          </a>
+        </div>
+        ` 
+      : "";
+
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 32px; border: 1px solid #e5e7eb; border-radius: 8px;">
+        <h1 style="color: #4a4a4a; font-size: 24px; font-weight: bold; margin-bottom: 24px; text-align: center;">
+          ${subject}
+        </h1>
+        <div style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px; white-space: pre-wrap;">
+${message}
+        </div>
+        ${buttonHtml}
+        <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; text-align: center; margin-top: 32px;">
+          Thank you for your continued support.<br/>
+          <strong>Mangal Guruji Foundation</strong>
+        </p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: fromAddress(),
+      to: email,
+      subject: subject,
+      html,
+    });
+    return true;
+  } catch (error) {
+    console.error("Error sending campaign email to", email, ":", error);
+    return false;
+  }
+};
+
+export const sendMemberWelcomeEmail = async (email: string, name: string, password?: string): Promise<boolean> => {
+  const transporter = getTransporter();
+  if (!transporter) return false;
+
+  try {
+    const credentialsHtml = password ? `
+      <div style="background-color: #f9fafb; padding: 24px; border-radius: 8px; margin-bottom: 24px;">
+        <h2 style="color: #1a1a1a; font-size: 18px; font-weight: bold; margin-bottom: 16px; margin-top: 0;">
+          Your Login Credentials
+        </h2>
+        <p style="color: #4a4a4a; font-size: 15px; margin-bottom: 8px;"><strong>Username (Email):</strong> ${email}</p>
+        <p style="color: #4a4a4a; font-size: 15px; margin-bottom: 0;"><strong>Password:</strong> ${password}</p>
+      </div>
+    ` : `
+      <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+        We use a secure, passwordless login system. You can access your Member Dashboard at any time by visiting our website, clicking "Login", and entering your email address to receive a 6-digit access code.
+      </p>
+    `;
+
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 32px; border: 1px solid #e5e7eb; border-radius: 8px;">
+        <h1 style="color: #4a4a4a; font-size: 24px; font-weight: bold; margin-bottom: 24px; text-align: center;">
+          Welcome to the Mangal Guruji Foundation!
+        </h1>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          Dear ${name || "Supporter"},
+        </p>
+        <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
+          Your account has been successfully provisioned. You are now an official Member of the foundation.
+        </p>
+        ${credentialsHtml}
+        <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; text-align: center; margin-bottom: 16px;">
+          <strong>Mangal Guruji Foundation</strong>
+        </p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: fromAddress(),
+      to: email,
+      subject: "Welcome to Mangal Guruji Foundation! Your Account is Ready",
+      html,
+    });
+    return true;
+  } catch (error) {
+    console.error("Error sending member welcome email:", error);
+    return false;
+  }
+};
