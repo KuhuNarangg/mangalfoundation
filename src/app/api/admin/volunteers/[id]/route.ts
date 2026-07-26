@@ -13,12 +13,7 @@ import bcrypt from "bcryptjs";
 
 // Helper to generate a random password
 const generatePassword = () => {
-  const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-  let pass = "";
-  for (let i = 0; i < 12; i++) {
-    pass += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return pass;
+  return Math.floor(10000 + Math.random() * 90000).toString();
 };
 
 export async function PATCH(
