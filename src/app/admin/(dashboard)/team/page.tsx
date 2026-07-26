@@ -108,20 +108,22 @@ export default function TeamPage() {
     }
   };
 
-  const handleResendOTP = async (email: string) => {
+  const handleResetPassword = async (email: string) => {
+    if (!confirm("Are you sure you want to generate a new password and email it to this member?")) return;
     try {
-      const res = await fetch("/api/public/auth/send-otp", {
+      const res = await fetch("/api/admin/users/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+      const data = await res.json();
       if (res.ok) {
-        toast.success("Login instructions (OTP) sent to " + email);
+        toast.success("New password generated and sent to " + email);
       } else {
-        toast.error("Failed to send login instructions");
+        toast.error(data.error || "Failed to reset password");
       }
     } catch {
-      toast.error("Error sending email");
+      toast.error("Error resetting password");
     }
   };
 
@@ -259,7 +261,7 @@ export default function TeamPage() {
                     {formatDate(user.createdAt)}
                   </TableCell>
                   <TableCell className="text-right">
-                    <Button variant="ghost" size="sm" onClick={() => handleResendOTP(user.email)}>
+                    <Button variant="ghost" size="sm" onClick={() => handleResetPassword(user.email)}>
                       Resend Login
                     </Button>
                   </TableCell>
