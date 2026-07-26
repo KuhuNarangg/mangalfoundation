@@ -98,7 +98,7 @@ export function AppSidebar() {
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" });
     toast.success("Logged out");
-    router.push("/admin/login");
+    router.push("/login");
   };
 
   return (

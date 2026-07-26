@@ -12,12 +12,13 @@ import { Heart, Loader2 } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [loginRole, setLoginRole] = useState<"donor" | "member" | "volunteer">("donor");
+  const [loginRole, setLoginRole] = useState<"donor" | "member" | "volunteer" | "admin">("donor");
   const [step, setStep] = useState<"email" | "otp">("email");
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
-  const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [adminCode, setAdminCode] = useState("");
   
   const [loading, setLoading] = useState(false);
   const [cooldown, setCooldown] = useState(0);
@@ -106,22 +107,43 @@ export default function LoginPage() {
       toast.error("Please enter username and password");
       return;
     }
+    if (loginRole === "admin" && !adminCode) {
+      toast.error("Please enter Admin Security Code");
+      return;
+    }
 
     setLoading(true);
     try {
-      const res = await fetch("/api/public/auth/login-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password, loginRole }),
-      });
-      const data = await res.json();
-      
-      if (res.ok) {
-        toast.success("Logged in successfully!");
-        router.push("/dashboard");
-        router.refresh();
+      if (loginRole === "admin") {
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ loginType: "admin", username, password, adminCode }),
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          toast.success("Logged in successfully!");
+          router.push("/admin");
+          router.refresh();
+        } else {
+          toast.error(data.error || "Invalid credentials");
+        }
       } else {
-        toast.error(data.error || "Invalid credentials");
+        const res = await fetch("/api/public/auth/login-password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password, loginRole }),
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          toast.success("Logged in successfully!");
+          router.push("/dashboard");
+          router.refresh();
+        } else {
+          toast.error(data.error || "Invalid credentials");
+        }
       }
     } catch {
       toast.error("Network error. Please try again.");
@@ -142,31 +164,37 @@ export default function LoginPage() {
           
           <div className="relative z-10 text-center mb-8">
             <h1 className="font-heading text-3xl text-charcoal mb-2">
-              {loginRole === "member" ? "Member Portal" : loginRole === "volunteer" ? "Volunteer Portal" : "Donor Login"}
+              {loginRole === "member" ? "Member Portal" : loginRole === "volunteer" ? "Volunteer Portal" : loginRole === "admin" ? "Admin Portal" : "Donor Login"}
             </h1>
             <p className="text-charcoal-light font-light text-sm">
-              Sign in with your email to view your {loginRole === "donor" ? "donation history" : "dashboard"} and manage your account. No password required.
+              Sign in to view your {loginRole === "donor" ? "donation history" : "dashboard"} and manage your account.
             </p>
           </div>
 
-          <div className="relative z-10 flex p-1 bg-beige-light rounded-xl mb-8">
+          <div className="relative z-10 flex p-1 bg-beige-light rounded-xl mb-8 flex-wrap">
             <button
               onClick={() => setLoginRole("donor")}
-              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${loginRole === "donor" ? "bg-white text-charcoal shadow-sm" : "text-charcoal-light hover:text-charcoal"}`}
+              className={`flex-1 min-w-[70px] py-2 text-sm font-bold rounded-lg transition-all ${loginRole === "donor" ? "bg-white text-charcoal shadow-sm" : "text-charcoal-light hover:text-charcoal"}`}
             >
               Donor
             </button>
             <button
               onClick={() => setLoginRole("member")}
-              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${loginRole === "member" ? "bg-white text-charcoal shadow-sm" : "text-charcoal-light hover:text-charcoal"}`}
+              className={`flex-1 min-w-[70px] py-2 text-sm font-bold rounded-lg transition-all ${loginRole === "member" ? "bg-white text-charcoal shadow-sm" : "text-charcoal-light hover:text-charcoal"}`}
             >
               Member
             </button>
             <button
               onClick={() => setLoginRole("volunteer")}
-              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${loginRole === "volunteer" ? "bg-white text-charcoal shadow-sm" : "text-charcoal-light hover:text-charcoal"}`}
+              className={`flex-1 min-w-[70px] py-2 text-sm font-bold rounded-lg transition-all ${loginRole === "volunteer" ? "bg-white text-charcoal shadow-sm" : "text-charcoal-light hover:text-charcoal"}`}
             >
               Volunteer
+            </button>
+            <button
+              onClick={() => setLoginRole("admin")}
+              className={`flex-1 min-w-[70px] py-2 text-sm font-bold rounded-lg transition-all ${loginRole === "admin" ? "bg-white text-charcoal shadow-sm" : "text-charcoal-light hover:text-charcoal"}`}
+            >
+              Admin
             </button>
           </div>
 
@@ -249,14 +277,14 @@ export default function LoginPage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="username" className="text-charcoal-light uppercase text-xs font-bold tracking-widest">
-                    Email or Member ID
+                    {loginRole === "admin" ? "Admin Username" : "Email or Member ID"}
                   </Label>
                   <Input
                     id="username"
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Enter email or Member ID"
+                    placeholder={loginRole === "admin" ? "admin" : "Enter email or Member ID"}
                     required
                     className="py-6 bg-beige-light/50 border-sand text-charcoal focus:ring-rose-500 focus:border-rose-500"
                   />
@@ -275,6 +303,22 @@ export default function LoginPage() {
                     className="py-6 bg-beige-light/50 border-sand text-charcoal focus:ring-rose-500 focus:border-rose-500"
                   />
                 </div>
+                {loginRole === "admin" && (
+                  <div className="space-y-2">
+                    <Label htmlFor="adminCode" className="text-charcoal-light uppercase text-xs font-bold tracking-widest">
+                      Admin Security Code
+                    </Label>
+                    <Input
+                      id="adminCode"
+                      type="password"
+                      value={adminCode}
+                      onChange={(e) => setAdminCode(e.target.value)}
+                      placeholder="Required for access"
+                      required
+                      className="py-6 bg-beige-light/50 border-sand text-charcoal focus:ring-rose-500 focus:border-rose-500"
+                    />
+                  </div>
+                )}
               </div>
               <Button
                 type="submit"
