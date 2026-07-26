@@ -100,8 +100,8 @@ export default function NotificationsPage() {
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button><Plus className="mr-2 h-4 w-4" /> New Announcement</Button>
+          <DialogTrigger render={<Button />}>
+            <Plus className="mr-2 h-4 w-4" /> New Announcement
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
