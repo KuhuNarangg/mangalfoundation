@@ -91,7 +91,7 @@ export async function POST(req: Request) {
 
     // Standardize role to ensure members have 'member'
     const tokenRole = user.role || "admin";
-    const token = await signJwtToken({ id: user._id, username: user.username, role: tokenRole }, { exp: "24h" });
+    const token = await signJwtToken({ id: user._id.toString(), username: user.username, role: tokenRole }, { exp: "24h" });
 
     const cookieStore = await cookies();
     cookieStore.set("admin_token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 60 * 60 * 24, path: "/" });

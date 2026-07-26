@@ -21,8 +21,11 @@ export async function getAdminSession(): Promise<AdminSession | null> {
   const payload = await verifyJwtToken(token);
   if (!payload || !payload.id) return null;
 
+  const idStr = String(payload.id);
+  if (!idStr || idStr === "[object Object]") return null;
+
   return {
-    id: String(payload.id),
+    id: idStr,
     username: String(payload.username ?? ""),
     role: (payload.role as AdminRole) ?? "admin",
   };

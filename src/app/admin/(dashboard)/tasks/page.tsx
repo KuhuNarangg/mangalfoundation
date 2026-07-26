@@ -140,7 +140,13 @@ export default function TasksPage() {
               <div className="space-y-2">
                 <Label>Assign To</Label>
                 <Select value={formData.assignedTo} onValueChange={v => setFormData({...formData, assignedTo: v as string})} required>
-                  <SelectTrigger><SelectValue placeholder="Select member/volunteer" /></SelectTrigger>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select member/volunteer">
+                      {formData.assignedTo && team.find(u => u._id === formData.assignedTo) 
+                        ? `${team.find(u => u._id === formData.assignedTo).name || team.find(u => u._id === formData.assignedTo).email} (${team.find(u => u._id === formData.assignedTo).roles[0]})` 
+                        : "Select member/volunteer"}
+                    </SelectValue>
+                  </SelectTrigger>
                   <SelectContent>
                     {team.map(u => (
                       <SelectItem key={u._id} value={u._id} label={`${u.name || u.email} (${u.roles[0]})`}>
