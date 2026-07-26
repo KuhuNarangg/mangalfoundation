@@ -21,7 +21,7 @@ const campaignSchema = new mongoose.Schema(
     },
     audience: {
       type: String,
-      enum: ["all_users", "past_donors", "all_subscribers"],
+      enum: ["all_users", "past_donors", "all_subscribers", "specific_users"],
       required: true,
     },
     recipientsCount: {
