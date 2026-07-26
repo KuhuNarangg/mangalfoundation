@@ -139,7 +139,11 @@ export default function LoginPage() {
         
         if (res.ok) {
           toast.success("Logged in successfully!");
-          router.push("/dashboard");
+          if (loginRole === "member" || loginRole === "volunteer") {
+            router.push("/member");
+          } else {
+            router.push("/dashboard");
+          }
           router.refresh();
         } else {
           toast.error(data.error || "Invalid credentials");
