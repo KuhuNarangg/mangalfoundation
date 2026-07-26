@@ -118,7 +118,7 @@ export default function NotificationsPage() {
               </div>
               <div className="space-y-2">
                 <Label>Type</Label>
-                <Select value={formData.type} onValueChange={v => setFormData({...formData, type: v})}>
+                <Select value={formData.type} onValueChange={v => setFormData({...formData, type: v as string})}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="announcement">Announcement</SelectItem>

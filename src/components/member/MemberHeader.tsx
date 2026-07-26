@@ -29,7 +29,7 @@ export function MemberHeader({ user }: { user: any }) {
 
       <div className="flex items-center gap-4">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger render={
             <Button variant="ghost" className="relative h-10 w-10 rounded-full bg-gray-100">
               {user.profilePicture ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -42,6 +42,7 @@ export function MemberHeader({ user }: { user: any }) {
                 <User className="h-5 w-5 text-gray-600" />
               )}
             </Button>
+          }>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>

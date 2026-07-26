@@ -132,7 +132,7 @@ export default function TasksPage() {
               </div>
               <div className="space-y-2">
                 <Label>Assign To</Label>
-                <Select value={formData.assignedTo} onValueChange={v => setFormData({...formData, assignedTo: v})} required>
+                <Select value={formData.assignedTo} onValueChange={v => setFormData({...formData, assignedTo: v as string})} required>
                   <SelectTrigger><SelectValue placeholder="Select member/volunteer" /></SelectTrigger>
                   <SelectContent>
                     {team.map(u => (

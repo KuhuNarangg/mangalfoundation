@@ -143,7 +143,7 @@ export default function ProfilePage() {
               </div>
               <div className="space-y-2">
                 <Label>Blood Group</Label>
-                <Select value={formData.bloodGroup || ""} onValueChange={(v) => setFormData({ ...formData, bloodGroup: v })}>
+                <Select value={formData.bloodGroup || ""} onValueChange={(v) => setFormData({ ...formData, bloodGroup: v as string })}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select blood group" />
                   </SelectTrigger>
