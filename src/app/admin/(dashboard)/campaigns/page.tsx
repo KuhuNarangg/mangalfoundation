@@ -139,11 +139,9 @@ export default function CampaignsPage() {
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Megaphone className="w-4 h-4 mr-2" />
-              New Campaign
-            </Button>
+          <DialogTrigger render={<Button />}>
+            <Megaphone className="w-4 h-4 mr-2" />
+            New Campaign
           </DialogTrigger>
           <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
             <DialogHeader>

@@ -136,11 +136,9 @@ export default function TeamPage() {
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="w-4 h-4 mr-2" />
-              Add Member
-            </Button>
+          <DialogTrigger render={<Button />}>
+            <Plus className="w-4 h-4 mr-2" />
+            Add Member
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
