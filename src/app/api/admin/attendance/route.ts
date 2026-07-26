@@ -29,3 +29,29 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Failed to fetch attendance records" }, { status: 500 });
   }
 }
+
+export async function POST(req: Request) {
+  const { response } = await requireAdmin(["super_admin", "admin"]);
+  if (response) return response;
+
+  try {
+    const { recordId, action } = await req.json();
+    if (action !== "check-out") return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+
+    await connectToDatabase();
+    
+    const record = await Attendance.findById(recordId);
+    if (!record) return NextResponse.json({ error: "Record not found" }, { status: 404 });
+    if (record.checkOut) return NextResponse.json({ error: "Already checked out" }, { status: 400 });
+
+    const now = new Date();
+    record.checkOut = now;
+    const diffMs = now.getTime() - record.checkIn.getTime();
+    record.totalHours = Math.round((diffMs / (1000 * 60 * 60)) * 100) / 100;
+    
+    await record.save();
+    return NextResponse.json({ success: true, data: record });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to update attendance" }, { status: 500 });
+  }
+}

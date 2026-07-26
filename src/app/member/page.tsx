@@ -8,7 +8,7 @@ import Notification from "@/models/Notification";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, Calendar, CheckSquare, Award, User as UserIcon } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { AttendanceWidget } from "@/components/member/AttendanceWidget";
 
 export default async function MemberDashboard() {
   const session = await getPublicSession();
@@ -51,11 +51,7 @@ export default async function MemberDashboard() {
         </div>
         
         {/* Quick action for attendance */}
-        <Link href="/member/attendance">
-          <Button className="bg-primary hover:bg-primary/90 text-white shadow-sm">
-            {todayAttendance?.checkIn ? "View Attendance" : "Check In Now"}
-          </Button>
-        </Link>
+        <AttendanceWidget todayAttendance={todayAttendance} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

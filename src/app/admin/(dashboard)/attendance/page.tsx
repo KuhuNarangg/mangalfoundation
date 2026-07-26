@@ -20,6 +20,7 @@ export default function AdminAttendancePage() {
   const [date, setDate] = useState<Date>(new Date());
   const [records, setRecords] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [actionLoading, setActionLoading] = useState<string | null>(null);
 
   useEffect(() => {
     fetchAttendance();
@@ -44,6 +45,28 @@ export default function AdminAttendancePage() {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + days);
     setDate(newDate);
+  };
+
+  const handleCheckout = async (recordId: string) => {
+    setActionLoading(recordId);
+    try {
+      const res = await fetch("/api/admin/attendance", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "check-out", recordId }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        toast.success("Successfully checked out member");
+        fetchAttendance();
+      } else {
+        toast.error(data.error || "Failed to checkout");
+      }
+    } catch {
+      toast.error("Network error");
+    } finally {
+      setActionLoading(null);
+    }
   };
 
   return (
@@ -125,11 +148,24 @@ export default function AdminAttendancePage() {
                         {r.totalHours ? `${r.totalHours} hrs` : "-"}
                       </TableCell>
                       <TableCell>
-                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                          r.checkOut ? "bg-blue-100 text-blue-800" : "bg-green-100 text-green-800"
-                        }`}>
-                          {r.checkOut ? "Completed" : "Clocked In"}
-                        </span>
+                        <div className="flex gap-2 items-center">
+                          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                            r.checkOut ? "bg-blue-100 text-blue-800" : "bg-green-100 text-green-800"
+                          }`}>
+                            {r.checkOut ? "Completed" : "Clocked In"}
+                          </span>
+                          {!r.checkOut && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="h-7 text-xs"
+                              disabled={actionLoading === r._id}
+                              onClick={() => handleCheckout(r._id)}
+                            >
+                              Check Out
+                            </Button>
+                          )}
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))
