@@ -136,14 +136,20 @@ export async function POST(req: Request) {
 
     // Send welcome email if they were assigned the member role (either new or just assigned)
     if (roles && roles.includes("member") && rawPassword) {
-      const sent = await sendMemberWelcomeEmail(normalizedEmail, user.name, rawPassword);
-      await EmailLog.create({
-        recipient: normalizedEmail,
-        type: "Welcome",
-        subject: "Welcome to Mangal Guruji Foundation! Your Account is Ready",
-        status: sent ? "Sent" : "Failed",
-        error: sent ? "" : "SMTP failure",
-      });
+      (async () => {
+        try {
+          const sent = await sendMemberWelcomeEmail(normalizedEmail, user.name, rawPassword);
+          await EmailLog.create({
+            recipient: normalizedEmail,
+            type: "Welcome",
+            subject: "Welcome to Mangal Guruji Foundation! Your Account is Ready",
+            status: sent ? "Sent" : "Failed",
+            error: sent ? "" : "SMTP failure",
+          });
+        } catch (err) {
+          console.error("Background email error:", err);
+        }
+      })();
     }
 
     await logAudit({

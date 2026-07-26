@@ -97,24 +97,39 @@ export async function PATCH(
         if (rawPassword) {
           volunteer.password = rawPassword;
         }
+      }
 
-        const sent = await sendVolunteerAcceptanceEmail(volunteer);
-        await EmailLog.create({
-          recipient: volunteer.email,
-          type: "Acceptance",
-          subject: "Welcome! Your Volunteer Application is Approved - Mangal Guruji Foundation",
-          status: sent ? "Sent" : "Failed",
-          error: sent ? "" : "SMTP failure",
-        });
+      // Send status email asynchronously
+      if (parsed.data.status === "Accepted") {
+        (async () => {
+          try {
+            const sent = await sendVolunteerAcceptanceEmail(volunteer);
+            await EmailLog.create({
+              recipient: volunteer.email,
+              type: "Acceptance",
+              subject: "Welcome! Your Volunteer Application is Approved - Mangal Guruji Foundation",
+              status: sent ? "Sent" : "Failed",
+              error: sent ? "" : "SMTP failure",
+            });
+          } catch (err) {
+            console.error("Background email error:", err);
+          }
+        })();
       } else if (parsed.data.status === "Rejected") {
-        const sent = await sendVolunteerRejectionEmail(volunteer, parsed.data.adminNotes || "");
-        await EmailLog.create({
-          recipient: volunteer.email,
-          type: "Rejection",
-          subject: "Update on your Volunteer Application - Mangal Guruji Foundation",
-          status: sent ? "Sent" : "Failed",
-          error: sent ? "" : "SMTP failure",
-        });
+        (async () => {
+          try {
+            const sent = await sendVolunteerRejectionEmail(volunteer, parsed.data.adminNotes || "");
+            await EmailLog.create({
+              recipient: volunteer.email,
+              type: "Rejection",
+              subject: "Update on your Volunteer Application - Mangal Guruji Foundation",
+              status: sent ? "Sent" : "Failed",
+              error: sent ? "" : "SMTP failure",
+            });
+          } catch (err) {
+            console.error("Background email error:", err);
+          }
+        })();
       }
     }
 
