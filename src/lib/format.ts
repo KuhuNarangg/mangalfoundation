@@ -16,3 +16,4 @@ export const formatDateTime = (d: string | Date) =>
     hour: "2-digit",
     minute: "2-digit",
   });
+export const formatTime = (d: string | Date) => new Date(d).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
