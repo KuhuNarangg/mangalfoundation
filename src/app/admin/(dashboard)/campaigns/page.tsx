@@ -195,7 +195,7 @@ export default function CampaignsPage() {
 
               <div className="space-y-2 pt-2">
                 <Label>Target Audience <span className="text-red-500">*</span></Label>
-                <Select value={audience} onValueChange={setAudience} required>
+                <Select value={audience} onValueChange={(val) => setAudience(val || "")} required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select audience..." />
                   </SelectTrigger>

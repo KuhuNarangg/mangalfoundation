@@ -112,7 +112,7 @@ export default function AdminDashboard() {
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">Recent Donations</h2>
-          <Select value={recentStatus} onValueChange={setRecentStatus}>
+          <Select value={recentStatus} onValueChange={(val) => setRecentStatus(val || "")}>
             <SelectTrigger className="w-[140px] h-8 text-sm">
               <SelectValue placeholder="Filter Status" />
             </SelectTrigger>
