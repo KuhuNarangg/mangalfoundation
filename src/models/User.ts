@@ -55,6 +55,26 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    profilePicture: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    emergencyContactName: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    emergencyContactPhone: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    emergencyContactRelation: {
+      type: String,
+      trim: true,
+      default: "",
+    },
   },
   { timestamps: true }
 );

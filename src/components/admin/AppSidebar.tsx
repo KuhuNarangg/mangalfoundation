@@ -21,6 +21,10 @@ import {
   Users,
   LogOut,
   ExternalLink,
+  Clock,
+  Bell,
+  CheckSquare,
+  Calendar
 } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
 import { toast } from "sonner";
@@ -66,9 +70,13 @@ const groups = [
     label: "Engagement",
     items: [
       { title: "Campaigns", url: "/admin/campaigns", icon: Megaphone },
+      { title: "Events", url: "/admin/events", icon: Calendar },
       { title: "Donors", url: "/admin/donors", icon: User },
       { title: "Members & Volunteers", url: "/admin/team", icon: Users },
+      { title: "Tasks", url: "/admin/tasks", icon: CheckSquare },
+      { title: "Attendance Logs", url: "/admin/attendance", icon: Clock },
       { title: "Volunteer Applications", url: "/admin/volunteers", icon: HeartHandshake },
+      { title: "Announcements", url: "/admin/notifications", icon: Bell },
       { title: "Contact Enquiries", url: "/admin/messages", icon: Mail },
     ],
   },
