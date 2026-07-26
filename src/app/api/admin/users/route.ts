@@ -21,7 +21,7 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const page = Math.max(1, parseInt(searchParams.get("page") || "1", 10) || 1);
-    const limit = Math.min(100, Math.max(1, parseInt(searchParams.get("limit") || "25", 10) || 25));
+    const limit = Math.min(1000, Math.max(1, parseInt(searchParams.get("limit") || "25", 10) || 25));
     const skip = (page - 1) * limit;
     
     const role = searchParams.get("role");
@@ -29,7 +29,7 @@ export async function GET(req: Request) {
 
     const query: any = {};
     if (role && role !== "all") {
-      query.roles = role;
+      query.roles = { $in: role.split(",") };
     }
     if (search) {
       query.$or = [
@@ -169,5 +169,42 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Email or Member ID already exists" }, { status: 400 });
     }
     return NextResponse.json({ error: "Failed to save user" }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  const { session, response } = await requireAdmin(["super_admin", "admin"]);
+  if (response) return response;
+
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({ error: "User ID is required" }, { status: 400 });
+    }
+
+    await connectToDatabase();
+    
+    const user = await User.findByIdAndDelete(id);
+    
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    await logAudit({
+      action: "user.delete",
+      actorId: session.id,
+      actorUsername: session.username,
+      targetType: "User",
+      targetId: id,
+      message: `Deleted user ${user.email}`,
+      ip: getClientIp(req),
+      userAgent: getUserAgent(req),
+    });
+
+    return NextResponse.json({ success: true, data: { _id: id } });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to delete user" }, { status: 500 });
   }
 }

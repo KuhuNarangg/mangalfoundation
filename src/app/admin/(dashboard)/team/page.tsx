@@ -29,7 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Users, Plus, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { Users, Plus, ChevronLeft, ChevronRight, Loader2, Trash2 } from "lucide-react";
 
 export default function TeamPage() {
   const [users, setUsers] = useState<any[]>([]);
@@ -109,21 +109,36 @@ export default function TeamPage() {
   };
 
   const handleResetPassword = async (email: string) => {
-    if (!confirm("Are you sure you want to generate a new password and email it to this member?")) return;
     try {
       const res = await fetch("/api/admin/users/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      const data = await res.json();
+      const json = await res.json();
       if (res.ok) {
-        toast.success("New password generated and sent to " + email);
+        toast.success("New credentials sent successfully");
       } else {
-        toast.error(data.error || "Failed to reset password");
+        toast.error(json.error || "Failed to reset password");
       }
     } catch {
       toast.error("Error resetting password");
+    }
+  };
+
+  const handleDeleteUser = async (id: string, name: string) => {
+    if (!confirm(`Are you sure you want to delete ${name || "this user"}?`)) return;
+    try {
+      const res = await fetch(`/api/admin/users?id=${id}`, { method: "DELETE" });
+      if (res.ok) {
+        toast.success("User deleted successfully");
+        fetchUsers();
+      } else {
+        const json = await res.json();
+        toast.error(json.error || "Failed to delete user");
+      }
+    } catch {
+      toast.error("Error deleting user");
     }
   };
 
@@ -260,9 +275,12 @@ export default function TeamPage() {
                   <TableCell className="text-sm">
                     {formatDate(user.createdAt)}
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right space-x-2">
                     <Button variant="ghost" size="sm" onClick={() => handleResetPassword(user.email)}>
                       Resend Login
+                    </Button>
+                    <Button variant="ghost" size="icon-sm" onClick={() => handleDeleteUser(user._id, user.name)} className="text-red-500 hover:text-red-700 hover:bg-red-50">
+                      <Trash2 className="h-4 w-4" />
                     </Button>
                   </TableCell>
                 </TableRow>

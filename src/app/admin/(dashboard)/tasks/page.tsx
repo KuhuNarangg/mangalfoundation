@@ -65,10 +65,10 @@ export default function TasksPage() {
   const fetchTeam = async () => {
     try {
       // Need an endpoint that returns all members/volunteers compactly
-      const res = await fetch("/api/admin/users?limit=1000"); 
+      const res = await fetch("/api/admin/users?role=member,volunteer&limit=1000"); 
       const json = await res.json();
       if (json.success) {
-        setTeam(json.data.filter((u: any) => u.roles.includes("member") || u.roles.includes("volunteer")));
+        setTeam(json.data);
       }
     } catch {
       console.error("Failed to load team");
@@ -79,7 +79,14 @@ export default function TasksPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    if (!formData.assignedTo) {
+      toast.error("Please select a member or volunteer to assign the task");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
+
       const res = await fetch("/api/admin/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -136,7 +143,9 @@ export default function TasksPage() {
                   <SelectTrigger><SelectValue placeholder="Select member/volunteer" /></SelectTrigger>
                   <SelectContent>
                     {team.map(u => (
-                      <SelectItem key={u._id} value={u._id}>{u.name || u.email} ({u.roles[0]})</SelectItem>
+                      <SelectItem key={u._id} value={u._id} label={`${u.name || u.email} (${u.roles[0]})`}>
+                        {u.name || u.email} ({u.roles[0]})
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
