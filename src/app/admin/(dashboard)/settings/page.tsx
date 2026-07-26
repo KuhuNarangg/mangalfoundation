@@ -210,7 +210,7 @@ export default function SettingsPage() {
                         {a._id === me?.id && <span className="text-xs text-muted-foreground"> (you)</span>}
                       </TableCell>
                       <TableCell>
-                        <Select value={a.role} onValueChange={(v) => updateRole(a._id, v)} disabled={a._id === me?.id}>
+                        <Select value={a.role} onValueChange={(v) => updateRole(a._id, v || "")} disabled={a._id === me?.id}>
                           <SelectTrigger className="w-[140px] h-8">
                             <SelectValue>
                               {(v: any) => {

@@ -164,7 +164,7 @@ export default function TeamPage() {
                 </div>
                 <div className="space-y-2">
                   <Label>Blood Group</Label>
-                  <Select value={formData.bloodGroup} onValueChange={v => setFormData({ ...formData, bloodGroup: v })}>
+                  <Select value={formData.bloodGroup} onValueChange={v => setFormData({ ...formData, bloodGroup: v || "" })}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
                       {["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"].map(bg => (

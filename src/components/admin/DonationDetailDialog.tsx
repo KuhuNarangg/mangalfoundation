@@ -141,7 +141,7 @@ export function DonationDetailDialog({
           {donation.notes && <Detail label="Notes" value={donation.notes} />}
           <div className="flex items-center gap-2 pt-3 border-t border-border">
             <span className="text-muted-foreground">Status:</span>
-            <Select value={donation.paymentStatus} onValueChange={updateStatus}>
+            <Select value={donation.paymentStatus} onValueChange={(v) => updateStatus(v || "")}>
               <SelectTrigger className="w-[140px] h-8">
                 <SelectValue>
                   {(v: any) => {
