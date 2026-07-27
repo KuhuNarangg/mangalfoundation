@@ -20,7 +20,7 @@ export const CATEGORIES: CategoryDetails[] = [
     title: "Food",
     slug: "food",
     description: "Provide nutritious meals to those in need. Your contribution helps fight hunger and malnutrition in marginalized communities.",
-    image: "/images/col2.jpg",
+    image: "/images/nico-smit-NFoerQuvzrs-unsplash.jpg",
     packages: [
       {
         id: "food-50",
@@ -188,28 +188,7 @@ export const CATEGORIES: CategoryDetails[] = [
       }
     ]
   },
-  {
-    title: "Environment",
-    slug: "environment",
-    description: "Promote environmental conservation, cleanliness, tree plantation, social unity, and community development.",
-    image: "/images/col1.jpg",
-    packages: [
-      {
-        id: "env-tree",
-        title: "Tree Plantation",
-        description: "Plant and nurture a native tree sapling to maturity.",
-        amount: 100,
-        impactStatement: "Adds 1 tree to our growing green cover.",
-      },
-      {
-        id: "env-clean",
-        title: "Community Clean-up Drive",
-        description: "Provide tools and safety gear for volunteer clean-up initiatives.",
-        amount: 500,
-        impactStatement: "Supports 1 local clean-up event.",
-      }
-    ]
-  },
+
   {
     title: "Humanitarian Service",
     slug: "humanitarian-service",
@@ -236,7 +215,7 @@ export const CATEGORIES: CategoryDetails[] = [
     title: "Clothes",
     slug: "clothes",
     description: "Donate winter clothes, summer wear, and daily essentials to protect people from harsh weather and restore their dignity.",
-    image: "/images/nico-smit-NFoerQuvzrs-unsplash.jpg",
+    image: "/images/col1.jpg",
     packages: [
       {
         id: "clothes-winter",
