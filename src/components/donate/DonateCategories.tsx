@@ -331,7 +331,7 @@ export function DonateCategories() {
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <Label>Select Category</Label>
-                      <Select value={customCategoryId} onValueChange={setCustomCategoryId}>
+                      <Select value={customCategoryId} onValueChange={(v: string | null) => setCustomCategoryId(v || "")}>
                         <SelectTrigger className="w-full rounded-none border-gray-300">
                           <SelectValue placeholder="Select a cause to support" />
                         </SelectTrigger>
