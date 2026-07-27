@@ -8,7 +8,7 @@ import { Gallery } from "@/components/sections/Gallery";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { DonateCTA } from "@/components/sections/DonateCTA";
 import { Contact } from "@/components/sections/Contact";
-import { DonationPreview } from "@/components/sections/DonationPreview";
+import { DonateCategories } from "@/components/donate/DonateCategories";
 import { VolunteerCTA } from "@/components/sections/VolunteerCTA";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col bg-background selection:bg-primary/20 selection:text-foreground">
       <Navbar />
       <Hero />
-      <DonationPreview />
+      <DonateCategories />
       <About />
       <OurCauses />
       <Impact />

@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 
 // Helper to pick an icon based on title (since icons can't be stored easily in DB as components)
@@ -41,6 +42,7 @@ export function DonateCategories() {
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [isCustom, setIsCustom] = useState(false);
+  const [customCategoryId, setCustomCategoryId] = useState("");
   
   const [formData, setFormData] = useState({
     donorName: "", email: "", phone: "", pan: "", gst: "", isAnonymous: false, message: ""
@@ -70,6 +72,7 @@ export function DonateCategories() {
     setSelectedPackage(pkg);
     setIsCustom(isCust);
     setCustomAmount("");
+    setCustomCategoryId(category?._id || "");
     setSuccess(false);
     setDonationId(null);
     setIsDialogOpen(true);
@@ -105,7 +108,7 @@ export function DonateCategories() {
         body: JSON.stringify({
           ...formData,
           donorName: formData.isAnonymous ? "Anonymous" : formData.donorName,
-          categoryId: selectedCategory._id,
+          categoryId: isCustom ? customCategoryId : selectedCategory._id,
           packageId: isCustom ? null : selectedPackage._id,
           amount: finalAmount
         })
@@ -290,7 +293,7 @@ export function DonateCategories() {
 
       {/* Donation Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden border-0 rounded-none shadow-2xl">
+        <DialogContent className="sm:max-w-[500px] p-0 overflow-y-auto max-h-[90vh] border-0 rounded-none shadow-2xl">
           {success ? (
             <div className="p-12 text-center flex flex-col items-center justify-center space-y-4 bg-white">
               <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
@@ -316,18 +319,35 @@ export function DonateCategories() {
             <>
               <div className="bg-charcoal text-white p-6">
                 <DialogTitle className="text-xl font-heading">
-                  Donate to {selectedCategory?.title}
+                  {isCustom ? "Make a Custom Donation" : `Donate to ${selectedCategory?.title}`}
                 </DialogTitle>
                 <DialogDescription className="text-gray-300 mt-2">
-                  {isCustom ? "Enter your custom amount" : `Selected: ${selectedPackage?.title} (₹${selectedPackage?.amount})`}
+                  {isCustom ? "Choose a category and enter your custom amount" : `Selected: ${selectedPackage?.title} (₹${selectedPackage?.amount})`}
                 </DialogDescription>
               </div>
               <form onSubmit={handleDonate} className="p-6 space-y-4 bg-white">
                 
                 {isCustom && (
-                  <div className="space-y-2">
-                    <Label>Donation Amount (₹)</Label>
-                    <Input type="number" required min="1" value={customAmount} onChange={e => setCustomAmount(e.target.value)} className="rounded-none border-gray-300" />
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label>Select Category</Label>
+                      <Select value={customCategoryId} onValueChange={setCustomCategoryId}>
+                        <SelectTrigger className="w-full rounded-none border-gray-300">
+                          <SelectValue placeholder="Select a cause to support" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {categories.map((c: any) => (
+                            <SelectItem key={c._id} value={c._id}>
+                              {c.title}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Donation Amount (₹)</Label>
+                      <Input type="number" required min="1" value={customAmount} onChange={e => setCustomAmount(e.target.value)} className="rounded-none border-gray-300" />
+                    </div>
                   </div>
                 )}
 

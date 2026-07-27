@@ -231,5 +231,69 @@ export const CATEGORIES: CategoryDetails[] = [
         impactStatement: "Keeps 1 person warm throughout winter.",
       }
     ]
+  },
+  {
+    title: "Clothes",
+    slug: "clothes",
+    description: "Donate winter clothes, summer wear, and daily essentials to protect people from harsh weather and restore their dignity.",
+    image: "/images/nico-smit-NFoerQuvzrs-unsplash.jpg",
+    packages: [
+      {
+        id: "clothes-winter",
+        title: "Winter Wear",
+        description: "Provide warm jackets, sweaters, and thermals for harsh winters.",
+        amount: 1500,
+        impactStatement: "Protects 1 person from severe cold.",
+      },
+      {
+        id: "clothes-summer",
+        title: "Summer Wear",
+        description: "Light, breathable cotton clothes for daily wage workers.",
+        amount: 800,
+        impactStatement: "Provides comfortable daily wear for 1 person.",
+      },
+      {
+        id: "clothes-shoes",
+        title: "Shoes & Footwear",
+        description: "Durable shoes for children and adults who walk barefoot.",
+        amount: 600,
+        impactStatement: "Protects the feet of 1 person from injuries and infections.",
+      },
+      {
+        id: "clothes-blankets",
+        title: "Blankets",
+        description: "Thick, high-quality blankets for the homeless.",
+        amount: 400,
+        impactStatement: "Keeps 1 homeless person warm at night.",
+      },
+      {
+        id: "clothes-children",
+        title: "Children's Clothing",
+        description: "Complete sets of everyday wear for growing children.",
+        amount: 1000,
+        impactStatement: "Clothes 2 children with essential daily wear.",
+      },
+      {
+        id: "clothes-women",
+        title: "Women's Clothing",
+        description: "Sarees, suits, and daily wear essentials for women.",
+        amount: 1200,
+        impactStatement: "Restores dignity with new clothing for 1 woman.",
+      },
+      {
+        id: "clothes-men",
+        title: "Men's Clothing",
+        description: "Shirts and trousers for men seeking employment.",
+        amount: 1200,
+        impactStatement: "Provides presentable clothing for 1 man.",
+      },
+      {
+        id: "clothes-uniform",
+        title: "School Uniforms",
+        description: "Complete school uniform, shoes, and socks for a student.",
+        amount: 1200,
+        impactStatement: "Enables 1 child to attend school proudly.",
+      }
+    ]
   }
 ];
