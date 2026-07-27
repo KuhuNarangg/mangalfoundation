@@ -19,7 +19,7 @@ export default function DonatePage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       <DonateHero />
-      <DonateCategories />
+      <DonateCategories isHomePage={true} />
       <WhyDonate />
       <DonateImpact />
       <HowItWorks />
