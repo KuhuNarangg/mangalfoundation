@@ -32,7 +32,7 @@ const loadRazorpayScript = () => {
   });
 };
 
-export function DonateCategories() {
+export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean }) {
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -260,26 +260,37 @@ export function DonateCategories() {
                     </h3>
                     
                     <div className="grid grid-cols-2 gap-3 mb-3">
-                      {category.packages?.map((pkg: any) => (
+                      {(isHomePage ? category.packages?.slice(0, 4) : category.packages)?.map((pkg: any) => (
                         <button 
                           key={pkg._id}
                           onClick={() => openDonateDialog(category, pkg)}
                           className="relative overflow-hidden border-2 border-rose-100 bg-white py-3 px-2 rounded-xl text-charcoal font-bold hover:border-rose-500 hover:text-white hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 group/btn"
                         >
-                          <div className="absolute inset-0 bg-gradient-to-br from-rose-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 -z-10" />
-                          <span className="text-[10px] uppercase tracking-wider opacity-80 group-hover/btn:opacity-100 line-clamp-1">{pkg.title}</span>
-                          <span className="text-lg group-hover/btn:scale-110 transition-transform duration-300">₹{pkg.amount}</span>
+                          <div className="absolute inset-0 bg-gradient-to-br from-rose-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                          <span className="relative z-10 text-[10px] uppercase tracking-wider opacity-80 group-hover/btn:opacity-100 line-clamp-1">{pkg.title}</span>
+                          <span className="relative z-10 text-lg group-hover/btn:scale-110 transition-transform duration-300">₹{pkg.amount}</span>
                         </button>
                       ))}
                     </div>
                     
-                    <button 
-                      onClick={() => openDonateDialog(category, null, true)}
-                      className="w-full relative overflow-hidden border border-gray-200 bg-white py-3 px-2 rounded-xl text-gray-600 font-bold hover:border-gray-800 hover:text-white transition-all duration-300 group/btn2 text-sm"
-                    >
-                      <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover/btn2:opacity-100 transition-opacity duration-300 -z-10" />
-                      Enter Custom Amount
-                    </button>
+                    <div className="space-y-2">
+                      <button 
+                        onClick={() => openDonateDialog(category, null, true)}
+                        className="w-full relative overflow-hidden border border-gray-200 bg-white py-3 px-2 rounded-xl text-gray-600 font-bold hover:border-gray-800 hover:text-white transition-all duration-300 group/btn2 text-sm"
+                      >
+                        <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover/btn2:opacity-100 transition-opacity duration-300" />
+                        <span className="relative z-10">Enter Custom Amount</span>
+                      </button>
+
+                      {isHomePage && category.packages?.length > 4 && (
+                        <a 
+                          href={`/categories/${category.slug}`}
+                          className="block w-full text-center text-xs font-semibold text-rose-500 hover:text-rose-600 py-2"
+                        >
+                          View {category.packages.length - 4} More Options &rarr;
+                        </a>
+                      )}
+                    </div>
                   </div>
                   
                 </div>

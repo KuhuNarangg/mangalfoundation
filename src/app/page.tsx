@@ -16,7 +16,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col bg-background selection:bg-primary/20 selection:text-foreground">
       <Navbar />
       <Hero />
-      <DonateCategories />
+      <DonateCategories isHomePage={true} />
       <About />
       <OurCauses />
       <Impact />
