@@ -5,39 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContent } from "@/components/ContentProvider";
 
-const causes = [
-  {
-    title: "Education",
-    description: "Provide quality education, career guidance, and skill development to underprivileged, poor, and marginalized communities.",
-    image: "/images/larm-rmah-AEaTUnvneik-unsplash.jpg",
-  },
-  {
-    title: "Healthcare",
-    description: "Improve public health through health awareness programs, medical assistance, healthcare camps, and preventive initiatives.",
-    image: "/images/yannis-h-uaPaEM7MiQQ-unsplash.jpg",
-  },
-  {
-    title: "Women & Elderly",
-    description: "Organize programs that support children, women, and senior citizens by improving their education, safety, health, and well-being.",
-    image: "/images/srimathi-jayaprakash-uO1MUMn0Xzc-unsplash.jpg",
-  },
-  {
-    title: "Empowerment",
-    description: "Help individuals become self-reliant, skilled, confident, and financially independent while enabling them to live with dignity.",
-    image: "/images/varun-gaba-O_H7BlvtZ8Y-unsplash.jpg",
-  },
-  {
-    title: "Environment",
-    description: "Promote environmental conservation, cleanliness, tree plantation, social unity, national integration, and community development.",
-    image: "/images/col1.jpg",
-  },
-  {
-    title: "Humanitarian Service",
-    description: "Work continuously for the holistic development of society through the values of service, compassion, dedication, and humanity.",
-    image: "/images/larm-rmah-AEaTUnvneik-unsplash.jpg",
-  }
-];
-
+import { CATEGORIES } from "@/data/categories";
 export function OurCauses() {
   const content = useContent();
   return (
@@ -58,13 +26,13 @@ export function OurCauses() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {causes.map((cause, index) => (
+          {CATEGORIES.map((cause, index) => (
             <motion.div
               key={cause.title}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="group bg-beige-light rounded-lg overflow-hidden shadow-sm border border-sand hover:shadow-md transition-all duration-300 flex flex-col"
             >
-              <Link href="/donate" className="flex flex-col h-full cursor-pointer">
+              <Link href={`/categories/${cause.slug}`} className="flex flex-col h-full cursor-pointer">
                 <div className="relative w-full aspect-video overflow-hidden bg-sand">
                   <Image
                     src={cause.image}
