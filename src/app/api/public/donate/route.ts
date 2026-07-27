@@ -50,12 +50,29 @@ export async function POST(req: Request) {
     // If a package was chosen, it must belong to this category and be active.
     let packageId: string | null = null;
     if (data.packageId) {
-      const pkg = await Package.findOne({
-        _id: data.packageId,
-        categoryId: data.categoryId,
-        isActive: true,
-      }).lean();
-      if (!pkg) {
+      // First try to find in DB
+      let isValidPackage = false;
+      try {
+        const pkg = await Package.findOne({
+          _id: data.packageId,
+          categoryId: data.categoryId,
+          isActive: true,
+        }).lean();
+        if (pkg) isValidPackage = true;
+      } catch (e) {
+        // Might be a static ID like "food-50" instead of ObjectId
+      }
+
+      // If not in DB, check static CATEGORIES
+      if (!isValidPackage) {
+        const { CATEGORIES } = await import("@/data/categories");
+        const staticCat = CATEGORIES.find(c => c.title === category.title);
+        if (staticCat && staticCat.packages.some(p => p.id === data.packageId)) {
+          isValidPackage = true;
+        }
+      }
+
+      if (!isValidPackage) {
         return NextResponse.json(
           { error: "Selected package is unavailable" },
           { status: 400 }
