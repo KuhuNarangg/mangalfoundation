@@ -13,7 +13,7 @@ type Media = {
 const FALLBACK: Media[] = [
   { url: "/images/joel-muniz-qvzjG2pF4bE-unsplash.jpg", resourceType: "image" },
   { url: "/images/nico-smit-NFoerQuvzrs-unsplash.jpg", resourceType: "image" },
-  { url: "/images/srimathi-jayaprakash-uO1MUMn0Xzc-unsplash.jpg", resourceType: "image" },
+  { url: "/images/women2.jpg", resourceType: "image" },
   { url: "/images/larm-rmah-AEaTUnvneik-unsplash.jpg", resourceType: "image" },
 ];
 

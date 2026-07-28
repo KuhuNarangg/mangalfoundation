@@ -56,7 +56,7 @@ export const CATEGORIES: CategoryDetails[] = [
     title: "Women Empowerment",
     slug: "women-empowerment",
     description: "Help women become self-reliant, skilled, confident, and financially independent while enabling them to live with dignity.",
-    image: "/images/srimathi-jayaprakash-uO1MUMn0Xzc-unsplash.jpg",
+    image: "/images/women2.jpg",
     packages: [
       {
         id: "we-sewing",
