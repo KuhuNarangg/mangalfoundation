@@ -1,1 +1,31 @@
-export default function Page() { return <div>TEST</div>; }
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { OurCauses } from "@/components/sections/OurCauses";
+import { Impact } from "@/components/sections/Impact";
+import { Gallery } from "@/components/sections/Gallery";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { DonateCTA } from "@/components/sections/DonateCTA";
+import { Contact } from "@/components/sections/Contact";
+import { DonateCategories } from "@/components/donate/DonateCategories";
+import { VolunteerCTA } from "@/components/sections/VolunteerCTA";
+
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col bg-background selection:bg-primary/20 selection:text-foreground">
+      <Navbar />
+      <Hero />
+      <DonateCategories isHomePage={true} />
+      <About />
+      <OurCauses />
+      <Impact />
+      <Testimonials />
+      <Gallery />
+      <DonateCTA />
+      <VolunteerCTA />
+      <Contact />
+      <Footer />
+    </main>
+  );
+}
