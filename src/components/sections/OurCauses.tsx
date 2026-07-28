@@ -39,7 +39,7 @@ export function OurCauses() {
                     alt={cause.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${cause.title === "Women & Elderly" ? "object-top" : ""}`}
+                    className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${cause.title === "Women Empowerment" ? "object-top" : ""}`}
                   />
                 </div>
                 <div className="p-5 flex-grow">

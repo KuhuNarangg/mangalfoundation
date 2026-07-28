@@ -217,7 +217,7 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
                     alt={category.title}
                     loading="lazy"
                     decoding="async"
-                    className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className={`absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out ${category.title === "Women Empowerment" ? "object-top" : ""}`}
                   />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg text-rose-500">
                     <IconComponent className="w-6 h-6" />
