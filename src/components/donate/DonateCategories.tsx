@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Utensils, Shirt, GraduationCap, Heart, Landmark } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -35,6 +36,7 @@ const loadRazorpayScript = () => {
 export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean }) {
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   // Form State
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -67,7 +69,8 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
     fetchCats();
   }, []);
 
-  const openDonateDialog = (category: any, pkg: any, isCust: boolean = false) => {
+  const openDonateDialog = (e: React.MouseEvent, category: any, pkg: any, isCust: boolean = false) => {
+    e.stopPropagation();
     setSelectedCategory(category);
     setSelectedPackage(pkg);
     setIsCustom(isCust);
@@ -203,7 +206,8 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex flex-col bg-white border border-gray-100 shadow-2xl hover:shadow-3xl transition-shadow duration-500 rounded-2xl overflow-hidden group"
+                onClick={() => router.push(`/categories/${category.slug}`)}
+                className="flex flex-col bg-white border border-gray-100 shadow-2xl hover:shadow-3xl transition-shadow duration-500 rounded-2xl overflow-hidden group cursor-pointer"
               >
                 
                 {/* Image Side - Shorter Aspect Ratio */}
@@ -220,7 +224,7 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
                   </div>
                   {/* Subtle colorful gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
-                  <h2 className="absolute bottom-4 left-4 font-heading text-2xl md:text-3xl text-white drop-shadow-md">
+                  <h2 className="absolute bottom-4 left-4 font-heading font-bold text-2xl md:text-3xl text-white drop-shadow-md">
                     {category.title}
                   </h2>
                 </div>
@@ -263,7 +267,7 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
                       {(isHomePage ? category.packages?.slice(0, 4) : category.packages)?.map((pkg: any) => (
                         <button 
                           key={pkg._id}
-                          onClick={() => openDonateDialog(category, pkg)}
+                          onClick={(e) => openDonateDialog(e, category, pkg)}
                           className="relative overflow-hidden border-2 border-rose-100 bg-white py-3 px-2 rounded-xl text-charcoal font-bold hover:border-rose-500 hover:text-white hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-1 group/btn"
                         >
                           <div className="absolute inset-0 bg-gradient-to-br from-rose-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
@@ -275,7 +279,7 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
                     
                     <div className="space-y-2">
                       <button 
-                        onClick={() => openDonateDialog(category, null, true)}
+                        onClick={(e) => openDonateDialog(e, category, null, true)}
                         className="w-full relative overflow-hidden border border-gray-200 bg-white py-3 px-2 rounded-xl text-gray-600 font-bold hover:border-gray-800 hover:text-white transition-all duration-300 group/btn2 text-sm"
                       >
                         <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover/btn2:opacity-100 transition-opacity duration-300" />
@@ -283,12 +287,15 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
                       </button>
 
                       {isHomePage && category.packages?.length > 4 && (
-                        <a 
-                          href={`/categories/${category.slug}`}
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            router.push(`/categories/${category.slug}`);
+                          }}
                           className="block w-full text-center text-xs font-semibold text-rose-500 hover:text-rose-600 py-2"
                         >
                           View {category.packages.length - 4} More Options &rarr;
-                        </a>
+                        </button>
                       )}
                     </div>
                   </div>
