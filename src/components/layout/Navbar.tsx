@@ -96,30 +96,27 @@ export function Navbar() {
             <motion.div style={{ color: textColor }}>
               <Link
                 href="/login"
-                className="text-sm font-medium hover:opacity-70 transition-opacity flex items-center gap-1 px-2 py-1.5"
+                className="text-sm font-medium hover:opacity-70 transition-opacity"
               >
-                <User size={16} />
                 Login
               </Link>
             </motion.div>
-            <div className="flex items-center gap-3">
-              <motion.div style={{ color: textColor }}>
-                <Link
-                  href="/volunteer#apply"
-                  className="text-sm font-bold hover:opacity-70 transition-opacity px-2 py-1.5"
-                >
-                  Volunteer
-                </Link>
-              </motion.div>
-              <DonateButton size="sm">Donate</DonateButton>
-            </div>
-          </div>
-
-          <div className="md:hidden flex items-center gap-3">
             <motion.div style={{ color: textColor }}>
               <Link
                 href="/volunteer#apply"
-                className="px-2 py-1.5 text-xs font-bold"
+                className="text-sm font-medium hover:opacity-70 transition-opacity"
+              >
+                Volunteer
+              </Link>
+            </motion.div>
+            <DonateButton size="sm">Donate</DonateButton>
+          </div>
+
+          <div className="md:hidden flex items-center gap-4">
+            <motion.div style={{ color: textColor }}>
+              <Link
+                href="/volunteer#apply"
+                className="text-sm font-medium hover:opacity-70 transition-opacity"
               >
                 Volunteer
               </Link>
@@ -155,18 +152,17 @@ export function Navbar() {
             ))}
             <Link
               href="/login"
-              className="block px-3 py-3 text-base font-bold text-gray-900 hover:bg-gray-50 rounded-md flex items-center gap-2"
+              className="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-md"
               onClick={() => setIsOpen(false)}
             >
-              <User size={18} />
               Login
             </Link>
             <div className="pt-3 space-y-2" onClick={() => setIsOpen(false)}>
               <Link
                 href="/volunteer#apply"
-                className="flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold text-gray-900 hover:bg-gray-50 rounded-md"
+                className="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-md"
               >
-                Become a Volunteer
+                Volunteer
               </Link>
               <DonateButton className="w-full">Donate Now</DonateButton>
             </div>
