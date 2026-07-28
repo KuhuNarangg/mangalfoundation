@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CATEGORIES } from "@/data/categories";
 import { Button } from "@/components/ui/button";
+import { CategoryDonateClient } from "@/components/donate/CategoryDonateClient";
 
 // Note: In Next.js 15, params is a Promise. We must await it.
 export default async function CategoryPage(props: { params: Promise<{ slug: string }> }) {
@@ -54,39 +55,7 @@ export default async function CategoryPage(props: { params: Promise<{ slug: stri
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {category.packages.map((pkg) => (
-              <div key={pkg.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-sand hover:shadow-md transition-shadow flex flex-col h-full">
-                <div className="p-6 md:p-8 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-heading text-charcoal font-semibold">{pkg.title}</h3>
-                    <span className="bg-primary/10 text-primary font-bold px-3 py-1 rounded-full text-sm shrink-0">
-                      ₹{pkg.amount}
-                    </span>
-                  </div>
-                  
-                  <p className="text-charcoal-light mb-6 text-sm flex-grow">
-                    {pkg.description}
-                  </p>
-                  
-                  {pkg.impactStatement && (
-                    <div className="bg-green-50 border border-green-100 rounded-lg p-4 mb-6">
-                      <p className="text-sm font-medium text-green-800 flex items-start gap-2">
-                        <span className="text-green-600 mt-0.5">✦</span> 
-                        {pkg.impactStatement}
-                      </p>
-                    </div>
-                  )}
-
-                  <Link href={`/donate?category=${category.slug}&amount=${pkg.amount}`} className="mt-auto block">
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-white font-medium h-12 rounded-full">
-                      Donate ₹{pkg.amount}
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          <CategoryDonateClient category={category} />
         </div>
       </section>
 
