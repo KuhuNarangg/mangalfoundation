@@ -109,6 +109,8 @@ export async function POST(req: Request) {
       categoryId: data.categoryId,
       packageId,
       amount: data.amount,
+      unitAmount: data.unitAmount ?? data.amount,
+      quantity: data.quantity ?? 1,
       paymentStatus: "pending",
       razorpayOrderId: order.id,
     });

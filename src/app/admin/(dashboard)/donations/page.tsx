@@ -181,7 +181,7 @@ export default function DonationsPage() {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v || "all")}>
+        <Select value={statusFilter} onValueChange={(v: string) => setStatusFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[150px]">
             <SelectValue placeholder="Status">
               {(v: any) => {
@@ -199,7 +199,7 @@ export default function DonationsPage() {
             <SelectItem value="refunded">Refunded</SelectItem>
           </SelectContent>
         </Select>
-        <Select value={categoryFilter} onValueChange={(v) => setCategoryFilter(v || "all")}>
+        <Select value={categoryFilter} onValueChange={(v: string) => setCategoryFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[160px]">
             <SelectValue placeholder="Category">
               {(v: any) => {
@@ -218,7 +218,7 @@ export default function DonationsPage() {
             ))}
           </SelectContent>
         </Select>
-        <Select value={dateFilter} onValueChange={(v) => setDateFilter(v || "all")}>
+        <Select value={dateFilter} onValueChange={(v: string) => setDateFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[150px]">
             <SelectValue placeholder="Date">
               {(v: any) => {
@@ -235,7 +235,7 @@ export default function DonationsPage() {
             <SelectItem value="this_year">This Year</SelectItem>
           </SelectContent>
         </Select>
-        <Select value={amountFilter} onValueChange={(v) => setAmountFilter(v || "all")}>
+        <Select value={amountFilter} onValueChange={(v: string) => setAmountFilter(v || "all")}>
           <SelectTrigger className="w-full md:w-[160px]">
             <SelectValue placeholder="Amount">
               {(v: any) => {
@@ -303,7 +303,7 @@ export default function DonationsPage() {
                     {d.categoryId?.title || "Custom"}
                     {d.packageId && (
                       <div className="text-xs text-muted-foreground">
-                        {d.packageId.title}
+                        {d.quantity && d.quantity > 1 ? `${d.quantity} × ` : ""}{d.packageId.title}
                       </div>
                     )}
                   </TableCell>

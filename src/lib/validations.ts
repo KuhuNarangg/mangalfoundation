@@ -27,6 +27,8 @@ export const donationInputSchema = z.object({
     .int("Amount must be a whole number")
     .min(1, "Minimum donation is ₹1")
     .max(10_000_000, "Amount exceeds the allowed limit"),
+  unitAmount: z.number().int().min(1).optional(),
+  quantity: z.number().int().min(1).optional(),
 });
 export type DonationInput = z.infer<typeof donationInputSchema>;
 

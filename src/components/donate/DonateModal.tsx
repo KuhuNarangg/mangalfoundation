@@ -41,6 +41,10 @@ export function DonateModal({
   const [customAmount, setCustomAmount] = useState("");
   const [customCategoryId, setCustomCategoryId] = useState(category?._id || "");
   
+  // Quantity State
+  const [quantity, setQuantity] = useState<number>(1);
+  const [isCustomQuantity, setIsCustomQuantity] = useState(false);
+  
   const [formData, setFormData] = useState({
     donorName: "", email: "", phone: "", pan: "", gst: "", isAnonymous: false, message: ""
   });
@@ -48,18 +52,20 @@ export function DonateModal({
   const [success, setSuccess] = useState(false);
   const [donationId, setDonationId] = useState<string | null>(null);
 
+  // Calculate Unit Amount and Total Amount
+  const unitAmount = isCustom ? Number(customAmount) || 0 : (pkg?.amount || 0);
+  const totalAmount = unitAmount * quantity;
+
   const handleDonate = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    let finalAmount = 0;
-    if (isCustom) {
-      finalAmount = Number(customAmount);
-      if (finalAmount <= 0) {
-        toast.error("Please enter a valid amount");
-        return;
-      }
-    } else {
-      finalAmount = pkg.amount;
+    if (totalAmount <= 0) {
+      toast.error("Please enter a valid amount");
+      return;
+    }
+    if (quantity <= 0) {
+      toast.error("Please enter a valid quantity");
+      return;
     }
 
     setSubmitting(true);
@@ -72,16 +78,20 @@ export function DonateModal({
     }
 
     try {
+      const payload = {
+        ...formData,
+        donorName: formData.isAnonymous ? "Anonymous" : formData.donorName,
+        categoryId: isCustom ? (customCategoryId || category?._id) : category?._id,
+        packageId: isCustom ? null : pkg?._id,
+        amount: totalAmount,
+        unitAmount,
+        quantity,
+      };
+
       const res = await fetch("/api/public/donate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          donorName: formData.isAnonymous ? "Anonymous" : formData.donorName,
-          categoryId: isCustom ? (customCategoryId || category?._id) : category?._id,
-          packageId: isCustom ? null : pkg?._id,
-          amount: finalAmount
-        })
+        body: JSON.stringify(payload)
       });
       const json = await res.json();
       
@@ -154,7 +164,7 @@ export function DonateModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && resetAndClose()}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-y-auto max-h-[90vh] border-0 rounded-none shadow-2xl">
+      <DialogContent className="sm:max-w-[550px] p-0 overflow-y-auto max-h-[90vh] border-0 rounded-2xl shadow-2xl">
         {success ? (
           <div className="p-12 text-center flex flex-col items-center justify-center space-y-4 bg-white">
             <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
@@ -167,12 +177,12 @@ export function DonateModal({
             </p>
             {donationId && (
               <a href={`/receipt/${donationId}`} target="_blank" rel="noreferrer" className="w-full mt-6">
-                <Button variant="outline" className="w-full rounded-none tracking-widest uppercase">
+                <Button variant="outline" className="w-full rounded-xl tracking-widest uppercase">
                   Download Receipt
                 </Button>
               </a>
             )}
-            <Button className="mt-2 w-full rounded-none px-8 tracking-widest uppercase" onClick={resetAndClose}>
+            <Button className="mt-2 w-full rounded-xl px-8 tracking-widest uppercase" onClick={resetAndClose}>
               Close
             </Button>
           </div>
@@ -183,34 +193,86 @@ export function DonateModal({
                 {isCustom ? "Make a Custom Donation" : `Donate to ${category?.title}`}
               </DialogTitle>
               <DialogDescription className="text-gray-300 mt-2">
-                {isCustom ? "Choose a category and enter your custom amount" : `Selected: ${pkg?.title} (₹${pkg?.amount})`}
+                {isCustom ? "Choose a category and enter your custom amount" : `Selected: ${pkg?.title}`}
               </DialogDescription>
             </div>
-            <form onSubmit={handleDonate} className="p-6 space-y-4 bg-white">
+            <form onSubmit={handleDonate} className="p-6 space-y-6 bg-white">
               
               {isCustom && (
                 <div className="space-y-4">
+                  {categories.length > 0 && (
+                    <div className="space-y-2">
+                      <Label>Select Category</Label>
+                      <Select value={customCategoryId || category?._id} onValueChange={(v: string | null) => setCustomCategoryId(v || "")}>
+                        <SelectTrigger className="w-full rounded-lg border-gray-300">
+                          <SelectValue placeholder="Select a cause to support" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {categories.map((c: any) => (
+                            <SelectItem key={c._id} value={c._id}>
+                              {c.title}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
                   <div className="space-y-2">
-                    <Label>Select Category</Label>
-                    <Select value={customCategoryId || category?._id} onValueChange={(v: string | null) => setCustomCategoryId(v || "")}>
-                      <SelectTrigger className="w-full rounded-none border-gray-300">
-                        <SelectValue placeholder="Select a cause to support" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {categories.map((c: any) => (
-                          <SelectItem key={c._id} value={c._id}>
-                            {c.title}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Donation Amount (₹)</Label>
-                    <Input type="number" required min="1" value={customAmount} onChange={e => setCustomAmount(e.target.value)} className="rounded-none border-gray-300" />
+                    <Label>Unit Amount (₹)</Label>
+                    <Input type="number" required min="1" value={customAmount} onChange={e => setCustomAmount(e.target.value)} className="rounded-lg border-gray-300" placeholder="e.g. 500" />
                   </div>
                 </div>
               )}
+
+              {/* Quantity Selector */}
+              <div className="space-y-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                <Label className="text-charcoal font-semibold block mb-2 text-sm uppercase tracking-wider">Select Quantity</Label>
+                <div className="flex flex-wrap gap-2">
+                  {[1, 2, 5, 10].map(q => (
+                    <button
+                      key={q}
+                      type="button"
+                      onClick={() => { setQuantity(q); setIsCustomQuantity(false); }}
+                      className={`px-4 py-2 rounded-lg font-medium text-sm transition-all border ${
+                        quantity === q && !isCustomQuantity 
+                          ? "bg-rose-500 text-white border-rose-500 shadow-sm" 
+                          : "bg-white text-gray-600 border-gray-200 hover:border-rose-300 hover:text-rose-600"
+                      }`}
+                    >
+                      {q}
+                    </button>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => { setIsCustomQuantity(true); }}
+                    className={`px-4 py-2 rounded-lg font-medium text-sm transition-all border ${
+                      isCustomQuantity 
+                        ? "bg-rose-500 text-white border-rose-500 shadow-sm" 
+                        : "bg-white text-gray-600 border-gray-200 hover:border-rose-300 hover:text-rose-600"
+                    }`}
+                  >
+                    Custom
+                  </button>
+                </div>
+                
+                {isCustomQuantity && (
+                  <div className="mt-3 pt-2">
+                    <Label className="text-xs text-gray-500">Custom Quantity</Label>
+                    <Input 
+                      type="number" 
+                      min="1" 
+                      value={quantity || ""} 
+                      onChange={e => setQuantity(parseInt(e.target.value) || 1)} 
+                      className="rounded-lg border-gray-300 mt-1" 
+                    />
+                  </div>
+                )}
+                
+                <div className="mt-4 flex justify-between items-center text-sm border-t border-gray-200 pt-3">
+                  <span className="text-gray-500">Unit: ₹{unitAmount.toLocaleString('en-IN')} × {quantity}</span>
+                  <span className="font-bold text-lg text-charcoal">Total: ₹{totalAmount.toLocaleString('en-IN')}</span>
+                </div>
+              </div>
 
               <div className="flex items-center space-x-2 pb-2">
                 <Checkbox 
@@ -225,7 +287,7 @@ export function DonateModal({
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label>Full Name</Label>
-                    <Input required value={formData.donorName} onChange={e => setFormData({...formData, donorName: e.target.value})} className="rounded-none border-gray-300" />
+                    <Input required value={formData.donorName} onChange={e => setFormData({...formData, donorName: e.target.value})} className="rounded-lg border-gray-300" />
                   </div>
                 </div>
               )}
@@ -233,34 +295,34 @@ export function DonateModal({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Email</Label>
-                  <Input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="rounded-none border-gray-300" />
+                  <Input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="rounded-lg border-gray-300" />
                 </div>
                 <div className="space-y-2">
                   <Label>Phone Number</Label>
-                  <Input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="rounded-none border-gray-300" />
+                  <Input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="rounded-lg border-gray-300" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>PAN (Optional)</Label>
-                  <Input value={formData.pan} onChange={e => setFormData({...formData, pan: e.target.value.toUpperCase()})} className="rounded-none border-gray-300" placeholder="ABCDE1234F" />
+                  <Input value={formData.pan} onChange={e => setFormData({...formData, pan: e.target.value.toUpperCase()})} className="rounded-lg border-gray-300" placeholder="ABCDE1234F" />
                 </div>
                 <div className="space-y-2">
                   <Label>GST (Optional)</Label>
-                  <Input value={formData.gst} onChange={e => setFormData({...formData, gst: e.target.value.toUpperCase()})} className="rounded-none border-gray-300" placeholder="22AAAAA0000A1Z5" />
+                  <Input value={formData.gst} onChange={e => setFormData({...formData, gst: e.target.value.toUpperCase()})} className="rounded-lg border-gray-300" placeholder="22AAAAA0000A1Z5" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label>Message (Optional)</Label>
-                <Textarea value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="rounded-none border-gray-300" rows={2} />
+                <Textarea value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="rounded-lg border-gray-300" rows={2} />
               </div>
 
               <div className="pt-4 flex justify-end gap-3">
-                <Button type="button" variant="outline" className="rounded-none" onClick={resetAndClose}>Cancel</Button>
-                <Button type="submit" className="rounded-none bg-charcoal hover:bg-black text-white px-8" disabled={submitting}>
-                  {submitting ? "Processing..." : "Proceed to Payment"}
+                <Button type="button" variant="outline" className="rounded-xl" onClick={resetAndClose}>Cancel</Button>
+                <Button type="submit" className="rounded-xl bg-charcoal hover:bg-black text-white px-8" disabled={submitting}>
+                  {submitting ? "Processing..." : `Pay ₹${totalAmount.toLocaleString('en-IN')}`}
                 </Button>
               </div>
             </form>

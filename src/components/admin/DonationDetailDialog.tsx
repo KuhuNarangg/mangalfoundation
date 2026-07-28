@@ -116,13 +116,15 @@ export function DonationDetailDialog({
         <div className="space-y-4 text-sm">
           <div className="grid grid-cols-2 gap-3">
             <Detail label="Donor" value={donation.isAnonymous ? "Anonymous" : donation.donorName} />
-            <Detail label="Amount" value={formatINR(donation.amount)} />
+            <Detail label="Total Amount" value={formatINR(donation.amount)} />
             {!donation.isAnonymous && <Detail label="Email" value={donation.email || "—"} />}
             {!donation.isAnonymous && <Detail label="Phone" value={donation.phone || "—"} />}
             <Detail label="PAN" value={donation.pan || "—"} />
             <Detail label="GST" value={donation.gst || "—"} />
             <Detail label="Cause" value={donation.categoryId?.title || "Custom"} />
             <Detail label="Package" value={donation.packageId?.title || "—"} />
+            <Detail label="Unit Amount" value={donation.unitAmount ? formatINR(donation.unitAmount) : "—"} />
+            <Detail label="Quantity" value={donation.quantity ? donation.quantity.toString() : "—"} />
 
             <Detail label="Date" value={formatDateTime(donation.createdAt)} />
             <Detail label="Order ID" value={donation.razorpayOrderId || "—"} />
@@ -141,7 +143,7 @@ export function DonationDetailDialog({
           {donation.notes && <Detail label="Notes" value={donation.notes} />}
           <div className="flex items-center gap-2 pt-3 border-t border-border">
             <span className="text-muted-foreground">Status:</span>
-            <Select value={donation.paymentStatus} onValueChange={(v) => updateStatus(v || "")}>
+            <Select value={donation.paymentStatus} onValueChange={(v: string) => updateStatus(v || "")}>
               <SelectTrigger className="w-[140px] h-8">
                 <SelectValue>
                   {(v: any) => {

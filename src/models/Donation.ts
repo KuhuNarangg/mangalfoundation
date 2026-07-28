@@ -61,6 +61,15 @@ const donationSchema = new mongoose.Schema(
       required: true,
       min: 1,
     },
+    unitAmount: {
+      type: Number,
+      default: 0,
+    },
+    quantity: {
+      type: Number,
+      default: 1,
+      min: 1,
+    },
     paymentStatus: {
       type: String,
       enum: ["pending", "success", "failed", "refunded"],
