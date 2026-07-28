@@ -23,9 +23,10 @@ export const CATEGORIES: CategoryDetails[] = [
     description: "Provide nutritious meals to those in need. Your contribution helps fight hunger and malnutrition in marginalized communities.",
     image: "/images/nico-smit-NFoerQuvzrs-unsplash.jpg",
     galleryImages: [
-      "/images/nico-smit-NFoerQuvzrs-unsplash.jpg",
-      "/images/larm-rmah-AEaTUnvneik-unsplash.jpg",
-      "/images/yannis-h-uaPaEM7MiQQ-unsplash.jpg"
+      "/images/food/joel-muniz-3k3l2brxmwQ-unsplash.jpg",
+      "/images/food/khalil-radi-BlzrvWb1_vQ-unsplash.jpg",
+      "/images/food/usman-ahmed-YQE0XlUoupw-unsplash.jpg",
+      "/images/food/zekeriya-sen-iIZXUKjWFAA-unsplash.jpg",
     ],
     packages: [
       {
@@ -70,6 +71,12 @@ export const CATEGORIES: CategoryDetails[] = [
     slug: "women-empowerment",
     description: "Help women become self-reliant, skilled, confident, and financially independent while enabling them to live with dignity.",
     image: "/images/women2.jpg",
+    galleryImages: [
+      "/images/women/amol-sonar-1KntWz6Hpgc-unsplash.jpg",
+      "/images/women/ibrahim-rifath-oLVV_o45GIA-unsplash.jpg",
+      "/images/women/lewis-j-goetz-67heLkXJ340-unsplash.jpg",
+      "/images/women/srimathi-jayaprakash-uO1MUMn0Xzc-unsplash.jpg",
+    ],
     packages: [
       {
         id: "we-sewing",
@@ -134,6 +141,11 @@ export const CATEGORIES: CategoryDetails[] = [
     slug: "education",
     description: "Provide quality education, career guidance, and skill development to underprivileged, poor, and marginalized children.",
     image: "/images/larm-rmah-AEaTUnvneik-unsplash.jpg",
+    galleryImages: [
+      "/images/education/celine-ly-GqmoOqmoAYg-unsplash.jpg",
+      "/images/education/oswald-elsaboath-wtLpWnliBEs-unsplash.jpg",
+      "/images/education/yannis-h-uaPaEM7MiQQ-unsplash.jpg",
+    ],
     packages: [
       {
         id: "edu-fee",
@@ -184,6 +196,11 @@ export const CATEGORIES: CategoryDetails[] = [
     slug: "healthcare",
     description: "Improve public health through health awareness programs, medical assistance, healthcare camps, and preventive initiatives.",
     image: "/images/yannis-h-uaPaEM7MiQQ-unsplash.jpg",
+    galleryImages: [
+      "/images/health/ocg-saving-the-ocean-_1j7_atc0z8-unsplash.jpg",
+      "/images/health/roman-synkevych-5wJ2GiYSifA-unsplash.jpg",
+      "/images/health/saad-ali-jns3PkQU1xY-unsplash.jpg",
+    ],
     packages: [
       {
         id: "hc-camp",
@@ -207,6 +224,12 @@ export const CATEGORIES: CategoryDetails[] = [
     slug: "humanitarian-service",
     description: "Work continuously for the holistic development of society through the values of service, compassion, dedication, and humanity.",
     image: "/images/larm-rmah-AEaTUnvneik-unsplash.jpg",
+    galleryImages: [
+      "/images/huminatarian/emmanuel-ikwuegbu-VC6MGt9ZoBA-unsplash.jpg",
+      "/images/huminatarian/oscar-bartlett-bs-_YaiWSZs-unsplash.jpg",
+      "/images/huminatarian/saad-ali-rE-8SyIDUis-unsplash.jpg",
+      "/images/huminatarian/varun-gaba-O_H7BlvtZ8Y-unsplash.jpg",
+    ],
     packages: [
       {
         id: "hum-disaster",
@@ -229,6 +252,11 @@ export const CATEGORIES: CategoryDetails[] = [
     slug: "clothes",
     description: "Donate winter clothes, summer wear, and daily essentials to protect people from harsh weather and restore their dignity.",
     image: "/images/col1.jpg",
+    galleryImages: [
+      "/images/clothes/251017_ClothesBoxFoundation_04.jpg",
+      "/images/clothes/sarah-brown-oa7pqZmmhuA-unsplash.jpg",
+      "/images/clothes/soundofhope.jpg",
+    ],
     packages: [
       {
         id: "clothes-winter",
