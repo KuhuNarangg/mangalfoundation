@@ -196,7 +196,7 @@ export function DonateModal({
                 {isCustom ? "Choose a category and enter your custom amount" : `Selected: ${pkg?.title}`}
               </DialogDescription>
             </div>
-            <form onSubmit={handleDonate} className="p-6 space-y-6 bg-white">
+            <form onSubmit={handleDonate} className="p-6 space-y-6 bg-white text-charcoal">
               
               {isCustom && (
                 <div className="space-y-4">

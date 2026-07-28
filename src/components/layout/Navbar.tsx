@@ -138,7 +138,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md absolute top-20 left-0 right-0 shadow-lg border-t border-gray-100">
+        <div className="md:hidden bg-white absolute top-20 left-0 right-0 shadow-lg border-t border-gray-100">
           <div className="px-4 pt-2 pb-6 space-y-1">
             {navLinks.map((link) => (
               <Link

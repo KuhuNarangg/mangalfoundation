@@ -32,7 +32,8 @@ export function CloudinaryUpload({
       onUploaded(results);
       toast.success(`Uploaded ${results.length} file${results.length > 1 ? "s" : ""}`);
     } catch (e: any) {
-      toast.error(e?.message || "Upload failed");
+      console.error("Cloudinary upload error:", e);
+      toast.error(`Upload failed: ${e?.message || String(e)}`);
     } finally {
       setUploading(false);
       if (inputRef.current) inputRef.current.value = "";
