@@ -22,6 +22,9 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    galleryImages: [{
+      type: String,
+    }],
     monthlyTarget: {
       type: Number,
       required: true,

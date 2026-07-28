@@ -32,6 +32,7 @@ const EMPTY = {
   slug: "",
   description: "",
   image: "",
+  galleryImages: [] as string[],
   monthlyTarget: 0,
   isActive: true,
 };
@@ -74,6 +75,7 @@ export default function CategoriesPage() {
         slug: category.slug,
         description: category.description,
         image: category.image,
+        galleryImages: category.galleryImages || [],
         monthlyTarget: category.monthlyTarget,
         isActive: category.isActive,
       });
@@ -275,6 +277,37 @@ export default function CategoriesPage() {
                   <Image src={formData.image} alt="preview" fill className="object-cover" sizes="400px" />
                 </div>
               )}
+            </div>
+            <div className="space-y-2">
+              <Label>Gallery Images</Label>
+              <div className="flex gap-2">
+                <Input 
+                  value={formData.galleryImages?.join(", ") || ""} 
+                  onChange={(e) => setFormData({ ...formData, galleryImages: e.target.value.split(",").map(s => s.trim()).filter(Boolean) })} 
+                  placeholder="Comma-separated image URLs" 
+                />
+                <CloudinaryUpload
+                  folder="mangal/categories/gallery"
+                  accept="image/*"
+                  multiple
+                  label="Upload Multiple"
+                  onUploaded={(m) => setFormData((f) => ({ ...f, galleryImages: [...(f.galleryImages || []), ...m.map(img => img.url)] }))}
+                />
+              </div>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {formData.galleryImages?.map((img, i) => (
+                  <div key={i} className="relative h-20 w-20 rounded-md overflow-hidden border group">
+                    <Image src={img} alt={`Gallery ${i}`} fill className="object-cover" />
+                    <button 
+                      type="button" 
+                      className="absolute inset-0 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      onClick={() => setFormData(f => ({ ...f, galleryImages: f.galleryImages.filter((_, idx) => idx !== i) }))}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="space-y-2">
               <Label>Monthly Target (₹)</Label>

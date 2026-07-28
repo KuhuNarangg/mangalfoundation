@@ -12,6 +12,7 @@ export type CategoryDetails = {
   slug: string;
   description: string;
   image: string;
+  galleryImages?: string[];
   packages: CategoryPackage[];
 };
 
@@ -21,6 +22,11 @@ export const CATEGORIES: CategoryDetails[] = [
     slug: "food",
     description: "Provide nutritious meals to those in need. Your contribution helps fight hunger and malnutrition in marginalized communities.",
     image: "/images/nico-smit-NFoerQuvzrs-unsplash.jpg",
+    galleryImages: [
+      "/images/nico-smit-NFoerQuvzrs-unsplash.jpg",
+      "/images/larm-rmah-AEaTUnvneik-unsplash.jpg",
+      "/images/yannis-h-uaPaEM7MiQQ-unsplash.jpg"
+    ],
     packages: [
       {
         id: "food-20",

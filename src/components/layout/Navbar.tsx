@@ -96,7 +96,7 @@ export function Navbar() {
             <motion.div style={{ color: textColor }}>
               <Link
                 href="/login"
-                className="text-sm font-medium hover:opacity-70 transition-opacity flex items-center gap-1 border border-current px-4 py-1.5 rounded-full"
+                className="text-sm font-medium hover:opacity-70 transition-opacity flex items-center gap-1 px-2 py-1.5"
               >
                 <User size={16} />
                 Login
@@ -106,7 +106,7 @@ export function Navbar() {
               <motion.div style={{ color: textColor }}>
                 <Link
                   href="/volunteer#apply"
-                  className="text-sm font-bold border-2 border-current px-4 py-1.5 rounded-full hover:opacity-70 transition-opacity"
+                  className="text-sm font-bold hover:opacity-70 transition-opacity px-2 py-1.5"
                 >
                   Volunteer
                 </Link>
@@ -119,7 +119,7 @@ export function Navbar() {
             <motion.div style={{ color: textColor }}>
               <Link
                 href="/volunteer#apply"
-                className="px-4 py-1.5 text-xs font-bold border-2 border-current rounded-full"
+                className="px-2 py-1.5 text-xs font-bold"
               >
                 Volunteer
               </Link>
@@ -164,7 +164,7 @@ export function Navbar() {
             <div className="pt-3 space-y-2" onClick={() => setIsOpen(false)}>
               <Link
                 href="/volunteer#apply"
-                className="flex items-center justify-center w-full rounded-full border-2 border-gray-900 px-4 py-2.5 text-sm font-bold text-gray-900"
+                className="flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold text-gray-900 hover:bg-gray-50 rounded-md"
               >
                 Become a Volunteer
               </Link>

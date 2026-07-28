@@ -70,6 +70,8 @@ function sync() {
                         slug: cat.slug,
                         description: cat.description,
                         image: cat.image,
+                        galleryImages: cat.galleryImages || [],
+                        monthlyTarget: cat.monthlyTarget || 100000,
                         isActive: true,
                     });
                     return [4 /*yield*/, dbCat.save()];
@@ -80,6 +82,7 @@ function sync() {
                 case 5:
                     dbCat.description = cat.description;
                     dbCat.image = cat.image;
+                    dbCat.galleryImages = cat.galleryImages || [];
                     dbCat.isActive = true;
                     return [4 /*yield*/, dbCat.save()];
                 case 6:
