@@ -33,7 +33,7 @@ const EMPTY = {
   description: "",
   image: "",
   galleryImages: [] as string[],
-  monthlyTarget: 0,
+  monthlyTarget: "" as string | number,
   isActive: true,
 };
 
@@ -95,6 +95,7 @@ export default function CategoriesPage() {
         : "/api/admin/categories";
       const payload = {
         ...formData,
+        monthlyTarget: formData.monthlyTarget === "" ? 0 : Number(formData.monthlyTarget),
         galleryImages: formData.galleryImages?.map((s) => s.trim()).filter(Boolean) || [],
       };
       const res = await fetch(url, {
@@ -258,7 +259,7 @@ export default function CategoriesPage() {
               </div>
               <div className="space-y-2">
                 <Label>Slug</Label>
-                <Input required value={formData.slug} onChange={(e) => setFormData({ ...formData, slug: e.target.value })} placeholder="e.g. food-donation" />
+                <Input required value={formData.slug} onChange={(e) => setFormData({ ...formData, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-') })} placeholder="e.g. food-donation" />
               </div>
             </div>
             <div className="space-y-2">
@@ -315,7 +316,7 @@ export default function CategoriesPage() {
             </div>
             <div className="space-y-2">
               <Label>Monthly Target (₹)</Label>
-              <Input type="number" required min="0" value={formData.monthlyTarget} onChange={(e) => setFormData({ ...formData, monthlyTarget: Number(e.target.value) })} />
+              <Input type="number" min="0" value={formData.monthlyTarget} onChange={(e) => setFormData({ ...formData, monthlyTarget: e.target.value })} placeholder="Leave empty for no specific target" />
             </div>
             <div className="flex items-center space-x-2 pt-2">
               <Checkbox id="isActive" checked={formData.isActive} onCheckedChange={(c) => setFormData({ ...formData, isActive: c === true })} />
