@@ -181,7 +181,7 @@ export default function ManualDonationsPage() {
                     set("packageId", "");
                     set("customItemName", "");
                   }}>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full h-auto min-h-10 whitespace-normal text-left [&>span]:line-clamp-none">
                       <SelectValue placeholder="Select category">
                         {(v: any) => {
                           if (!v) return "Select category";
@@ -210,7 +210,7 @@ export default function ManualDonationsPage() {
                         if (p) set("amount", String(p.amount));
                       }
                     }}>
-                      <SelectTrigger>
+                      <SelectTrigger className="w-full h-auto min-h-10 whitespace-normal text-left [&>span]:line-clamp-none">
                         <SelectValue placeholder="Select sub-category">
                           {(v: any) => {
                             if (v === "custom") return "Custom Item";
@@ -263,7 +263,7 @@ export default function ManualDonationsPage() {
               <div className="space-y-2">
                 <Label>Payment Mode</Label>
                 <Select value={form.paymentMethod} onValueChange={(v) => set("paymentMethod", v || "cash")}>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full h-auto min-h-10 whitespace-normal text-left [&>span]:line-clamp-none">
                     <SelectValue>
                       {(v: any) => {
                         const m = METHODS.find((meth) => meth.value === v);
