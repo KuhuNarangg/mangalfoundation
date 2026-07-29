@@ -241,55 +241,57 @@ export function DonateModal({
                 </div>
               )}
 
-              {/* Quantity Selector */}
-              <div className="space-y-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                <Label className="text-charcoal font-semibold block mb-2 text-sm uppercase tracking-wider">Select Quantity</Label>
-                <div className="flex flex-wrap gap-2">
-                  {[1, 2, 5, 10].map(q => (
+              {/* Quantity Selector - Hidden for Custom Items */}
+              {!isCustom && (
+                <div className="space-y-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                  <Label className="text-charcoal font-semibold block mb-2 text-sm uppercase tracking-wider">Select Quantity</Label>
+                  <div className="flex flex-wrap gap-2">
+                    {[1, 2, 5, 10].map(q => (
+                      <button
+                        key={q}
+                        type="button"
+                        onClick={() => { setQuantity(q); setIsCustomQuantity(false); }}
+                        className={`px-4 py-2 rounded-lg font-medium text-sm transition-all border ${
+                          quantity === q && !isCustomQuantity 
+                            ? "bg-rose-500 text-white border-rose-500 shadow-sm" 
+                            : "bg-white text-gray-600 border-gray-200 hover:border-rose-300 hover:text-rose-600"
+                        }`}
+                      >
+                        {q}
+                      </button>
+                    ))}
                     <button
-                      key={q}
                       type="button"
-                      onClick={() => { setQuantity(q); setIsCustomQuantity(false); }}
+                      onClick={() => { setIsCustomQuantity(true); }}
                       className={`px-4 py-2 rounded-lg font-medium text-sm transition-all border ${
-                        quantity === q && !isCustomQuantity 
+                        isCustomQuantity 
                           ? "bg-rose-500 text-white border-rose-500 shadow-sm" 
                           : "bg-white text-gray-600 border-gray-200 hover:border-rose-300 hover:text-rose-600"
                       }`}
                     >
-                      {q}
+                      Custom
                     </button>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => { setIsCustomQuantity(true); }}
-                    className={`px-4 py-2 rounded-lg font-medium text-sm transition-all border ${
-                      isCustomQuantity 
-                        ? "bg-rose-500 text-white border-rose-500 shadow-sm" 
-                        : "bg-white text-gray-600 border-gray-200 hover:border-rose-300 hover:text-rose-600"
-                    }`}
-                  >
-                    Custom
-                  </button>
-                </div>
-                
-                {isCustomQuantity && (
-                  <div className="mt-3 pt-2">
-                    <Label className="text-xs text-gray-500">Custom Quantity</Label>
-                    <Input 
-                      type="number" 
-                      min="1" 
-                      value={quantity || ""} 
-                      onChange={e => setQuantity(parseInt(e.target.value) || 1)} 
-                      className="rounded-lg border-gray-300 mt-1" 
-                    />
                   </div>
-                )}
-                
-                <div className="mt-4 flex justify-between items-center text-sm border-t border-gray-200 pt-3">
-                  <span className="text-gray-500">Unit: ₹{unitAmount.toLocaleString('en-IN')} × {quantity}</span>
-                  <span className="font-bold text-lg text-charcoal">Total: ₹{totalAmount.toLocaleString('en-IN')}</span>
+                  
+                  {isCustomQuantity && (
+                    <div className="mt-3 pt-2">
+                      <Label className="text-xs text-gray-500">Custom Quantity</Label>
+                      <Input 
+                        type="number" 
+                        min="1" 
+                        value={quantity || ""} 
+                        onChange={e => setQuantity(parseInt(e.target.value) || 1)} 
+                        className="rounded-lg border-gray-300 mt-1" 
+                      />
+                    </div>
+                  )}
+                  
+                  <div className="mt-4 flex justify-between items-center text-sm border-t border-gray-200 pt-3">
+                    <span className="text-gray-500">Unit: ₹{unitAmount.toLocaleString('en-IN')} × {quantity}</span>
+                    <span className="font-bold text-lg text-charcoal">Total: ₹{totalAmount.toLocaleString('en-IN')}</span>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex items-center space-x-2 pb-2">
                 <Checkbox 
