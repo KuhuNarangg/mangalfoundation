@@ -109,7 +109,11 @@ export default function CategoriesPage() {
         setIsDialogOpen(false);
         fetchCategories();
       } else {
-        toast.error(json.error || "Something went wrong");
+        if (json.details && Array.isArray(json.details) && json.details.length > 0) {
+          toast.error(`Validation failed: ${json.details[0].message}`);
+        } else {
+          toast.error(json.error || "Something went wrong");
+        }
       }
     } finally {
       setBusy(false);
