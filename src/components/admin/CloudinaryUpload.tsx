@@ -47,7 +47,7 @@ export function CloudinaryUpload({
         type="file"
         accept={accept}
         multiple={multiple}
-        className="hidden"
+        className="sr-only"
         onChange={(e) => handleFiles(e.target.files)}
       />
       <Button

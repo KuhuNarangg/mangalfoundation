@@ -93,10 +93,14 @@ export default function CategoriesPage() {
       const url = editingId
         ? `/api/admin/categories/${editingId}`
         : "/api/admin/categories";
+      const payload = {
+        ...formData,
+        galleryImages: formData.galleryImages?.map((s) => s.trim()).filter(Boolean) || [],
+      };
       const res = await fetch(url, {
         method: editingId ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
       const json = await res.json();
       if (res.ok) {
@@ -264,7 +268,7 @@ export default function CategoriesPage() {
             <div className="space-y-2">
               <Label>Image</Label>
               <div className="flex gap-2">
-                <Input value={formData.image} onChange={(e) => setFormData({ ...formData, image: e.target.value })} placeholder="https://... or upload" />
+                <Input value={formData.image || ""} onChange={(e) => setFormData({ ...formData, image: e.target.value })} placeholder="https://... or upload" />
                 <CloudinaryUpload
                   folder="mangal/categories"
                   accept="image/*"
@@ -282,8 +286,8 @@ export default function CategoriesPage() {
               <Label>Gallery Images</Label>
               <div className="flex gap-2">
                 <Input 
-                  value={formData.galleryImages?.join(", ") || ""} 
-                  onChange={(e) => setFormData({ ...formData, galleryImages: e.target.value.split(",").map(s => s.trim()).filter(Boolean) })} 
+                  value={formData.galleryImages?.join(",") || ""} 
+                  onChange={(e) => setFormData({ ...formData, galleryImages: e.target.value.split(",") })} 
                   placeholder="Comma-separated image URLs" 
                 />
                 <CloudinaryUpload
