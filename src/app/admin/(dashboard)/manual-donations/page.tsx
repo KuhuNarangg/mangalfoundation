@@ -161,7 +161,7 @@ export default function ManualDonationsPage() {
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Email (optional)</Label>
                 <Input type="email" value={form.email} onChange={(e) => set("email", e.target.value)} />
@@ -172,32 +172,83 @@ export default function ManualDonationsPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>Category</Label>
-                <Select value={form.categoryId} onValueChange={(v) => {
-                  set("categoryId", v || "");
-                  set("packageId", "");
-                  set("customItemName", "");
-                }}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select category">
-                      {(v: any) => {
-                        if (!v) return "Select category";
-                        const c = categories.find((cat) => cat._id === v);
-                        return c ? c.title : v;
-                      }}
-                    </SelectValue>
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.map((c) => (
-                      <SelectItem key={c._id} value={c._id}>
-                        {c.title}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            <div className="space-y-4 pt-2 border-t">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>Category</Label>
+                  <Select value={form.categoryId} onValueChange={(v) => {
+                    set("categoryId", v || "");
+                    set("packageId", "");
+                    set("customItemName", "");
+                  }}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select category">
+                        {(v: any) => {
+                          if (!v) return "Select category";
+                          const c = categories.find((cat) => cat._id === v);
+                          return c ? c.title : v;
+                        }}
+                      </SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories.map((c) => (
+                        <SelectItem key={c._id} value={c._id}>
+                          {c.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {form.categoryId && (
+                  <div className="space-y-2">
+                    <Label>Sub Category / Package</Label>
+                    <Select value={form.packageId} onValueChange={(v) => {
+                      set("packageId", v || "");
+                      if (v && v !== "custom") {
+                        const p = packages.find(pkg => pkg._id === v);
+                        if (p) set("amount", String(p.amount));
+                      }
+                    }}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select sub-category">
+                          {(v: any) => {
+                            if (v === "custom") return "Custom Item";
+                            const p = packages.find((pkg) => pkg._id === v);
+                            return p ? p.title : "Select sub-category";
+                          }}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {packages.filter((p) => {
+                           const pCatId = typeof p.categoryId === 'object' ? p.categoryId._id : p.categoryId;
+                           return pCatId === form.categoryId;
+                        }).map((p) => (
+                          <SelectItem key={p._id} value={p._id}>
+                            {p.title} (₹{p.amount})
+                          </SelectItem>
+                        ))}
+                        <SelectItem value="custom">Custom Item</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
               </div>
+
+              {form.packageId === "custom" && (
+                <div className="space-y-2">
+                  <Label>Custom Item Name</Label>
+                  <Input 
+                    value={form.customItemName} 
+                    onChange={(e) => set("customItemName", e.target.value)} 
+                    placeholder="e.g. Bananas, Blankets..."
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t">
+
               <div className="space-y-2">
                 <Label>Amount (₹)</Label>
                 <Input
@@ -207,53 +258,8 @@ export default function ManualDonationsPage() {
                   onChange={(e) => set("amount", e.target.value)}
                 />
               </div>
-            </div>
-
-            {form.categoryId && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label>Sub Category / Package</Label>
-                  <Select value={form.packageId} onValueChange={(v) => {
-                    set("packageId", v || "");
-                    if (v && v !== "custom") {
-                      const p = packages.find(pkg => pkg._id === v);
-                      if (p) set("amount", String(p.amount));
-                    }
-                  }}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select sub-category">
-                        {(v: any) => {
-                          if (v === "custom") return "Custom Item";
-                          const p = packages.find((pkg) => pkg._id === v);
-                          return p ? p.title : "Select sub-category";
-                        }}
-                      </SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      {packages.filter((p) => p.categoryId === form.categoryId).map((p) => (
-                        <SelectItem key={p._id} value={p._id}>
-                          {p.title} (₹{p.amount})
-                        </SelectItem>
-                      ))}
-                      <SelectItem value="custom">Custom Item</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                {form.packageId === "custom" && (
-                  <div className="space-y-2">
-                    <Label>Custom Item Name</Label>
-                    <Input 
-                      value={form.customItemName} 
-                      onChange={(e) => set("customItemName", e.target.value)} 
-                      placeholder="e.g. Bananas, Blankets..."
-                    />
-                  </div>
-                )}
-              </div>
-            )}
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Payment Mode</Label>
                 <Select value={form.paymentMethod} onValueChange={(v) => set("paymentMethod", v || "cash")}>
