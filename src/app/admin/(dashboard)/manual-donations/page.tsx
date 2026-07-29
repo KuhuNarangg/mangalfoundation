@@ -31,6 +31,8 @@ const BLANK = {
   email: "",
   phone: "",
   categoryId: "",
+  packageId: "",
+  customItemName: "",
   amount: "",
   paymentMethod: "cash",
   date: "",
@@ -40,6 +42,7 @@ const BLANK = {
 
 export default function ManualDonationsPage() {
   const [categories, setCategories] = useState<any[]>([]);
+  const [packages, setPackages] = useState<any[]>([]);
   const [form, setForm] = useState({ ...BLANK });
   const [saving, setSaving] = useState(false);
   const [lastReceipt, setLastReceipt] = useState<any>(null);
@@ -49,6 +52,13 @@ export default function ManualDonationsPage() {
       .then((r) => r.json())
       .then((j) => {
         if (j.success) setCategories(j.data);
+      })
+      .catch(() => {});
+
+    fetch("/api/admin/packages")
+      .then((r) => r.json())
+      .then((j) => {
+        if (j.success) setPackages(j.data);
       })
       .catch(() => {});
     // Default the date to today (set after mount to avoid hydration mismatch).
@@ -76,10 +86,13 @@ export default function ManualDonationsPage() {
           phone: form.phone,
           isAnonymous: form.isAnonymous,
           categoryId: form.categoryId,
+          packageId: form.packageId && form.packageId !== "custom" ? form.packageId : undefined,
           amount,
           paymentMethod: form.paymentMethod,
           date: form.date,
-          notes: form.notes,
+          notes: form.packageId === "custom" && form.customItemName 
+            ? `Donating Item: ${form.customItemName}\n\n${form.notes}`.trim()
+            : form.notes,
         }),
       });
       const json = await res.json();
@@ -162,7 +175,11 @@ export default function ManualDonationsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Category</Label>
-                <Select value={form.categoryId} onValueChange={(v) => set("categoryId", v || "")}>
+                <Select value={form.categoryId} onValueChange={(v) => {
+                  set("categoryId", v || "");
+                  set("packageId", "");
+                  set("customItemName", "");
+                }}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select category">
                       {(v: any) => {
@@ -191,6 +208,50 @@ export default function ManualDonationsPage() {
                 />
               </div>
             </div>
+
+            {form.categoryId && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>Sub Category / Package</Label>
+                  <Select value={form.packageId} onValueChange={(v) => {
+                    set("packageId", v || "");
+                    if (v && v !== "custom") {
+                      const p = packages.find(pkg => pkg._id === v);
+                      if (p) set("amount", String(p.amount));
+                    }
+                  }}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select sub-category">
+                        {(v: any) => {
+                          if (v === "custom") return "Custom Item";
+                          const p = packages.find((pkg) => pkg._id === v);
+                          return p ? p.title : "Select sub-category";
+                        }}
+                      </SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      {packages.filter((p) => p.categoryId === form.categoryId).map((p) => (
+                        <SelectItem key={p._id} value={p._id}>
+                          {p.title} (₹{p.amount})
+                        </SelectItem>
+                      ))}
+                      <SelectItem value="custom">Custom Item</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                {form.packageId === "custom" && (
+                  <div className="space-y-2">
+                    <Label>Custom Item Name</Label>
+                    <Input 
+                      value={form.customItemName} 
+                      onChange={(e) => set("customItemName", e.target.value)} 
+                      placeholder="e.g. Bananas, Blankets..."
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">

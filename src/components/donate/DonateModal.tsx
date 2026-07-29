@@ -40,6 +40,7 @@ export function DonateModal({
 }) {
   const [customAmount, setCustomAmount] = useState("");
   const [customCategoryId, setCustomCategoryId] = useState(category?._id || "");
+  const [customItemName, setCustomItemName] = useState("");
   
   // Quantity State
   const [quantity, setQuantity] = useState<number>(1);
@@ -78,8 +79,13 @@ export function DonateModal({
     }
 
     try {
+      const finalMessage = isCustom && customItemName 
+        ? `Donating Item: ${customItemName}${formData.message ? `\n\nMessage: ${formData.message}` : ""}`
+        : formData.message;
+
       const payload = {
         ...formData,
+        message: finalMessage,
         donorName: formData.isAnonymous ? "Anonymous" : formData.donorName,
         categoryId: isCustom ? (customCategoryId || category?._id) : category?._id,
         packageId: isCustom ? null : pkg?._id,
@@ -190,10 +196,10 @@ export function DonateModal({
           <>
             <div className="bg-charcoal text-white p-6">
               <DialogTitle className="text-xl font-heading">
-                {isCustom ? "Make a Custom Donation" : `Donate to ${category?.title}`}
+                {isCustom ? "Donate Custom Item" : `Donate to ${category?.title}`}
               </DialogTitle>
               <DialogDescription className="text-gray-300 mt-2">
-                {isCustom ? "Choose a category and enter your custom amount" : `Selected: ${pkg?.title}`}
+                {isCustom ? "Specify the item and enter your contribution amount" : `Selected: ${pkg?.title}`}
               </DialogDescription>
             </div>
             <form onSubmit={handleDonate} className="p-6 space-y-6 bg-white text-charcoal">
@@ -217,6 +223,17 @@ export function DonateModal({
                       </Select>
                     </div>
                   )}
+                  <div className="space-y-2">
+                    <Label>What would you like to donate?</Label>
+                    <Input 
+                      type="text" 
+                      required 
+                      value={customItemName} 
+                      onChange={e => setCustomItemName(e.target.value)} 
+                      className="rounded-lg border-gray-300" 
+                      placeholder={category?.title?.toLowerCase().includes("food") ? "e.g. Bananas, Grains, etc." : `e.g. Other ${category?.title?.toLowerCase() || 'items'} you wish to donate`} 
+                    />
+                  </div>
                   <div className="space-y-2">
                     <Label>Unit Amount (₹)</Label>
                     <Input type="number" required min="1" value={customAmount} onChange={e => setCustomAmount(e.target.value)} className="rounded-lg border-gray-300" placeholder="e.g. 500" />

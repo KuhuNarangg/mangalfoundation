@@ -119,6 +119,7 @@ export async function POST(req: Request) {
       isAnonymous: data.isAnonymous ?? false,
       notes: data.notes || "",
       categoryId: data.categoryId,
+      packageId: data.packageId || undefined,
       amount: data.amount,
       paymentStatus: "success",
       source: "manual",

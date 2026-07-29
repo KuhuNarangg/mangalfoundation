@@ -105,6 +105,7 @@ export const manualDonationSchema = z.object({
   phone: z.string().trim().max(20).optional().or(z.literal("")),
   isAnonymous: z.boolean().default(false),
   categoryId: objectId,
+  packageId: objectId.nullable().optional(),
   amount: z.number().int("Amount must be a whole number").min(1).max(10_000_000),
   paymentMethod: z.enum(["cash", "cheque", "bank_transfer", "upi", "other"]),
   notes: z.string().trim().max(1000).optional(),

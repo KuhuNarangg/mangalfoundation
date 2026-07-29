@@ -44,7 +44,7 @@ export default function DonationsPage() {
   const [donations, setDonations] = useState<any[]>([]);
   const [pagination, setPagination] = useState({ total: 0, page: 1, limit: 50, pages: 1 });
   const [loading, setLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("success");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [dateFilter, setDateFilter] = useState("all");
   const [amountFilter, setAmountFilter] = useState("all");

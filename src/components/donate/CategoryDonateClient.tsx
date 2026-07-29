@@ -55,7 +55,9 @@ export function CategoryDonateClient({ category }: { category: any }) {
         <div className="bg-gradient-to-br from-white to-gray-50/80 rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all flex flex-col h-full group transform hover:-translate-y-1">
           <div className="p-6 md:p-8 flex-grow flex flex-col">
             <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-sans text-charcoal font-bold leading-tight">Custom Amount</h3>
+              <h3 className="text-xl font-sans text-charcoal font-bold leading-tight">
+                Want to donate any other {category.title.toLowerCase()} item?
+              </h3>
               <span className="bg-gray-100 text-gray-700 font-extrabold px-4 py-1.5 rounded-full text-sm shrink-0 whitespace-nowrap shadow-sm">
                 ₹ Any
               </span>
@@ -75,7 +77,7 @@ export function CategoryDonateClient({ category }: { category: any }) {
                 onClick={() => openDonate(null, true)}
                 className="w-full bg-white border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white font-bold tracking-wide h-12 rounded-xl transition-all duration-300 text-base"
               >
-                Enter Custom Amount
+                Donate Other Items
               </Button>
             </div>
           </div>
