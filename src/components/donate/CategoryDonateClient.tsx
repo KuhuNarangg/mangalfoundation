@@ -58,9 +58,6 @@ export function CategoryDonateClient({ category }: { category: any }) {
               <h3 className="text-xl font-sans text-charcoal font-bold leading-tight">
                 Want to donate any other {category.title.toLowerCase()} item?
               </h3>
-              <span className="bg-gray-100 text-gray-700 font-extrabold px-4 py-1.5 rounded-full text-sm shrink-0 whitespace-nowrap shadow-sm">
-                ₹ Any
-              </span>
             </div>
             
             <p className="text-gray-600 mb-6 text-sm flex-grow font-medium">
