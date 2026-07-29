@@ -90,21 +90,32 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
                 className="flex flex-col bg-white/80 backdrop-blur-xl border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 rounded-3xl overflow-hidden group cursor-pointer"
               >
                 {/* Image Section */}
-                <div className="relative h-56 w-full overflow-hidden">
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    loading="lazy"
-                    decoding="async"
-                    className={`absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out ${category.title === "Women Empowerment" ? "object-top" : ""}`}
-                  />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-80" />
-                  <h2 className="absolute bottom-6 left-6 font-heading font-bold text-2xl md:text-3xl text-white drop-shadow-lg">
-                    {category.title}
-                  </h2>
-                </div>
+                {category.image ? (
+                  <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      loading="lazy"
+                      decoding="async"
+                      className={`absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out ${category.title === "Women Empowerment" ? "object-top" : ""}`}
+                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-80" />
+                    <h2 className="absolute bottom-6 left-6 font-heading font-bold text-2xl md:text-3xl text-white drop-shadow-lg">
+                      {category.title}
+                    </h2>
+                  </div>
+                ) : (
+                  <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-rose-500 to-orange-500">
+                    <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                      <IconComponent className="w-24 h-24 text-white" />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-80" />
+                    <h2 className="absolute bottom-6 left-6 font-heading font-bold text-2xl md:text-3xl text-white drop-shadow-lg">
+                      {category.title}
+                    </h2>
+                  </div>
+                )}
 
                 {/* Content Section */}
                 <div className="p-6 md:p-8 flex flex-col flex-grow">

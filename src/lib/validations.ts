@@ -43,7 +43,7 @@ export const categoryInputSchema = z.object({
     .max(120)
     .regex(/^[a-z0-9-]+$/, "Slug may contain lowercase letters, numbers and hyphens"),
   description: z.string().trim().min(2).max(2000),
-  image: z.string().trim().min(1, "Image is required").max(500),
+  image: z.string().trim().max(500).optional().or(z.literal("")),
   galleryImages: z.array(z.string().trim().max(500)).optional(),
   monthlyTarget: z.number().min(0).max(1_000_000_000),
   isActive: z.boolean().default(true),

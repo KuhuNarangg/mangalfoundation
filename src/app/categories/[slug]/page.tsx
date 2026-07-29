@@ -11,25 +11,38 @@ import Category from "@/models/Category";
 // Note: In Next.js 15, params is a Promise. We must await it.
 export default async function CategoryPage(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
+  // Fetch dynamic category and packages from the DB
+  await connectToDatabase();
+  const dbCategory = await Category.findOne({ slug: params.slug }).lean();
   const staticCategory = CATEGORIES.find(c => c.slug === params.slug);
 
-  if (!staticCategory) {
+  if (!staticCategory && !dbCategory) {
     notFound();
   }
 
-  // Fetch dynamic overrides from the DB
-  await connectToDatabase();
-  const dbCategory = await Category.findOne({ slug: params.slug }).lean();
+  let dbPackages: any[] = [];
+  if (dbCategory) {
+    // We need to import Package at the top
+    const PackageModel = (await import("@/models/Package")).default;
+    dbPackages = await PackageModel.find({ categoryId: dbCategory._id }).lean();
+    dbPackages = dbPackages.map(p => ({
+      ...p,
+      id: p._id.toString(), // map _id to id for frontend
+      amount: p.amount,
+      title: p.title,
+      description: p.description,
+    }));
+  }
 
   const category = {
     ...staticCategory,
-    // Prefer DB title/description if available, else static
-    title: dbCategory?.title || staticCategory.title,
-    description: dbCategory?.description || staticCategory.description,
-    image: dbCategory?.image || staticCategory.image,
+    title: dbCategory?.title || staticCategory?.title || "",
+    description: dbCategory?.description || staticCategory?.description || "",
+    image: dbCategory?.image || staticCategory?.image || "",
     galleryImages: dbCategory?.galleryImages && dbCategory.galleryImages.length > 0 
       ? dbCategory.galleryImages 
-      : (staticCategory.galleryImages || []),
+      : (staticCategory?.galleryImages || []),
+    packages: dbPackages.length > 0 ? dbPackages : (staticCategory?.packages || []),
     _id: dbCategory?._id?.toString() || "",
   };
 
@@ -39,14 +52,16 @@ export default async function CategoryPage(props: { params: Promise<{ slug: stri
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={category.image}
-            alt={category.title}
-            fill
-            className="object-cover object-center"
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-rose-500 to-orange-500">
+          {category.image && (
+            <Image
+              src={category.image}
+              alt={category.title}
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          )}
           <div className="absolute inset-0 bg-black/60" />
         </div>
         
