@@ -26,7 +26,7 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com data:",
-  "connect-src 'self' https://*.razorpay.com https://lumberjack.razorpay.com",
+  "connect-src 'self' https://*.razorpay.com https://lumberjack.razorpay.com https://api.cloudinary.com",
   "frame-src 'self' https://*.razorpay.com https://api.razorpay.com",
   "object-src 'none'",
   "base-uri 'self'",
