@@ -179,7 +179,7 @@ export default function MemberTasksPage() {
               <div className="grid grid-cols-2 gap-6 bg-gray-50 p-4 rounded-lg border">
                 <div className="space-y-3">
                   <label className="text-sm font-medium">Status</label>
-                  <Select value={status} onValueChange={setStatus}>
+                  <Select value={status} onValueChange={(v: any) => setStatus(v || "")}>
                     <SelectTrigger className="bg-white">
                       <SelectValue placeholder="Select Status" />
                     </SelectTrigger>

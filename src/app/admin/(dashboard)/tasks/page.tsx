@@ -284,7 +284,7 @@ export default function TasksPage() {
               <div className="grid grid-cols-2 gap-6 bg-gray-50 p-4 rounded-lg border">
                 <div className="space-y-3">
                   <label className="text-sm font-medium">Status Override</label>
-                  <Select value={updateForm.status} onValueChange={v => setUpdateForm({...updateForm, status: v})}>
+                  <Select value={updateForm.status} onValueChange={(v: any) => setUpdateForm({...updateForm, status: v || ""})}>
                     <SelectTrigger className="bg-white">
                       <SelectValue placeholder="Select Status" />
                     </SelectTrigger>
