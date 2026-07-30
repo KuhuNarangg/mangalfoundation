@@ -29,10 +29,19 @@ export async function uploadFiles(
     fd.append("signature", sign.signature);
     fd.append("folder", sign.folder);
 
-    const up = await fetch(
-      `https://api.cloudinary.com/v1_1/${sign.cloudName}/auto/upload`,
-      { method: "POST", body: fd }
-    );
+    let up: Response;
+    try {
+      up = await fetch(
+        `https://api.cloudinary.com/v1_1/${sign.cloudName}/auto/upload`,
+        { method: "POST", body: fd }
+      );
+    } catch (err: any) {
+      if (err.message === "Load failed" || err.message.includes("fetch")) {
+        throw new Error("Network error (Load failed). This is usually caused by an AdBlocker blocking Cloudinary, or a poor internet connection. Please disable AdBlockers and try again.");
+      }
+      throw err;
+    }
+
     const data = await up.json();
     if (!up.ok) throw new Error(data.error?.message || "Upload failed");
     results.push({

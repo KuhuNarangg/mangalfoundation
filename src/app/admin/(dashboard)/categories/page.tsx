@@ -270,47 +270,50 @@ export default function CategoriesPage() {
               <Label>Description</Label>
               <Textarea required value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={3} />
             </div>
+
             <div className="space-y-2">
-              <Label>Image</Label>
+              <Label>Category Images</Label>
+              <p className="text-xs text-muted-foreground">
+                Upload images for this category. The first image will be used as the main cover image, and all images will be displayed in the scrolling gallery.
+              </p>
               <div className="flex gap-2">
-                <Input value={formData.image || ""} onChange={(e) => setFormData({ ...formData, image: e.target.value })} placeholder="https://... or upload" />
-                <CloudinaryUpload
-                  folder="mangal/categories"
-                  accept="image/*"
-                  label="Upload"
-                  onUploaded={(m) => setFormData((f) => ({ ...f, image: m[0].url }))}
-                />
-              </div>
-              {formData.image && (
-                <div className="relative h-32 w-full rounded-md overflow-hidden border mt-2">
-                  <Image src={formData.image} alt="preview" fill className="object-cover" sizes="400px" />
-                </div>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label>Gallery Images</Label>
-              <div className="flex gap-2">
-                <Input 
-                  value={formData.galleryImages?.join(",") || ""} 
-                  onChange={(e) => setFormData({ ...formData, galleryImages: e.target.value.split(",") })} 
-                  placeholder="Comma-separated image URLs" 
-                />
                 <CloudinaryUpload
                   folder="mangal/categories/gallery"
                   accept="image/*"
                   multiple
-                  label="Upload Multiple"
-                  onUploaded={(m) => setFormData((f) => ({ ...f, galleryImages: [...(f.galleryImages || []), ...m.map(img => img.url)] }))}
+                  label="Upload Images"
+                  onUploaded={(m) => {
+                    const newUrls = m.map(img => img.url);
+                    setFormData((f) => {
+                      const allImages = [...(f.galleryImages || []), ...newUrls];
+                      return {
+                        ...f,
+                        image: allImages[0] || "",
+                        galleryImages: allImages
+                      };
+                    });
+                  }}
                 />
               </div>
-              <div className="flex flex-wrap gap-2 mt-2">
+              
+              <div className="flex flex-wrap gap-2 mt-4">
                 {formData.galleryImages?.map((img, i) => (
-                  <div key={i} className="relative h-20 w-20 rounded-md overflow-hidden border group">
+                  <div key={i} className="relative h-24 w-24 rounded-md overflow-hidden border group">
                     <Image src={img} alt={`Gallery ${i}`} fill className="object-cover" />
+                    <div className="absolute top-1 left-1 bg-black/70 text-white text-[10px] px-1.5 rounded">
+                      {i === 0 ? "Cover" : "Gallery"}
+                    </div>
                     <button 
                       type="button" 
                       className="absolute inset-0 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                      onClick={() => setFormData(f => ({ ...f, galleryImages: f.galleryImages.filter((_, idx) => idx !== i) }))}
+                      onClick={() => setFormData(f => {
+                        const newGallery = f.galleryImages.filter((_, idx) => idx !== i);
+                        return {
+                          ...f,
+                          image: newGallery[0] || "",
+                          galleryImages: newGallery
+                        };
+                      })}
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
