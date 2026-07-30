@@ -66,7 +66,7 @@ export default async function MemberDashboard() {
             </div>
             {todayAttendance?.checkIn && (
               <p className="text-xs text-muted-foreground mt-1">
-                Since {new Date(todayAttendance.checkIn).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                Since {new Date(todayAttendance.checkIn).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit' })}
               </p>
             )}
           </CardContent>
@@ -129,7 +129,7 @@ export default async function MemberDashboard() {
                     <h4 className="font-semibold text-sm">{ann.title}</h4>
                     <p className="text-sm text-gray-600 mt-1 line-clamp-2">{ann.message}</p>
                     <p className="text-xs text-muted-foreground mt-2">
-                      {new Date(ann.createdAt).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
+                      {new Date(ann.createdAt).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', month: 'short', day: 'numeric', year: 'numeric' })}
                     </p>
                   </div>
                 ))}
