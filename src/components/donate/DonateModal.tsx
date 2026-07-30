@@ -43,7 +43,7 @@ export function DonateModal({
   const [customItemName, setCustomItemName] = useState("");
   
   // Quantity State
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number | string>(1);
   const [isCustomQuantity, setIsCustomQuantity] = useState(false);
   
   const [formData, setFormData] = useState({
@@ -55,7 +55,8 @@ export function DonateModal({
 
   // Calculate Unit Amount and Total Amount
   const unitAmount = isCustom ? Number(customAmount) || 0 : (pkg?.amount || 0);
-  const totalAmount = unitAmount * quantity;
+  const parsedQuantity = Number(quantity) || 0;
+  const totalAmount = unitAmount * parsedQuantity;
 
   const handleDonate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +65,7 @@ export function DonateModal({
       toast.error("Please enter a valid amount");
       return;
     }
-    if (quantity <= 0) {
+    if (parsedQuantity <= 0) {
       toast.error("Please enter a valid quantity");
       return;
     }
@@ -91,7 +92,7 @@ export function DonateModal({
         packageId: isCustom ? null : pkg?._id,
         amount: totalAmount,
         unitAmount,
-        quantity,
+        quantity: parsedQuantity,
       };
 
       const res = await fetch("/api/public/donate", {
@@ -279,15 +280,18 @@ export function DonateModal({
                       <Input 
                         type="number" 
                         min="1" 
-                        value={quantity || ""} 
-                        onChange={e => setQuantity(parseInt(e.target.value) || 1)} 
+                        value={quantity} 
+                        onChange={e => {
+                          const val = e.target.value;
+                          setQuantity(val === "" ? "" : parseInt(val));
+                        }} 
                         className="rounded-lg border-gray-300 mt-1" 
                       />
                     </div>
                   )}
                   
                   <div className="mt-4 flex justify-between items-center text-sm border-t border-gray-200 pt-3">
-                    <span className="text-gray-500">Unit: ₹{unitAmount.toLocaleString('en-IN')} × {quantity}</span>
+                    <span className="text-gray-500">Unit: ₹{unitAmount.toLocaleString('en-IN')} × {parsedQuantity}</span>
                     <span className="font-bold text-lg text-charcoal">Total: ₹{totalAmount.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
