@@ -17,7 +17,7 @@ export function MemberHeader({ user }: { user: any }) {
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-white px-4 md:px-8 shadow-sm">
       <div className="flex items-center gap-4">
         {/* Mobile menu toggle could go here */}
-        <h2 className="text-lg font-semibold md:hidden">Member Portal</h2>
+        <h2 className="text-lg font-semibold md:hidden text-black">Member Portal</h2>
       </div>
 
       <div className="flex items-center gap-3">
@@ -34,7 +34,7 @@ export function MemberHeader({ user }: { user: any }) {
                 className="h-full w-full object-cover"
               />
             ) : (
-              <User className="h-5 w-5 text-gray-600" />
+              <User className="h-5 w-5 text-black" />
             )}
           </Button>
         </Link>

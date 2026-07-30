@@ -87,35 +87,35 @@ export default function AttendancePage() {
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Attendance</h1>
-        <p className="text-muted-foreground mt-1">Track your daily hours and check-in status.</p>
+        <h1 className="text-3xl font-bold tracking-tight text-black">Attendance</h1>
+        <p className="text-black font-medium mt-1">Track your daily hours and check-in status.</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card className="border-none shadow-sm bg-white overflow-hidden relative">
           <div className={`absolute inset-x-0 top-0 h-1 ${isCheckedIn ? 'bg-green-500' : isCompleted ? 'bg-blue-500' : 'bg-gray-200'}`} />
           <CardHeader>
-            <CardTitle>Daily Status</CardTitle>
-            <CardDescription>{currentTime.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</CardDescription>
+            <CardTitle className="text-black font-bold">Daily Status</CardTitle>
+            <CardDescription className="text-black font-medium">{currentTime.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="text-center">
-              <div className="text-4xl font-mono font-bold tracking-tighter text-gray-900 mb-2">
+              <div className="text-4xl font-mono font-bold tracking-tighter text-black mb-2">
                 {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
               </div>
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
+              <div className="text-sm font-bold text-black uppercase tracking-widest">
                 {isCompleted ? "Shift Completed" : isCheckedIn ? "Currently Clocked In" : "Not Clocked In"}
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4 border-t pt-4">
               <div>
-                <p className="text-sm text-muted-foreground mb-1">Check In</p>
-                <p className="font-semibold text-lg">{formatTime(todayRecord?.checkIn)}</p>
+                <p className="text-sm text-black font-semibold mb-1">Check In</p>
+                <p className="font-bold text-lg text-black">{formatTime(todayRecord?.checkIn)}</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground mb-1">Check Out</p>
-                <p className="font-semibold text-lg">{formatTime(todayRecord?.checkOut)}</p>
+                <p className="text-sm text-black font-semibold mb-1">Check Out</p>
+                <p className="font-bold text-lg text-black">{formatTime(todayRecord?.checkOut)}</p>
               </div>
             </div>
 
@@ -142,9 +142,9 @@ export default function AttendancePage() {
                 </Button>
               )}
               {isCompleted && (
-                <div className="w-full bg-gray-50 border rounded-xl py-4 px-6 text-center text-gray-600 font-medium flex flex-col items-center justify-center">
-                  <span className="text-sm">Total hours today</span>
-                  <span className="text-2xl text-blue-600 font-bold">{calculateDuration()}</span>
+                <div className="w-full bg-gray-50 border rounded-xl py-4 px-6 text-center text-black font-medium flex flex-col items-center justify-center">
+                  <span className="text-sm font-semibold">Total hours today</span>
+                  <span className="text-2xl text-black font-extrabold">{calculateDuration()}</span>
                 </div>
               )}
             </div>
@@ -153,29 +153,29 @@ export default function AttendancePage() {
 
         <Card className="border-none shadow-sm bg-white">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <History className="h-5 w-5 text-gray-400" /> Recent History
+            <CardTitle className="flex items-center gap-2 text-black font-bold">
+              <History className="h-5 w-5 text-black" /> Recent History
             </CardTitle>
           </CardHeader>
           <CardContent>
             {history.length === 0 ? (
-              <p className="text-muted-foreground text-center py-8">No attendance records found for this month.</p>
+              <p className="text-black font-medium text-center py-8">No attendance records found for this month.</p>
             ) : (
               <div className="space-y-4">
                 {history.slice(0, 5).map((record) => (
                   <div key={record._id} className="flex items-center justify-between p-3 rounded-lg border border-gray-100 hover:bg-gray-50">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                      <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center text-black">
                         <CalendarIcon className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="font-medium">{new Date(record.date).toLocaleDateString([], { month: 'short', day: 'numeric' })}</p>
-                        <p className="text-xs text-muted-foreground capitalize">{record.status}</p>
+                        <p className="font-bold text-black">{new Date(record.date).toLocaleDateString([], { month: 'short', day: 'numeric' })}</p>
+                        <p className="text-xs text-black font-semibold capitalize">{record.status}</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-semibold">{record.totalHours ? `${record.totalHours} hrs` : '--'}</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-sm font-bold text-black">{record.totalHours ? `${record.totalHours} hrs` : '--'}</p>
+                      <p className="text-xs text-black font-semibold">
                         {formatTime(record.checkIn)} - {formatTime(record.checkOut)}
                       </p>
                     </div>

@@ -29,7 +29,7 @@ export function MemberSidebar({ user }: { user: any }) {
     <aside className="hidden md:flex w-64 flex-col bg-white border-r min-h-screen">
       <div className="p-6 border-b">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold font-heading text-primary">Mangal Guruji</span>
+          <span className="text-xl font-bold font-heading text-black">Mangal Guruji</span>
         </Link>
       </div>
 
@@ -46,7 +46,7 @@ export function MemberSidebar({ user }: { user: any }) {
                     "flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors",
                     isActive
                       ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:bg-gray-100 hover:text-foreground"
+                      : "text-black hover:bg-gray-100 hover:text-black"
                   )}
                 >
                   <Icon className="h-4 w-4" />

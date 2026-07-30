@@ -50,19 +50,19 @@ export default function MemberEventsPage() {
     }
   };
 
-  if (loading) return <div className="p-8 text-center text-muted-foreground"><Loader2 className="h-6 w-6 animate-spin mx-auto mb-2"/> Loading events...</div>;
+  if (loading) return <div className="p-8 text-center text-black font-semibold"><Loader2 className="h-6 w-6 animate-spin mx-auto mb-2"/> Loading events...</div>;
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Upcoming Events</h1>
-        <p className="text-muted-foreground mt-1">Browse and RSVP to upcoming NGO events and campaigns.</p>
+        <h1 className="text-3xl font-bold tracking-tight text-black">Upcoming Events</h1>
+        <p className="text-black font-medium mt-1">Browse and RSVP to upcoming NGO events and campaigns.</p>
       </div>
 
       {events.length === 0 ? (
         <Card className="bg-white border-dashed">
-          <CardContent className="py-12 text-center text-muted-foreground">
-            <Calendar className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+          <CardContent className="py-12 text-center text-black font-medium">
+            <Calendar className="h-12 w-12 mx-auto mb-4 text-black" />
             <p>There are no upcoming events at the moment.</p>
           </CardContent>
         </Card>
@@ -80,23 +80,23 @@ export default function MemberEventsPage() {
                 )}
                 <CardHeader>
                   <div className="flex justify-between items-start gap-4">
-                    <CardTitle className="text-xl leading-tight">{event.title}</CardTitle>
-                    {isAttending && <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-medium flex items-center whitespace-nowrap"><CheckCircle2 className="w-3 h-3 mr-1"/> Attending</span>}
+                    <CardTitle className="text-xl leading-tight text-black font-bold">{event.title}</CardTitle>
+                    {isAttending && <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-bold flex items-center whitespace-nowrap"><CheckCircle2 className="w-3 h-3 mr-1"/> Attending</span>}
                   </div>
-                  <CardDescription className="flex flex-col gap-1 mt-2">
-                    <span className="flex items-center text-gray-600"><Calendar className="w-4 h-4 mr-2" /> {formatDate(event.date)}</span>
-                    <span className="flex items-center text-gray-600"><MapPin className="w-4 h-4 mr-2" /> {event.location}</span>
+                  <CardDescription className="flex flex-col gap-1 mt-2 text-black">
+                    <span className="flex items-center text-black font-semibold"><Calendar className="w-4 h-4 mr-2" /> {formatDate(event.date)}</span>
+                    <span className="flex items-center text-black font-semibold"><MapPin className="w-4 h-4 mr-2" /> {event.location}</span>
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-sm text-gray-600 line-clamp-3">{event.description}</p>
+                  <p className="text-sm text-black font-medium line-clamp-3">{event.description}</p>
                   
                   <div className="pt-4 border-t flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">{event.rsvps?.length || 0} volunteers attending</span>
+                    <span className="text-xs text-black font-semibold">{event.rsvps?.length || 0} volunteers attending</span>
                     <Button 
                       variant={isAttending ? "outline" : "default"} 
                       onClick={() => handleRsvp(event._id, isAttending)}
-                      className={isAttending ? "text-red-600 hover:text-red-700 hover:bg-red-50" : ""}
+                      className={isAttending ? "text-red-600 hover:text-red-700 hover:bg-red-50 font-bold" : "font-bold"}
                     >
                       {isAttending ? "Cancel RSVP" : "RSVP Now"}
                     </Button>

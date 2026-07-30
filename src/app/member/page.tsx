@@ -46,8 +46,8 @@ export default async function MemberDashboard() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Welcome, {user?.name || "Member"}!</h1>
-          <p className="text-muted-foreground mt-1">Here is what is happening today.</p>
+          <h1 className="text-3xl font-bold tracking-tight text-black">Welcome, {user?.name || "Member"}!</h1>
+          <p className="text-black mt-1 font-medium">Here is what is happening today.</p>
         </div>
         
         {/* Quick action for attendance */}
@@ -57,15 +57,15 @@ export default async function MemberDashboard() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="border-none shadow-sm bg-white">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Today's Status</CardTitle>
+            <CardTitle className="text-sm font-semibold text-black">Today's Status</CardTitle>
             <Clock className="h-4 w-4 text-blue-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-black">
               {!todayAttendance ? "Not Checked In" : (todayAttendance.checkOut ? "Checked Out" : "Checked In")}
             </div>
             {todayAttendance?.checkIn && (
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs text-black font-medium mt-1">
                 Since {new Date(todayAttendance.checkIn).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit' })}
               </p>
             )}
@@ -74,12 +74,12 @@ export default async function MemberDashboard() {
 
         <Card className="border-none shadow-sm bg-white">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Member Status</CardTitle>
+            <CardTitle className="text-sm font-semibold text-black">Member Status</CardTitle>
             <Award className="h-4 w-4 text-amber-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">{user?.status || "Active"}</div>
-            <p className="text-xs text-muted-foreground mt-1">
+            <div className="text-2xl font-bold text-black">{user?.status || "Active"}</div>
+            <p className="text-xs text-black font-medium mt-1">
               ID: {user?.memberId || "Pending"}
             </p>
           </CardContent>
@@ -87,12 +87,12 @@ export default async function MemberDashboard() {
 
         <Card className="border-none shadow-sm bg-white">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Upcoming Events</CardTitle>
+            <CardTitle className="text-sm font-semibold text-black">Upcoming Events</CardTitle>
             <Calendar className="h-4 w-4 text-green-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">{upcomingEvents}</div>
-            <p className="text-xs text-muted-foreground mt-1">
+            <div className="text-2xl font-bold text-black">{upcomingEvents}</div>
+            <p className="text-xs text-black font-medium mt-1">
               Events upcoming
             </p>
           </CardContent>
@@ -100,12 +100,12 @@ export default async function MemberDashboard() {
 
         <Card className="border-none shadow-sm bg-white">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Pending Tasks</CardTitle>
+            <CardTitle className="text-sm font-semibold text-black">Pending Tasks</CardTitle>
             <CheckSquare className="h-4 w-4 text-purple-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">{pendingTasks}</div>
-            <p className="text-xs text-muted-foreground mt-1">
+            <div className="text-2xl font-bold text-black">{pendingTasks}</div>
+            <p className="text-xs text-black font-medium mt-1">
               Requires attention
             </p>
           </CardContent>
@@ -115,20 +115,20 @@ export default async function MemberDashboard() {
       <div className="grid gap-6 md:grid-cols-2">
         <Card className="border-none shadow-sm bg-white">
           <CardHeader>
-            <CardTitle>Recent Announcements</CardTitle>
+            <CardTitle className="text-black font-bold">Recent Announcements</CardTitle>
           </CardHeader>
           <CardContent>
             {announcements.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-center py-8 text-black font-medium">
                 <p>No recent announcements from admin.</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {announcements.map((ann: any) => (
                   <div key={ann._id.toString()} className="border-l-4 border-blue-500 pl-4 py-2">
-                    <h4 className="font-semibold text-sm">{ann.title}</h4>
-                    <p className="text-sm text-gray-600 mt-1 line-clamp-2">{ann.message}</p>
-                    <p className="text-xs text-muted-foreground mt-2">
+                    <h4 className="font-semibold text-sm text-black">{ann.title}</h4>
+                    <p className="text-sm text-black mt-1 line-clamp-2">{ann.message}</p>
+                    <p className="text-xs text-black mt-2 font-medium">
                       {new Date(ann.createdAt).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', month: 'short', day: 'numeric', year: 'numeric' })}
                     </p>
                   </div>
@@ -140,7 +140,7 @@ export default async function MemberDashboard() {
 
         <Card className="border-none shadow-sm bg-white">
           <CardHeader>
-            <CardTitle>Quick Links</CardTitle>
+            <CardTitle className="text-black font-bold">Quick Links</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <Link href="/member/profile" className="flex items-center p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
@@ -148,8 +148,8 @@ export default async function MemberDashboard() {
                 <UserIcon className="h-4 w-4 text-blue-600" />
               </div>
               <div>
-                <div className="font-medium">Complete Your Profile</div>
-                <div className="text-sm text-muted-foreground">Update emergency contacts</div>
+                <div className="font-semibold text-black">Complete Your Profile</div>
+                <div className="text-sm text-black font-medium">Update emergency contacts</div>
               </div>
             </Link>
           </CardContent>
