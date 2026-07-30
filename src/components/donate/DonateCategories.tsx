@@ -38,7 +38,7 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
 
   if (loading) {
     return (
-      <section className="py-24 bg-gray-50/50 min-h-[60vh] flex items-center justify-center">
+      <section className="py-24 bg-white border-b border-gray-200 min-h-[60vh] flex items-center justify-center">
         <div className="text-xl tracking-widest uppercase font-light text-gray-500 animate-pulse">
           Loading Initiatives...
         </div>
@@ -47,13 +47,7 @@ export function DonateCategories({ isHomePage = false }: { isHomePage?: boolean 
   }
 
   return (
-    <section className="py-24 bg-gray-50/50 relative overflow-hidden z-0">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-        <div className="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-rose-50/50 blur-3xl opacity-50" />
-        <div className="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-orange-50/50 blur-3xl opacity-50" />
-      </div>
-
+    <section className="py-24 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
