@@ -1,46 +1,30 @@
 import mongoose from "mongoose";
+import Category from "./src/models/Category";
+import { CATEGORIES } from "./src/data/categories";
 import dotenv from "dotenv";
-import path from "path";
 
-dotenv.config({ path: path.resolve(process.cwd(), ".env") });
-dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
+dotenv.config({ path: ".env.local" });
 
-async function run() {
-  await mongoose.connect(process.env.MONGODB_URI as string);
-  console.log("Connected to MongoDB.");
+const MONGODB_URI = process.env.MONGODB_URI;
 
-  // Import schemas
-  const categorySchema = new mongoose.Schema({}, { strict: false });
-  const packageSchema = new mongoose.Schema({}, { strict: false });
-  const Category = mongoose.model("Category", categorySchema);
-  const Package = mongoose.model("Package", packageSchema);
+if (!MONGODB_URI) {
+  throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
+}
 
-  const staticSlugs = [
-    "food",
-    "women-empowerment",
-    "education",
-    "healthcare",
-    "humanitarian-service",
-    "clothes"
-  ];
+async function cleanupCategories() {
+  await mongoose.connect(MONGODB_URI as string);
+  console.log("Connected to MongoDB");
 
-  const manualCategories = await Category.find({ slug: { $nin: staticSlugs } });
-  
-  if (manualCategories.length === 0) {
-    console.log("No manual categories found.");
-  } else {
-    console.log(`Found ${manualCategories.length} manual categories to delete.`);
-    
-    const catIds = manualCategories.map(c => c._id);
-    
-    const pkgRes = await Package.deleteMany({ categoryId: { $in: catIds } });
-    console.log(`Deleted ${pkgRes.deletedCount} associated packages.`);
-    
-    const catRes = await Category.deleteMany({ _id: { $in: catIds } });
-    console.log(`Deleted ${catRes.deletedCount} manual categories.`);
-  }
+  const staticSlugs = CATEGORIES.map((c) => c.slug);
+  console.log("Static slugs to KEEP:", staticSlugs);
+
+  const result = await Category.deleteMany({
+    slug: { $nin: staticSlugs }
+  });
+
+  console.log(`Deleted ${result.deletedCount} manually added categories.`);
 
   await mongoose.disconnect();
 }
 
-run().catch(console.error);
+cleanupCategories().catch(console.error);

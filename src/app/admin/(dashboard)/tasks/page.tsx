@@ -38,8 +38,7 @@ export default function TasksPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const [selectedTask, setSelectedTask] = useState<any>(null);
   const [isUpdateDialogOpen, setIsUpdateDialogOpen] = useState(false);
   const [updateForm, setUpdateForm] = useState({
