@@ -18,26 +18,53 @@ export async function GET() {
     // MERGE STATIC DATA with DB DATA to ensure missing packages show up
     const { CATEGORIES } = await import("@/data/categories");
     
-    const result = CATEGORIES.map((staticCat) => {
-      // Find matching DB category to get the _id and budget
-      const dbCat = categories.find(c => c.title === staticCat.title);
+    const result: any[] = [];
+    const processedDbIds = new Set();
+
+    // 1. Process static categories (and merge with DB if they exist)
+    for (const staticCat of CATEGORIES) {
+      const dbCat = categories.find(c => c.slug === staticCat.slug || c.title === staticCat.title);
       const catId = dbCat ? dbCat._id.toString() : "";
+      if (dbCat) processedDbIds.add(catId);
       
-      return {
+      result.push({
         ...staticCat,
+        title: dbCat?.title || staticCat.title,
+        description: dbCat?.description || staticCat.description,
+        image: dbCat?.image || staticCat.image,
         _id: catId,
-        packages: staticCat.packages.map((pkg) => {
-          // If we want to map package ids, we can just use the static pkg
-          // We need an _id for React keys and for the donation handler
-          return {
-            ...pkg,
-            _id: pkg.id, // the static string id like "food-50"
-            categoryId: catId,
-          }
-        }),
-        budget: dbCat ? computeBudget(dbCat, raisedMap[catId] || 0) : null,
-      };
-    });
+        packages: staticCat.packages.map((pkg) => ({
+          ...pkg,
+          _id: pkg.id,
+          categoryId: catId,
+        })),
+        budget: dbCat ? computeBudget(dbCat as any, raisedMap[catId] || 0) : null,
+      });
+    }
+
+    // 2. Add purely dynamic categories that aren't in the static list
+    for (const dbCat of categories) {
+      const catId = dbCat._id.toString();
+      if (!processedDbIds.has(catId)) {
+        const catPackages = packages.filter(p => p.categoryId === catId).map(p => ({
+          ...p,
+          id: p._id.toString(),
+          _id: p._id.toString(),
+          categoryId: catId,
+        }));
+        
+        result.push({
+          title: dbCat.title,
+          slug: dbCat.slug,
+          description: dbCat.description,
+          image: dbCat.image || "",
+          galleryImages: dbCat.galleryImages || [],
+          _id: catId,
+          packages: catPackages,
+          budget: computeBudget(dbCat as any, raisedMap[catId] || 0),
+        });
+      }
+    }
 
     // Custom sorting as requested: Food -> Clothes -> Women -> Temple (last)
     result.sort((a, b) => {
