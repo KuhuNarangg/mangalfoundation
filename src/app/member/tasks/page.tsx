@@ -163,38 +163,38 @@ export default function MemberTasksPage() {
 
       {/* Update Task Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-gray-900 text-white border border-gray-800 shadow-2xl">
           <DialogHeader>
-            <DialogTitle className="text-black font-bold">Update Task</DialogTitle>
+            <DialogTitle className="text-white font-bold text-xl">Update Task</DialogTitle>
           </DialogHeader>
           
           {selectedTask && (
-            <div className="space-y-6 mt-4">
+            <div className="space-y-6 mt-4 text-white">
               <div>
-                <h3 className="font-bold text-lg text-black">{selectedTask.title}</h3>
-                <p className="text-sm text-black font-medium mt-2">{selectedTask.description}</p>
-                <p className="text-xs text-black font-semibold mt-2 flex items-center"><Calendar className="w-3 h-3 mr-1"/> Due: {formatDate(selectedTask.dueDate)}</p>
+                <h3 className="font-bold text-lg text-white">{selectedTask.title}</h3>
+                <p className="text-sm text-gray-300 font-medium mt-2">{selectedTask.description}</p>
+                <p className="text-xs text-gray-400 font-semibold mt-2 flex items-center"><Calendar className="w-3 h-3 mr-1"/> Due: {formatDate(selectedTask.dueDate)}</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-6 bg-gray-50 p-4 rounded-lg border">
+              <div className="grid grid-cols-2 gap-6 bg-gray-800/80 p-4 rounded-lg border border-gray-700">
                 <div className="space-y-3">
-                  <label className="text-sm font-bold text-black">Status</label>
+                  <label className="text-sm font-bold text-white">Status</label>
                   <Select value={status} onValueChange={(v: any) => setStatus(v || "")}>
-                    <SelectTrigger className="bg-white text-black font-semibold">
-                      <SelectValue placeholder="Select Status" />
+                    <SelectTrigger className="bg-gray-900 text-white border-gray-700 font-semibold">
+                      <SelectValue placeholder="Select Status" className="text-white" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="pending">Pending</SelectItem>
-                      <SelectItem value="in-progress">In Progress</SelectItem>
-                      <SelectItem value="completed">Completed</SelectItem>
+                    <SelectContent className="bg-gray-900 text-white border-gray-700">
+                      <SelectItem value="pending" className="text-white focus:bg-gray-800">Pending</SelectItem>
+                      <SelectItem value="in-progress" className="text-white focus:bg-gray-800">In Progress</SelectItem>
+                      <SelectItem value="completed" className="text-white focus:bg-gray-800">Completed</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <label className="text-sm font-bold text-black">Progress</label>
-                    <span className="text-sm font-extrabold text-black">{progress}%</span>
+                    <label className="text-sm font-bold text-white">Progress</label>
+                    <span className="text-sm font-extrabold text-white">{progress}%</span>
                   </div>
                   <input
                     type="range"
@@ -203,24 +203,24 @@ export default function MemberTasksPage() {
                     step={5}
                     value={progress}
                     onChange={(e) => setProgress(parseInt(e.target.value))}
-                    className="w-full accent-primary mt-2"
+                    className="w-full accent-blue-500 mt-2"
                   />
                 </div>
               </div>
 
               <div className="space-y-3">
-                <label className="text-sm font-bold text-black flex items-center"><MessageSquare className="w-4 h-4 mr-2"/> Add Note</label>
+                <label className="text-sm font-bold text-white flex items-center"><MessageSquare className="w-4 h-4 mr-2 text-blue-400"/> Add Note</label>
                 <Textarea 
                   placeholder="Share updates on your progress..." 
                   value={note} 
                   onChange={(e) => setNote(e.target.value)}
                   rows={3}
-                  className="text-black font-medium placeholder:text-gray-500"
+                  className="bg-gray-800 border-gray-700 text-white font-medium placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
-              <div className="flex justify-end pt-2 border-t">
-                <Button onClick={handleUpdateTask} disabled={updating} className="font-bold">
+              <div className="flex justify-end pt-2 border-t border-gray-800">
+                <Button onClick={handleUpdateTask} disabled={updating} className="font-bold bg-blue-600 hover:bg-blue-700 text-white px-6">
                   {updating ? <Loader2 className="w-4 h-4 animate-spin mr-2"/> : null}
                   Save Updates
                 </Button>
@@ -229,23 +229,23 @@ export default function MemberTasksPage() {
               {/* Notes History */}
               {selectedTask.notes && selectedTask.notes.length > 0 && (
                 <div className="mt-8 space-y-4">
-                  <h4 className="font-bold text-sm text-black uppercase tracking-wider">Activity History</h4>
+                  <h4 className="font-bold text-sm text-gray-300 uppercase tracking-wider">Activity History</h4>
                   <div className="space-y-3">
                     {selectedTask.notes.slice().reverse().map((n: any, idx: number) => (
-                      <div key={idx} className={`p-3 rounded-lg text-sm flex gap-3 ${n.role === 'admin' ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50 border border-gray-100'}`}>
+                      <div key={idx} className={`p-3 rounded-lg text-sm flex gap-3 ${n.role === 'admin' ? 'bg-blue-950/60 border border-blue-800/80 text-white' : 'bg-gray-800 border border-gray-700 text-white'}`}>
                         <div className="mt-0.5">
                           {n.role === 'admin' ? (
-                            <div className="w-6 h-6 rounded-full bg-blue-200 text-black font-bold flex items-center justify-center"><User className="w-3 h-3"/></div>
+                            <div className="w-6 h-6 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center"><User className="w-3 h-3"/></div>
                           ) : (
-                            <div className="w-6 h-6 rounded-full bg-gray-200 text-black font-bold flex items-center justify-center"><User className="w-3 h-3"/></div>
+                            <div className="w-6 h-6 rounded-full bg-gray-700 text-white font-bold flex items-center justify-center"><User className="w-3 h-3"/></div>
                           )}
                         </div>
                         <div className="flex-1">
                           <div className="flex justify-between items-baseline mb-1">
-                            <span className="font-bold text-xs capitalize text-black">{n.role}</span>
-                            <span className="text-[10px] text-black font-semibold">{formatDateTime(n.createdAt)}</span>
+                            <span className="font-bold text-xs capitalize text-white">{n.role}</span>
+                            <span className="text-[10px] text-gray-400 font-semibold">{formatDateTime(n.createdAt)}</span>
                           </div>
-                          <p className="text-black font-medium whitespace-pre-wrap">{n.text}</p>
+                          <p className="text-gray-200 font-medium whitespace-pre-wrap">{n.text}</p>
                         </div>
                       </div>
                     ))}
