@@ -237,7 +237,7 @@ export function DonateModal({
                   </div>
                   <div className="space-y-2">
                     <Label>Unit Amount (₹)</Label>
-                    <Input type="number" required min="1" value={customAmount} onChange={e => setCustomAmount(e.target.value)} className="rounded-lg border-gray-300" placeholder="e.g. 500" />
+                    <Input type="number" required value={customAmount} onChange={e => setCustomAmount(e.target.value)} className="rounded-lg border-gray-300" placeholder="e.g. 500" />
                   </div>
                 </div>
               )}

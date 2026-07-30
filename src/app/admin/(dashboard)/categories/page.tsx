@@ -348,7 +348,7 @@ export default function CategoriesPage() {
             </div>
             <div className="space-y-2">
               <Label>Monthly Target (₹)</Label>
-              <Input type="number" min="0" value={formData.monthlyTarget} onChange={(e) => setFormData({ ...formData, monthlyTarget: e.target.value })} placeholder="Leave empty for no specific target" />
+              <Input type="number" value={formData.monthlyTarget} onChange={(e) => setFormData({ ...formData, monthlyTarget: e.target.value })} placeholder="Leave empty for no specific target" />
             </div>
             <div className="flex items-center space-x-2 pt-2">
               <Checkbox id="isActive" checked={formData.isActive} onCheckedChange={(c) => setFormData({ ...formData, isActive: c === true })} />
@@ -386,7 +386,7 @@ export default function CategoriesPage() {
               </div>
               <div className="space-y-2">
                 <Label>Amount (₹)</Label>
-                <Input type="number" min="0" value={budgetAmount} onChange={(e) => setBudgetAmount(e.target.value)} placeholder="e.g. 10000" />
+                <Input type="number" value={budgetAmount} onChange={(e) => setBudgetAmount(e.target.value)} placeholder="e.g. 10000" />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <Button variant="outline" disabled={busy} onClick={() => applyBudget("increase")}>Increase Target</Button>
@@ -486,7 +486,7 @@ export default function CategoriesPage() {
               </div>
               <div className="space-y-2">
                 <Label>Amount (₹)</Label>
-                <Input required type="number" min="1" value={packageForm.amount} onChange={e => setPackageForm({...packageForm, amount: e.target.value})} placeholder="e.g. 1500" />
+                <Input required type="number" value={packageForm.amount} onChange={e => setPackageForm({...packageForm, amount: e.target.value})} placeholder="e.g. 1500" />
               </div>
               <div className="space-y-2">
                 <Label>Description (Impact Statement)</Label>
