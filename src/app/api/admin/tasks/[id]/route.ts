@@ -3,7 +3,7 @@ import connectToDatabase from "@/lib/mongodb";
 import Task from "@/models/Task";
 import { requireAdmin } from "@/lib/auth";
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { session, response } = await requireAdmin(["super_admin", "admin", "editor"]);
     if (response) return response;
@@ -11,7 +11,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     const { status, progress, noteText } = await req.json();
 
     await connectToDatabase();
-    const task = await Task.findById(params.id);
+    const id = (await params).id;
+    const task = await Task.findById(id);
     
     if (!task) return NextResponse.json({ error: "Task not found" }, { status: 404 });
 
@@ -35,13 +36,14 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   }
 }
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { response } = await requireAdmin(["super_admin", "admin"]);
     if (response) return response;
 
     await connectToDatabase();
-    const deletedTask = await Task.findByIdAndDelete(params.id);
+    const id = (await params).id;
+    const deletedTask = await Task.findByIdAndDelete(id);
 
     if (!deletedTask) {
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
