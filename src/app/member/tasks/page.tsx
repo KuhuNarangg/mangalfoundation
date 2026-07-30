@@ -5,8 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Progress } from "@/components/ui/progress";
-import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckSquare, Calendar, Loader2, MessageSquare, ListTodo, User } from "lucide-react";
 import { toast } from "sonner";
@@ -153,7 +151,9 @@ export default function MemberTasksPage() {
                     <span>Progress</span>
                     <span>{task.progress || 0}%</span>
                   </div>
-                  <Progress value={task.progress || 0} className="h-2" />
+                  <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${task.progress || 0}%` }} />
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -196,12 +196,14 @@ export default function MemberTasksPage() {
                     <label className="text-sm font-medium">Progress</label>
                     <span className="text-sm font-bold text-primary">{progress}%</span>
                   </div>
-                  <Slider 
-                    value={[progress]} 
-                    onValueChange={(val) => setProgress(val[0])} 
-                    max={100} 
-                    step={5} 
-                    className="pt-2"
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    step={5}
+                    value={progress}
+                    onChange={(e) => setProgress(parseInt(e.target.value))}
+                    className="w-full accent-primary mt-2"
                   />
                 </div>
               </div>

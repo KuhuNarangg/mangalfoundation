@@ -30,8 +30,6 @@ import {
 } from "@/components/ui/select";
 import { formatDateTime, formatDate } from "@/lib/format";
 import { CheckSquare, Plus, Loader2, MessageSquare, User } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
-import { Slider } from "@/components/ui/slider";
 
 export default function TasksPage() {
   const [tasks, setTasks] = useState<any[]>([]);
@@ -244,7 +242,9 @@ export default function TasksPage() {
                   <TableCell>{formatDate(t.dueDate)}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2 max-w-[120px]">
-                      <Progress value={t.progress || 0} className="h-2 flex-1" />
+                      <div className="h-2 flex-1 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-primary" style={{ width: `${t.progress || 0}%` }} />
+                      </div>
                       <span className="text-xs text-muted-foreground w-8">{t.progress || 0}%</span>
                     </div>
                   </TableCell>
@@ -302,12 +302,14 @@ export default function TasksPage() {
                     <label className="text-sm font-medium">Progress Override</label>
                     <span className="text-sm font-bold text-primary">{updateForm.progress}%</span>
                   </div>
-                  <Slider 
-                    value={[updateForm.progress]} 
-                    onValueChange={(val) => setUpdateForm({...updateForm, progress: val[0]})} 
-                    max={100} 
-                    step={5} 
-                    className="pt-2"
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    step={5}
+                    value={updateForm.progress}
+                    onChange={(e) => setUpdateForm({...updateForm, progress: parseInt(e.target.value)})}
+                    className="w-full accent-primary"
                   />
                 </div>
               </div>
