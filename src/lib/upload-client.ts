@@ -12,13 +12,26 @@ export async function uploadFiles(
   files: File[],
   folder = "mangal"
 ): Promise<UploadedMedia[]> {
-  const signRes = await fetch("/api/admin/upload/sign", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ folder }),
-  });
-  const sign = await signRes.json();
+  let signRes: Response;
+  try {
+    signRes = await fetch("/api/admin/upload/sign", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ folder }),
+    });
+  } catch (err: any) {
+    throw new Error(`Sign fetch failed: ${err.message || String(err)}`);
+  }
+
+  let sign;
+  try {
+    sign = await signRes.json();
+  } catch (err: any) {
+    throw new Error(`Failed to parse sign response: ${err.message}. Status: ${signRes.status}`);
+  }
+
   if (!signRes.ok) throw new Error(sign.error || "Failed to authorize upload");
+  if (!sign.cloudName) throw new Error("Cloudinary cloudName is missing from server response");
 
   const results: UploadedMedia[] = [];
   for (const file of files) {
@@ -36,14 +49,17 @@ export async function uploadFiles(
         { method: "POST", body: fd }
       );
     } catch (err: any) {
-      if (err.message === "Load failed" || err.message.includes("fetch")) {
-        throw new Error("Network error (Load failed). This is usually caused by an AdBlocker blocking Cloudinary, or a poor internet connection. Please disable AdBlockers and try again.");
-      }
-      throw err;
+      throw new Error(`Cloudinary fetch failed: ${err.message || String(err)}. CloudName: ${sign.cloudName}`);
     }
 
-    const data = await up.json();
-    if (!up.ok) throw new Error(data.error?.message || "Upload failed");
+    let data;
+    try {
+      data = await up.json();
+    } catch (err: any) {
+      throw new Error(`Failed to parse Cloudinary response: ${err.message}. Status: ${up.status}`);
+    }
+
+    if (!up.ok) throw new Error(data.error?.message || "Upload failed at Cloudinary");
     results.push({
       url: data.secure_url,
       publicId: data.public_id,
