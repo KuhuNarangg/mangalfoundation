@@ -21,7 +21,7 @@ export async function uploadFiles(
 
     let up: Response;
     try {
-      up = await fetch("/api/admin/upload", {
+      up = await fetch("/api/upload", {
         method: "POST",
         body: fd,
       });

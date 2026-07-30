@@ -21,10 +21,6 @@ export function MemberSidebar({ user }: { user: any }) {
     { name: "Dashboard", href: "/member", icon: LayoutDashboard },
     { name: "Profile", href: "/member/profile", icon: User },
     { name: "Attendance", href: "/member/attendance", icon: Clock },
-    { name: "Tasks", href: "/member/tasks", icon: CheckSquare },
-    { name: "Events", href: "/member/events", icon: Calendar },
-    { name: "Documents", href: "/member/documents", icon: FileText },
-    { name: "Settings", href: "/member/settings", icon: Settings },
   ];
 
   return (

@@ -58,9 +58,7 @@ export function MemberHeader({ user }: { user: any }) {
             <DropdownMenuItem onClick={() => router.push("/member/profile")}>
               Profile
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => router.push("/member/settings")}>
-              Settings
-            </DropdownMenuItem>
+
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout} className="text-red-600">
               Log out
