@@ -96,8 +96,8 @@ export default function ProfilePage() {
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Profile</h1>
-        <p className="text-muted-foreground mt-1">Manage your personal information and emergency contacts.</p>
+        <h1 className="text-3xl font-bold tracking-tight text-black">Profile</h1>
+        <p className="text-black mt-1">Manage your personal information and emergency contacts.</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -112,7 +112,7 @@ export default function ProfilePage() {
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={formData.profilePicture} alt="Profile" className="h-full w-full object-cover" />
                 ) : (
-                  <div className="h-full w-full flex items-center justify-center text-gray-400">No Img</div>
+                  <div className="h-full w-full flex items-center justify-center text-black">No Img</div>
                 )}
               </div>
               <div>
@@ -135,7 +135,7 @@ export default function ProfilePage() {
               <div className="space-y-2">
                 <Label>Full Name</Label>
                 <Input value={formData.name} disabled />
-                <p className="text-xs text-muted-foreground">Contact admin to change name</p>
+                <p className="text-xs text-black">Contact admin to change name</p>
               </div>
               <div className="space-y-2">
                 <Label>Phone Number</Label>
