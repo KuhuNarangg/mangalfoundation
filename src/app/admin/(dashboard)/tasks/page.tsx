@@ -29,7 +29,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { formatDateTime, formatDate } from "@/lib/format";
-import { CheckSquare, Plus, Loader2 } from "lucide-react";
+import { CheckSquare, Plus, Loader2, MessageSquare, User } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Slider } from "@/components/ui/slider";
 
 export default function TasksPage() {
   const [tasks, setTasks] = useState<any[]>([]);
@@ -38,6 +40,16 @@ export default function TasksPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const [selectedTask, setSelectedTask] = useState<any>(null);
+  const [isUpdateDialogOpen, setIsUpdateDialogOpen] = useState(false);
+  const [updateForm, setUpdateForm] = useState({
+    status: "",
+    progress: 0,
+    noteText: "",
+  });
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -112,6 +124,39 @@ export default function TasksPage() {
     }
   };
 
+  const openUpdateDialog = (task: any) => {
+    setSelectedTask(task);
+    setUpdateForm({
+      status: task.status,
+      progress: task.progress || 0,
+      noteText: "",
+    });
+    setIsUpdateDialogOpen(true);
+  };
+
+  const handleUpdate = async () => {
+    if (!selectedTask) return;
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(`/api/admin/tasks/${selectedTask._id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateForm),
+      });
+      if (res.ok) {
+        toast.success("Task updated");
+        setIsUpdateDialogOpen(false);
+        fetchTasks();
+      } else {
+        toast.error("Failed to update task");
+      }
+    } catch {
+      toast.error("Network error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -176,7 +221,9 @@ export default function TasksPage() {
               <TableHead>Task</TableHead>
               <TableHead>Assigned To</TableHead>
               <TableHead>Due Date</TableHead>
+              <TableHead>Progress</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -196,6 +243,12 @@ export default function TasksPage() {
                   </TableCell>
                   <TableCell>{formatDate(t.dueDate)}</TableCell>
                   <TableCell>
+                    <div className="flex items-center gap-2 max-w-[120px]">
+                      <Progress value={t.progress || 0} className="h-2 flex-1" />
+                      <span className="text-xs text-muted-foreground w-8">{t.progress || 0}%</span>
+                    </div>
+                  </TableCell>
+                  <TableCell>
                     <span className={`capitalize px-2 py-1 rounded-full text-xs font-medium ${
                       t.status === "completed" ? "bg-green-100 text-green-800" :
                       t.status === "in-progress" ? "bg-blue-100 text-blue-800" :
@@ -204,12 +257,107 @@ export default function TasksPage() {
                       {t.status.replace("-", " ")}
                     </span>
                   </TableCell>
+                  <TableCell className="text-right">
+                    <Button variant="outline" size="sm" onClick={() => openUpdateDialog(t)}>
+                      Manage
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))
             )}
           </TableBody>
         </Table>
       </div>
+
+      <Dialog open={isUpdateDialogOpen} onOpenChange={setIsUpdateDialogOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Manage Task</DialogTitle>
+          </DialogHeader>
+          
+          {selectedTask && (
+            <div className="space-y-6 mt-4">
+              <div>
+                <h3 className="font-semibold text-lg">{selectedTask.title}</h3>
+                <p className="text-sm text-gray-600 mt-2">{selectedTask.description}</p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6 bg-gray-50 p-4 rounded-lg border">
+                <div className="space-y-3">
+                  <label className="text-sm font-medium">Status Override</label>
+                  <Select value={updateForm.status} onValueChange={v => setUpdateForm({...updateForm, status: v})}>
+                    <SelectTrigger className="bg-white">
+                      <SelectValue placeholder="Select Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="pending">Pending</SelectItem>
+                      <SelectItem value="in-progress">In Progress</SelectItem>
+                      <SelectItem value="completed">Completed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <label className="text-sm font-medium">Progress Override</label>
+                    <span className="text-sm font-bold text-primary">{updateForm.progress}%</span>
+                  </div>
+                  <Slider 
+                    value={[updateForm.progress]} 
+                    onValueChange={(val) => setUpdateForm({...updateForm, progress: val[0]})} 
+                    max={100} 
+                    step={5} 
+                    className="pt-2"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-medium flex items-center"><MessageSquare className="w-4 h-4 mr-2"/> Add Admin Note</label>
+                <Textarea 
+                  placeholder="Share feedback or instructions..." 
+                  value={updateForm.noteText} 
+                  onChange={(e) => setUpdateForm({...updateForm, noteText: e.target.value})}
+                  rows={3}
+                />
+              </div>
+
+              <div className="flex justify-end pt-2 border-t">
+                <Button onClick={handleUpdate} disabled={isSubmitting}>
+                  {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin mr-2"/> : null}
+                  Save Admin Updates
+                </Button>
+              </div>
+
+              {selectedTask.notes && selectedTask.notes.length > 0 && (
+                <div className="mt-8 space-y-4">
+                  <h4 className="font-semibold text-sm text-gray-500 uppercase tracking-wider">Activity History</h4>
+                  <div className="space-y-3">
+                    {selectedTask.notes.slice().reverse().map((n: any, idx: number) => (
+                      <div key={idx} className={`p-3 rounded-lg text-sm flex gap-3 ${n.role === 'admin' ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50 border border-gray-100'}`}>
+                        <div className="mt-0.5">
+                          {n.role === 'admin' ? (
+                            <div className="w-6 h-6 rounded-full bg-blue-200 text-blue-700 flex items-center justify-center"><User className="w-3 h-3"/></div>
+                          ) : (
+                            <div className="w-6 h-6 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center"><User className="w-3 h-3"/></div>
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex justify-between items-baseline mb-1">
+                            <span className="font-medium text-xs capitalize">{n.role}</span>
+                            <span className="text-[10px] text-muted-foreground">{formatDateTime(n.createdAt)}</span>
+                          </div>
+                          <p className="text-gray-700 whitespace-pre-wrap">{n.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

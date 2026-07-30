@@ -33,6 +33,23 @@ const taskSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Admin", // Or User if members can create
     },
+    progress: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 100,
+    },
+    notes: [
+      {
+        text: String,
+        addedBy: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User", // Can be Admin or User
+        },
+        role: String,
+        createdAt: { type: Date, default: Date.now },
+      },
+    ],
   },
   { timestamps: true }
 );

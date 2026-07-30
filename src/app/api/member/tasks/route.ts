@@ -26,14 +26,25 @@ export async function PATCH(req: Request) {
     const session = await getPublicSession();
     if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const { taskId, status } = await req.json();
+    const { taskId, status, progress, noteText } = await req.json();
 
     await connectToDatabase();
     const task = await Task.findOne({ _id: taskId, assignedTo: session.id });
     
     if (!task) return NextResponse.json({ error: "Task not found" }, { status: 404 });
 
-    task.status = status;
+    if (status) task.status = status;
+    if (progress !== undefined) task.progress = progress;
+    
+    if (noteText && noteText.trim() !== "") {
+      task.notes.push({
+        text: noteText.trim(),
+        addedBy: session.id,
+        role: "member",
+        createdAt: new Date(),
+      });
+    }
+
     await task.save();
 
     return NextResponse.json({ success: true, data: task });
