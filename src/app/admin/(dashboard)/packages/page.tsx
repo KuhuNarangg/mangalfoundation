@@ -58,7 +58,7 @@ export default function PackagesPage() {
       });
     } else {
       setEditingId(null);
-      setFormData({ categoryId: "", title: "", description: "", amount: 0, image: "", isActive: true });
+      setFormData({ categoryId: "", title: "", description: "", amount: "" as any, image: "", isActive: true });
     }
     setIsDialogOpen(true);
   };
@@ -73,10 +73,14 @@ export default function PackagesPage() {
     try {
       const url = editingId ? `/api/admin/packages/${editingId}` : "/api/admin/packages";
       const method = editingId ? "PUT" : "POST";
+      const payload = {
+        ...formData,
+        amount: Number(formData.amount)
+      };
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
       const json = await res.json();
       
@@ -146,7 +150,7 @@ export default function PackagesPage() {
                 </div>
                 <div className="space-y-2">
                   <Label>Amount (₹)</Label>
-                  <Input type="number" required min="1" value={formData.amount} onChange={e => setFormData({...formData, amount: Number(e.target.value)})} />
+                  <Input type="number" required value={formData.amount} onChange={e => setFormData({...formData, amount: e.target.value as any})} />
                 </div>
               </div>
               
@@ -174,7 +178,7 @@ export default function PackagesPage() {
         </Dialog>
       </div>
 
-      <div className="bg-white rounded-md border overflow-x-auto">
+      <div className="bg-card rounded-md border overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
@@ -197,7 +201,7 @@ export default function PackagesPage() {
                   <TableCell>{pkg.categoryId?.title || "Unknown"}</TableCell>
                   <TableCell>₹{pkg.amount.toLocaleString()}</TableCell>
                   <TableCell>
-                    <span className={`px-2 py-1 rounded-full text-xs ${pkg.isActive ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}`}>
+                    <span className={`px-2 py-1 rounded-full text-xs ${pkg.isActive ? "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300" : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"}`}>
                       {pkg.isActive ? "Active" : "Inactive"}
                     </span>
                   </TableCell>
