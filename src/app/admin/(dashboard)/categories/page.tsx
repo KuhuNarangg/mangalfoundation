@@ -23,7 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Plus, Edit, Trash2, Wallet, BarChart3 } from "lucide-react";
+import { Plus, Edit, Trash2, Wallet, BarChart3, Package as PackageIcon } from "lucide-react";
 import { CloudinaryUpload } from "@/components/admin/CloudinaryUpload";
 import { formatINR } from "@/lib/format";
 
@@ -47,6 +47,11 @@ export default function CategoriesPage() {
   const [budgetAmount, setBudgetAmount] = useState("");
   const [busy, setBusy] = useState(false);
 
+  // Packages state
+  const [packages, setPackages] = useState<any[]>([]);
+  const [packageCat, setPackageCat] = useState<any>(null);
+  const [packageForm, setPackageForm] = useState<any>(null);
+
   const fetchCategories = async () => {
     try {
       const res = await fetch("/api/admin/categories");
@@ -63,8 +68,19 @@ export default function CategoriesPage() {
     return [];
   };
 
+  const fetchPackages = async () => {
+    try {
+      const res = await fetch("/api/admin/packages");
+      const json = await res.json();
+      if (json.success) setPackages(json.data);
+    } catch {
+      toast.error("Failed to load packages");
+    }
+  };
+
   useEffect(() => {
     fetchCategories();
+    fetchPackages();
   }, []);
 
   const openDialog = (category?: any) => {
@@ -235,6 +251,9 @@ export default function CategoriesPage() {
                     <Button variant="ghost" size="icon" title="Budget" onClick={() => setBudgetCat(cat)}>
                       <Wallet className="h-4 w-4" />
                     </Button>
+                    <Button variant="ghost" size="icon" title="Packages" onClick={() => setPackageCat(cat)}>
+                      <PackageIcon className="h-4 w-4" />
+                    </Button>
                     <Button variant="ghost" size="icon" title="Edit" onClick={() => openDialog(cat)}>
                       <Edit className="h-4 w-4" />
                     </Button>
@@ -378,6 +397,114 @@ export default function CategoriesPage() {
                 <Button variant="outline" disabled={busy} className="text-red-600" onClick={() => applyBudget("reset")}>Reset Extras</Button>
               </div>
             </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Packages dialog */}
+      <Dialog open={!!packageCat} onOpenChange={(o) => { if (!o) { setPackageCat(null); setPackageForm(null); } }}>
+        <DialogContent className="w-[95vw] sm:max-w-2xl p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Packages — {packageCat?.title}</DialogTitle>
+          </DialogHeader>
+          
+          {packageCat && !packageForm && (
+            <div className="space-y-4 mt-2">
+              <div className="flex justify-end">
+                <Button size="sm" onClick={() => setPackageForm({ title: "", description: "", amount: "", image: "", isActive: true })}>
+                  <Plus className="h-4 w-4 mr-2" /> Add Package
+                </Button>
+              </div>
+              <div className="border rounded-md divide-y">
+                {packages.filter(p => p.categoryId?._id === packageCat._id || p.categoryId === packageCat._id).length === 0 ? (
+                  <div className="p-4 text-center text-sm text-muted-foreground">No packages defined for this category.</div>
+                ) : (
+                  packages
+                    .filter(p => p.categoryId?._id === packageCat._id || p.categoryId === packageCat._id)
+                    .sort((a, b) => a.amount - b.amount)
+                    .map((pkg) => (
+                      <div key={pkg._id} className="p-3 flex justify-between items-center hover:bg-muted/50">
+                        <div>
+                          <div className="font-semibold">{pkg.title} <span className="text-muted-foreground font-normal ml-2">₹{pkg.amount}</span></div>
+                          <div className="text-xs text-muted-foreground line-clamp-1">{pkg.description}</div>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Button variant="ghost" size="icon" onClick={() => setPackageForm({ ...pkg, amount: String(pkg.amount) })}>
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="text-red-500" onClick={async () => {
+                            if (!confirm("Delete this package?")) return;
+                            const res = await fetch(`/api/admin/packages/${pkg._id}`, { method: "DELETE" });
+                            if (res.ok) {
+                              toast.success("Package deleted");
+                              fetchPackages();
+                            } else {
+                              toast.error("Failed to delete package");
+                            }
+                          }}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+
+          {packageForm && (
+            <form className="space-y-4 mt-2" onSubmit={async (e) => {
+              e.preventDefault();
+              setBusy(true);
+              try {
+                const url = packageForm._id ? `/api/admin/packages/${packageForm._id}` : "/api/admin/packages";
+                const payload = {
+                  ...packageForm,
+                  categoryId: packageCat._id,
+                  amount: Number(packageForm.amount)
+                };
+                const res = await fetch(url, {
+                  method: packageForm._id ? "PUT" : "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                  toast.success(packageForm._id ? "Package updated" : "Package created");
+                  setPackageForm(null);
+                  fetchPackages();
+                } else {
+                  const json = await res.json();
+                  toast.error(json.error || "Failed to save package");
+                }
+              } finally {
+                setBusy(false);
+              }
+            }}>
+              <div className="space-y-2">
+                <Label>Title</Label>
+                <Input required value={packageForm.title} onChange={e => setPackageForm({...packageForm, title: e.target.value})} placeholder="e.g. Winter Wear" />
+              </div>
+              <div className="space-y-2">
+                <Label>Amount (₹)</Label>
+                <Input required type="number" min="1" value={packageForm.amount} onChange={e => setPackageForm({...packageForm, amount: e.target.value})} placeholder="e.g. 1500" />
+              </div>
+              <div className="space-y-2">
+                <Label>Description (Impact Statement)</Label>
+                <Textarea required value={packageForm.description} onChange={e => setPackageForm({...packageForm, description: e.target.value})} rows={2} placeholder="e.g. Provides warm clothes to 1 person." />
+              </div>
+              <div className="space-y-2">
+                <Label>Image URL (Optional)</Label>
+                <Input value={packageForm.image || ""} onChange={e => setPackageForm({...packageForm, image: e.target.value})} />
+              </div>
+              <div className="flex items-center space-x-2 pt-2">
+                <Checkbox id="pkgActive" checked={packageForm.isActive} onCheckedChange={(c) => setPackageForm({ ...packageForm, isActive: c === true })} />
+                <Label htmlFor="pkgActive">Active</Label>
+              </div>
+              <div className="pt-4 flex justify-end gap-2">
+                <Button type="button" variant="outline" onClick={() => setPackageForm(null)}>Cancel</Button>
+                <Button type="submit" disabled={busy}>Save Package</Button>
+              </div>
+            </form>
           )}
         </DialogContent>
       </Dialog>
