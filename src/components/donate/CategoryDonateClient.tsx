@@ -18,38 +18,59 @@ export function CategoryDonateClient({ category }: { category: any }) {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {category.packages.map((pkg: any, idx: number) => (
-          <div key={pkg.id} className="bg-gradient-to-br from-white to-gray-50/80 rounded-2xl overflow-hidden shadow-sm border border-rose-100/50 hover:shadow-xl hover:border-rose-200 transition-all flex flex-col h-full group transform hover:-translate-y-1">
-            <div className="p-6 md:p-8 flex-grow flex flex-col">
-              <div className="flex justify-between items-start mb-4 gap-4">
-                <h3 className="text-xl font-sans text-charcoal font-bold leading-tight">{pkg.title}</h3>
-                <span className="bg-gradient-to-r from-rose-100 to-orange-100 text-rose-700 font-extrabold px-4 py-1.5 rounded-full text-sm shrink-0 whitespace-nowrap shadow-sm">
-                  ₹{pkg.amount}
-                </span>
-              </div>
-              
-              <p className="text-gray-600 mb-6 text-sm flex-grow font-medium">
-                {pkg.description}
-              </p>
-              
-              {pkg.impactStatement && (
-                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100/50 rounded-xl p-4 mb-6 text-sm font-semibold text-emerald-800 flex items-start gap-2 shadow-sm">
-                  <span className="text-emerald-500 mt-0.5 text-base">✦</span> 
-                  {pkg.impactStatement}
+        {category.packages.map((pkg: any, idx: number) => {
+          const isSeva = 
+            category?.slug === "go-seva" || 
+            category?.title?.toLowerCase().includes("seva") || 
+            pkg?.title?.toLowerCase().includes("seva");
+          const buttonText = isSeva ? "Do Seva" : "Select & Donate";
+
+          return (
+            <div key={pkg.id || idx} className="bg-gradient-to-br from-white to-gray-50/80 rounded-2xl overflow-hidden shadow-sm border border-rose-100/50 hover:shadow-xl hover:border-rose-200 transition-all flex flex-col h-full group transform hover:-translate-y-1">
+              {pkg.image && (
+                <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                  <img
+                    src={pkg.image}
+                    alt={pkg.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                 </div>
               )}
 
-              <div className="mt-auto block">
-                <Button 
-                  onClick={() => openDonate(pkg)}
-                  className="w-full bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 text-white font-bold tracking-wide h-12 rounded-xl group-hover:shadow-lg transition-all duration-300 text-base border-0"
-                >
-                  Select & Donate
-                </Button>
+              <div className="p-6 md:p-8 flex-grow flex flex-col">
+                <div className="flex justify-between items-start mb-4 gap-4">
+                  <h3 className="text-xl font-sans text-charcoal font-bold leading-tight">{pkg.title}</h3>
+                  <span className="bg-gradient-to-r from-rose-100 to-orange-100 text-rose-700 font-extrabold px-4 py-1.5 rounded-full text-sm shrink-0 whitespace-nowrap shadow-sm">
+                    ₹{pkg.amount}
+                  </span>
+                </div>
+                
+                <p className="text-gray-600 mb-6 text-sm flex-grow font-medium">
+                  {pkg.description}
+                </p>
+                
+                {pkg.impactStatement && (
+                  <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100/50 rounded-xl p-4 mb-6 text-sm font-semibold text-emerald-800 flex items-start gap-2 shadow-sm">
+                    <span className="text-emerald-500 mt-0.5 text-base">✦</span> 
+                    {pkg.impactStatement}
+                  </div>
+                )}
+
+                <div className="mt-auto block">
+                  <Button 
+                    onClick={() => openDonate(pkg)}
+                    className="w-full bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 text-white font-bold tracking-wide h-12 rounded-xl group-hover:shadow-lg transition-all duration-300 text-base border-0"
+                  >
+                    {buttonText}
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {/* Custom Amount Card */}
         <div className="bg-gradient-to-br from-white to-gray-50/80 rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all flex flex-col h-full group transform hover:-translate-y-1">

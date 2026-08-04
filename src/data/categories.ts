@@ -67,6 +67,83 @@ export const CATEGORIES: CategoryDetails[] = [
     ]
   },
   {
+    title: "Go Seva",
+    slug: "go-seva",
+    description: "Serve and protect sacred cows by providing fresh fodder, medical treatment, clean water, gaushala support, and lifelong care.",
+    image: "/images/cow1.webp",
+    galleryImages: [
+      "/images/cow1.webp",
+      "/images/cow2.jpg",
+      "/images/cow3.jpg",
+    ],
+    packages: [
+      {
+        id: "go-feed",
+        title: "Feed a Cow",
+        description: "Provide fresh green grass and nutritious daily meals for hungry cows.",
+        amount: 100,
+        impactStatement: "Feeds 1 cow with nutritious daily food.",
+        image: "/images/cow1.webp",
+      },
+      {
+        id: "go-fodder",
+        title: "Sponsor Cow Fodder",
+        description: "Sponsor green fodder, dry grass, and nutritional supplements for gaushala cows.",
+        amount: 500,
+        impactStatement: "Provides healthy fodder for multiple cows.",
+        image: "/images/cow2.jpg",
+      },
+      {
+        id: "go-medical",
+        title: "Medical Care Seva",
+        description: "Provide veterinary care, essential medicines, treatments, and first aid for sick or injured cows.",
+        amount: 1100,
+        impactStatement: "Funds medical care and emergency medicines for cows.",
+        image: "/images/cow3.jpg",
+      },
+      {
+        id: "go-adopt",
+        title: "Adopt/Sponsor a Cow",
+        description: "Take complete responsibility for a cow's monthly food, healthcare, shelter, and lifelong care.",
+        amount: 2500,
+        impactStatement: "Sponsors a cow's complete care for 1 month.",
+        image: "/images/cow1.webp",
+      },
+      {
+        id: "go-gaushala",
+        title: "Gaushala Donation",
+        description: "Support gaushala operations, infrastructure repair, shade construction, and staff maintenance.",
+        amount: 5000,
+        impactStatement: "Improves living conditions & shelter in the gaushala.",
+        image: "/images/cow2.jpg",
+      },
+      {
+        id: "go-volunteer",
+        title: "Volunteer at Gaushala",
+        description: "Join our volunteers at the gaushala to help feed, clean, and care for cows directly.",
+        amount: 200,
+        impactStatement: "Supports volunteer logistics and direct hands-on care.",
+        image: "/images/cow3.jpg",
+      },
+      {
+        id: "go-water",
+        title: "Water Seva",
+        description: "Install clean drinking water troughs and supply fresh water 24/7 at gaushalas and public spots.",
+        amount: 350,
+        impactStatement: "Ensures fresh drinking water for cows daily.",
+        image: "/images/cow1.webp",
+      },
+      {
+        id: "go-occasion",
+        title: "Special Occasion Seva",
+        description: "Celebrate birthdays, anniversaries, or special family occasions by organizing cow feeding.",
+        amount: 1500,
+        impactStatement: "Feeds gaushala cows on your special day.",
+        image: "/images/cow2.jpg",
+      },
+    ]
+  },
+  {
     title: "Women Empowerment",
     slug: "women-empowerment",
     description: "Help women become self-reliant, skilled, confident, and financially independent while enabling them to live with dignity.",
@@ -314,6 +391,41 @@ export const CATEGORIES: CategoryDetails[] = [
         amount: 1200,
         impactStatement: "Enables 1 child to attend school proudly.",
       }
+    ]
+  },
+  {
+    title: "Temple Donation",
+    slug: "temple-donation",
+    description: "Support sacred temples, daily worship, festival celebrations, and temple maintenance to keep ancient traditions and spiritual heritage alive.",
+    image: "/images/temple.jpg",
+    galleryImages: [
+      "/images/temple.jpg",
+    ],
+    packages: [
+      {
+        id: "temple-seva",
+        title: "Temple Seva",
+        description: "Contribute towards temple maintenance, cleaning, decoration, lighting, and other daily temple needs.",
+        amount: 2100,
+        impactStatement: "Supports daily maintenance & upkeep of temple premises.",
+        image: "/images/temple.jpg",
+      },
+      {
+        id: "temple-puja",
+        title: "Puja & Aarti Seva",
+        description: "Allow devotees to contribute towards daily puja, aarti, flowers, diya, and other worship essentials.",
+        amount: 1100,
+        impactStatement: "Sponsors daily worship essentials, diyas, and flowers.",
+        image: "/images/temple.jpg",
+      },
+      {
+        id: "temple-festival",
+        title: "Festival Seva",
+        description: "Contribute towards special pujas, decorations, prasad, and arrangements during festivals and religious occasions.",
+        amount: 5100,
+        impactStatement: "Funds festival pujas, prasad distribution & decorations.",
+        image: "/images/temple.jpg",
+      },
     ]
   }
 ];
