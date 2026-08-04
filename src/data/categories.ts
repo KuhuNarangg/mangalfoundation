@@ -352,8 +352,8 @@ export const CATEGORIES: CategoryDetails[] = [
     ]
   },
   {
-    title: "Go Seva",
-    slug: "go-seva",
+    title: "Gau Seva",
+    slug: "gau-seva",
     description: "Serve and protect sacred cows by providing fresh fodder, medical treatment, clean water, gaushala support, and lifelong care.",
     image: "/images/cow1.webp",
     galleryImages: [
@@ -363,7 +363,7 @@ export const CATEGORIES: CategoryDetails[] = [
     ],
     packages: [
       {
-        id: "go-feed",
+        id: "gau-feed",
         title: "Feed a Cow",
         description: "Provide fresh green grass and nutritious daily meals for hungry cows.",
         amount: 100,
@@ -371,7 +371,7 @@ export const CATEGORIES: CategoryDetails[] = [
         image: "/images/cow1.webp",
       },
       {
-        id: "go-fodder",
+        id: "gau-fodder",
         title: "Sponsor Cow Fodder",
         description: "Sponsor green fodder, dry grass, and nutritional supplements for gaushala cows.",
         amount: 500,
@@ -379,7 +379,7 @@ export const CATEGORIES: CategoryDetails[] = [
         image: "/images/cow2.jpg",
       },
       {
-        id: "go-medical",
+        id: "gau-medical",
         title: "Medical Care Seva",
         description: "Provide veterinary care, essential medicines, treatments, and first aid for sick or injured cows.",
         amount: 1100,
@@ -387,7 +387,7 @@ export const CATEGORIES: CategoryDetails[] = [
         image: "/images/cow3.jpg",
       },
       {
-        id: "go-adopt",
+        id: "gau-adopt",
         title: "Adopt/Sponsor a Cow",
         description: "Take complete responsibility for a cow's monthly food, healthcare, shelter, and lifelong care.",
         amount: 2500,
@@ -395,7 +395,7 @@ export const CATEGORIES: CategoryDetails[] = [
         image: "/images/cow1.webp",
       },
       {
-        id: "go-gaushala",
+        id: "gau-gaushala",
         title: "Gaushala Donation",
         description: "Support gaushala operations, infrastructure repair, shade construction, and staff maintenance.",
         amount: 5000,
@@ -403,7 +403,7 @@ export const CATEGORIES: CategoryDetails[] = [
         image: "/images/cow2.jpg",
       },
       {
-        id: "go-volunteer",
+        id: "gau-volunteer",
         title: "Volunteer at Gaushala",
         description: "Join our volunteers at the gaushala to help feed, clean, and care for cows directly.",
         amount: 200,
@@ -411,7 +411,7 @@ export const CATEGORIES: CategoryDetails[] = [
         image: "/images/cow3.jpg",
       },
       {
-        id: "go-water",
+        id: "gau-water",
         title: "Water Seva",
         description: "Install clean drinking water troughs and supply fresh water 24/7 at gaushalas and public spots.",
         amount: 350,
@@ -419,7 +419,7 @@ export const CATEGORIES: CategoryDetails[] = [
         image: "/images/cow1.webp",
       },
       {
-        id: "go-occasion",
+        id: "gau-occasion",
         title: "Special Occasion Seva",
         description: "Celebrate birthdays, anniversaries, or special family occasions by organizing cow feeding.",
         amount: 1500,

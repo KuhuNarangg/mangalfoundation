@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 const getIconForCategory = (title: string) => {
   const lower = title.toLowerCase();
-  if (lower.includes("cow") || lower.includes("go seva")) return Sparkles;
+  if (lower.includes("cow") || lower.includes("gau seva") || lower.includes("go seva")) return Sparkles;
   if (lower.includes("food")) return Utensils;
   if (lower.includes("cloth")) return Shirt;
   if (lower.includes("women") || lower.includes("edu")) return GraduationCap;

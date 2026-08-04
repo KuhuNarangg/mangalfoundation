@@ -20,6 +20,7 @@ export function CategoryDonateClient({ category }: { category: any }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {category.packages.map((pkg: any, idx: number) => {
           const isSeva = 
+            category?.slug === "gau-seva" || 
             category?.slug === "go-seva" || 
             category?.title?.toLowerCase().includes("seva") || 
             pkg?.title?.toLowerCase().includes("seva");

@@ -66,7 +66,7 @@ export async function GET() {
       }
     }
 
-    // Custom sorting: Food -> Clothes -> Women -> Temple -> Go Seva (end)
+    // Custom sorting: Food -> Clothes -> Women -> Temple -> Gau Seva (end)
     result.sort((a, b) => {
       const getPriority = (title: string) => {
         const lower = title.toLowerCase();
@@ -74,7 +74,7 @@ export async function GET() {
         if (lower.includes("cloth") || lower.includes("vastra")) return 2;
         if (lower.includes("women") || lower.includes("girl")) return 3;
         if (lower.includes("temple") || lower.includes("mandir")) return 98;
-        if (lower.includes("cow") || lower.includes("go seva")) return 100;
+        if (lower.includes("cow") || lower.includes("gau seva") || lower.includes("go seva")) return 100;
         return 50; // default for others
       };
       return getPriority(a.title) - getPriority(b.title);
