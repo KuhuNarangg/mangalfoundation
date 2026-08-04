@@ -323,6 +323,12 @@ export const CATEGORIES: CategoryDetails[] = [
     image: "/images/temple.jpg",
     galleryImages: [
       "/images/temple.jpg",
+      "/images/temple2.avif",
+      "/images/temple3.avif",
+      "/images/temple4.avif",
+      "/images/temple5.avif",
+      "/images/temple6.avif",
+      "/images/temple7.avif",
     ],
     packages: [
       {
@@ -331,7 +337,7 @@ export const CATEGORIES: CategoryDetails[] = [
         description: "Contribute towards temple maintenance, cleaning, decoration, lighting, and other daily temple needs.",
         amount: 2100,
         impactStatement: "Supports daily maintenance & upkeep of temple premises.",
-        image: "/images/temple.jpg",
+        image: "/images/temple2.avif",
       },
       {
         id: "temple-puja",
@@ -339,7 +345,7 @@ export const CATEGORIES: CategoryDetails[] = [
         description: "Allow devotees to contribute towards daily puja, aarti, flowers, diya, and other worship essentials.",
         amount: 1100,
         impactStatement: "Sponsors daily worship essentials, diyas, and flowers.",
-        image: "/images/temple.jpg",
+        image: "/images/temple3.avif",
       },
       {
         id: "temple-festival",
@@ -347,7 +353,7 @@ export const CATEGORIES: CategoryDetails[] = [
         description: "Contribute towards special pujas, decorations, prasad, and arrangements during festivals and religious occasions.",
         amount: 5100,
         impactStatement: "Funds festival pujas, prasad distribution & decorations.",
-        image: "/images/temple.jpg",
+        image: "/images/temple4.avif",
       },
     ]
   },
